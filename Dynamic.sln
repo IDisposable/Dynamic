@@ -6,6 +6,18 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DynamicUtilites", "DynamicUtilities\DynamicUtilites.csproj", "{0FEF568A-0697-4DFA-A643-99060713CF00}"
 EndProject
 Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 3
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://tfs01.codeplex.com/
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = DynamicSample\\DynamicSample.csproj
+		SccProjectName1 = DynamicSample
+		SccLocalPath1 = DynamicSample
+		SccProjectUniqueName2 = DynamicUtilities\\DynamicUtilites.csproj
+		SccProjectName2 = DynamicUtilities
+		SccLocalPath2 = DynamicUtilities
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
