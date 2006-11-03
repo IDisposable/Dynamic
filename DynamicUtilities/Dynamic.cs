@@ -332,7 +332,6 @@ namespace Phydeaux.Utilities
     /// <param name="arg1">The first argument value</param>
     /// <typeparam name="V2">The type of the second argument</typeparam>
     /// <param name="arg2">The second argument value</param>
-    /// <typeparam name="V3">The type of the third argument</typeparam>
     public delegate void StaticProc<T, V1, V2>(V1 arg1, V2 arg2);
 
     /// <summary>Defines a delegate to a static procedure (method that doesn't return anything) that takes three
@@ -344,7 +343,6 @@ namespace Phydeaux.Utilities
     /// <param name="arg2">The second argument value</param>
     /// <typeparam name="V3">The type of the third argument</typeparam>
     /// <param name="arg3">The third argument value</param>
-    /// <typeparam name="V4">The type of the fourth argument</typeparam>
     public delegate void StaticProc<T, V1, V2, V3>(V1 arg1, V2 arg2, V3 arg3);
 
     /// <summary>Defines a delegate to a static procedure (method that doesn't return anything) that takes four
@@ -469,13 +467,13 @@ namespace Phydeaux.Utilities
     public delegate TRet FuncParams<T, TRet>(T target, params object[] parameters);
 
     #region Explicit arguments
-    /// <summary>Defines a delegate to a instance function (method that returns something) that takes no arguments.</summary>
+    /// <summary>Defines a delegate to a instance function (method that returns a value) that takes no arguments.</summary>
     /// <typeparam name="T">The type of the instance method target</typeparam>
     /// <param name="target">The target instance (this)</param>
     /// <typeparam name="TRet">The type of the return value</typeparam>
     public delegate TRet Func<T, TRet>(T target);
 
-    /// <summary>Defines a delegate to a instance function (method that returns something) that takes a single
+    /// <summary>Defines a delegate to a instance function (method that returns a value) that takes a single
     /// strong-typed argument.</summary>
     /// <typeparam name="T">The type of the instance method target</typeparam>
     /// <param name="target">The target instance (this)</param>
@@ -484,7 +482,7 @@ namespace Phydeaux.Utilities
     /// <param name="arg1">The first argument value</param>
     public delegate TRet Func<T, TRet, V1>(T target, V1 arg1);
 
-    /// <summary>Defines a delegate to a instance function (method that returns something) that takes two
+    /// <summary>Defines a delegate to a instance function (method that returns a value) that takes two
     /// strong-typed arguments.</summary>
     /// <typeparam name="T">The type of the instance method target</typeparam>
     /// <param name="target">The target instance (this)</param>
@@ -495,7 +493,7 @@ namespace Phydeaux.Utilities
     /// <param name="arg2">The second argument value</param>
     public delegate TRet Func<T, TRet, V1, V2>(T target, V1 arg1, V2 arg2);
 
-    /// <summary>Defines a delegate to a instance function (method that returns something) that takes three
+    /// <summary>Defines a delegate to a instance function (method that returns a value) that takes three
     /// strong-typed arguments.</summary>
     /// <typeparam name="T">The type of the instance method target</typeparam>
     /// <param name="target">The target instance (this)</param>
@@ -508,7 +506,7 @@ namespace Phydeaux.Utilities
     /// <param name="arg3">The third argument value</param>
     public delegate TRet Func<T, TRet, V1, V2, V3>(T target, V1 arg1, V2 arg2, V3 arg3);
 
-    /// <summary>Defines a delegate to a instance function (method that returns something) that takes four
+    /// <summary>Defines a delegate to a instance function (method that returns a value) that takes four
     /// strong-typed arguments.</summary>
     /// <typeparam name="T">The type of the instance method target</typeparam>
     /// <param name="target">The target instance (this)</param>
@@ -523,7 +521,7 @@ namespace Phydeaux.Utilities
     /// <param name="arg4">The fourth argument value</param>
     public delegate TRet Func<T, TRet, V1, V2, V3, V4>(T target, V1 arg1, V2 arg2, V3 arg3, V4 arg4);
 
-    /// <summary>Defines a delegate to a instance function (method that returns something) that takes five
+    /// <summary>Defines a delegate to a instance function (method that returns a value) that takes five
     /// strong-typed arguments.</summary>
     /// <typeparam name="T">The type of the instance method target</typeparam>
     /// <param name="target">The target instance (this)</param>
@@ -540,7 +538,7 @@ namespace Phydeaux.Utilities
     /// <param name="arg5">The fifth argument value</param>
     public delegate TRet Func<T, TRet, V1, V2, V3, V4, V5>(T target, V1 arg1, V2 arg2, V3 arg3, V4 arg4, V5 arg5);
 
-    /// <summary>Defines a delegate to a instance function (method that returns something) that takes six
+    /// <summary>Defines a delegate to a instance function (method that returns a value) that takes six
     /// strong-typed arguments.</summary>
     /// <typeparam name="T">The type of the instance method target</typeparam>
     /// <param name="target">The target instance (this)</param>
@@ -559,7 +557,7 @@ namespace Phydeaux.Utilities
     /// <param name="arg6">The sixth argument value</param>
     public delegate TRet Func<T, TRet, V1, V2, V3, V4, V5, V6>(T target, V1 arg1, V2 arg2, V3 arg3, V4 arg4, V5 arg5, V6 arg6);
 
-    /// <summary>Defines a delegate to a instance function (method that returns something) that takes seven
+    /// <summary>Defines a delegate to a instance function (method that returns a value) that takes seven
     /// strong-typed arguments.</summary>
     /// <typeparam name="T">The type of the instance method target</typeparam>
     /// <param name="target">The target instance (this)</param>
@@ -580,7 +578,7 @@ namespace Phydeaux.Utilities
     /// <param name="arg7">The seventh argument value</param>
     public delegate TRet Func<T, TRet, V1, V2, V3, V4, V5, V6, V7>(T target, V1 arg1, V2 arg2, V3 arg3, V4 arg4, V5 arg5, V6 arg6, V7 arg7);
 
-    /// <summary>Defines a delegate to a instance function (method that returns something) that takes eight
+    /// <summary>Defines a delegate to a instance function (method that returns a value) that takes eight
     /// strong-typed arguments.</summary>
     /// <typeparam name="T">The type of the instance method target</typeparam>
     /// <param name="target">The target instance (this)</param>
@@ -603,7 +601,7 @@ namespace Phydeaux.Utilities
     /// <param name="arg8">The eighth argument value</param>
     public delegate TRet Func<T, TRet, V1, V2, V3, V4, V5, V6, V7, V8>(T target, V1 arg1, V2 arg2, V3 arg3, V4 arg4, V5 arg5, V6 arg6, V7 arg7, V8 arg8);
 
-    /// <summary>Defines a delegate to a instance function (method that returns something) that takes nine
+    /// <summary>Defines a delegate to a instance function (method that returns a value) that takes nine
     /// strong-typed arguments.</summary>
     /// <typeparam name="T">The type of the instance method target</typeparam>
     /// <param name="target">The target instance (this)</param>
@@ -639,12 +637,12 @@ namespace Phydeaux.Utilities
     public delegate TRet StaticFuncParams<T, TRet>(params object[] parameters);
 
     #region Explicit arguments
-    /// <summary>Defines a delegate to a static function (method that returns something) that takes no arguments.</summary>
+    /// <summary>Defines a delegate to a static function (method that returns a value) that takes no arguments.</summary>
     /// <typeparam name="T">The type of the static method target</typeparam>
     /// <typeparam name="TRet">The type of the return value</typeparam>
     public delegate TRet StaticFunc<T, TRet>();
 
-    /// <summary>Defines a delegate to a static function (method that returns something) that takes a single
+    /// <summary>Defines a delegate to a static function (method that returns a value) that takes a single
     /// strong-typed argument.</summary>
     /// <typeparam name="T">The type of the static method target</typeparam>
     /// <typeparam name="TRet">The type of the return value</typeparam>
@@ -652,7 +650,7 @@ namespace Phydeaux.Utilities
     /// <param name="arg1">The first argument value</param>
     public delegate TRet StaticFunc<T, TRet, V1>(V1 arg1);
 
-    /// <summary>Defines a delegate to a static function (method that returns something) that takes two
+    /// <summary>Defines a delegate to a static function (method that returns a value) that takes two
     /// strong-typed arguments.</summary>
     /// <typeparam name="T">The type of the static method target</typeparam>
     /// <typeparam name="TRet">The type of the return value</typeparam>
@@ -662,7 +660,7 @@ namespace Phydeaux.Utilities
     /// <param name="arg2">The second argument value</param>
     public delegate TRet StaticFunc<T, TRet, V1, V2>(V1 arg1, V2 arg2);
 
-    /// <summary>Defines a delegate to a static function (method that returns something) that takes three
+    /// <summary>Defines a delegate to a static function (method that returns a value) that takes three
     /// strong-typed arguments.</summary>
     /// <typeparam name="T">The type of the static method target</typeparam>
     /// <typeparam name="TRet">The type of the return value</typeparam>
@@ -674,7 +672,7 @@ namespace Phydeaux.Utilities
     /// <param name="arg3">The third argument value</param>
     public delegate TRet StaticFunc<T, TRet, V1, V2, V3>(V1 arg1, V2 arg2, V3 arg3);
 
-    /// <summary>Defines a delegate to a static function (method that returns something) that takes four
+    /// <summary>Defines a delegate to a static function (method that returns a value) that takes four
     /// strong-typed arguments.</summary>
     /// <typeparam name="T">The type of the static method target</typeparam>
     /// <typeparam name="TRet">The type of the return value</typeparam>
@@ -688,7 +686,7 @@ namespace Phydeaux.Utilities
     /// <param name="arg4">The fourth argument value</param>
     public delegate TRet StaticFunc<T, TRet, V1, V2, V3, V4>(V1 arg1, V2 arg2, V3 arg3, V4 arg4);
 
-    /// <summary>Defines a delegate to a static function (method that returns something) that takes five
+    /// <summary>Defines a delegate to a static function (method that returns a value) that takes five
     /// strong-typed arguments.</summary>
     /// <typeparam name="T">The type of the static method target</typeparam>
     /// <typeparam name="TRet">The type of the return value</typeparam>
@@ -704,7 +702,7 @@ namespace Phydeaux.Utilities
     /// <param name="arg5">The fifth argument value</param>
     public delegate TRet StaticFunc<T, TRet, V1, V2, V3, V4, V5>(V1 arg1, V2 arg2, V3 arg3, V4 arg4, V5 arg5);
 
-    /// <summary>Defines a delegate to a static function (method that returns something) that takes six
+    /// <summary>Defines a delegate to a static function (method that returns a value) that takes six
     /// strong-typed arguments.</summary>
     /// <typeparam name="T">The type of the static method target</typeparam>
     /// <typeparam name="TRet">The type of the return value</typeparam>
@@ -722,7 +720,7 @@ namespace Phydeaux.Utilities
     /// <param name="arg6">The sixth argument value</param>
     public delegate TRet StaticFunc<T, TRet, V1, V2, V3, V4, V5, V6>(V1 arg1, V2 arg2, V3 arg3, V4 arg4, V5 arg5, V6 arg6);
 
-    /// <summary>Defines a delegate to a static function (method that returns something) that takes seven
+    /// <summary>Defines a delegate to a static function (method that returns a value) that takes seven
     /// strong-typed arguments.</summary>
     /// <typeparam name="T">The type of the static method target</typeparam>
     /// <typeparam name="TRet">The type of the return value</typeparam>
@@ -742,7 +740,7 @@ namespace Phydeaux.Utilities
     /// <param name="arg7">The seventh argument value</param>
     public delegate TRet StaticFunc<T, TRet, V1, V2, V3, V4, V5, V6, V7>(V1 arg1, V2 arg2, V3 arg3, V4 arg4, V5 arg5, V6 arg6, V7 arg7);
 
-    /// <summary>Defines a delegate to a static function (method that returns something) that takes eight
+    /// <summary>Defines a delegate to a static function (method that returns a value) that takes eight
     /// strong-typed arguments.</summary>
     /// <typeparam name="T">The type of the static method target</typeparam>
     /// <typeparam name="TRet">The type of the return value</typeparam>
@@ -764,7 +762,7 @@ namespace Phydeaux.Utilities
     /// <param name="arg8">The eighth argument value</param>
     public delegate TRet StaticFunc<T, TRet, V1, V2, V3, V4, V5, V6, V7, V8>(V1 arg1, V2 arg2, V3 arg3, V4 arg4, V5 arg5, V6 arg6, V7 arg7, V8 arg8);
 
-    /// <summary>Defines a delegate to a static function (method that returns something) that takes nine
+    /// <summary>Defines a delegate to a static function (method that returns a value) that takes nine
     /// strong-typed arguments.</summary>
     /// <typeparam name="T">The type of the static method target</typeparam>
     /// <typeparam name="TRet">The type of the return value</typeparam>
@@ -793,10 +791,11 @@ namespace Phydeaux.Utilities
     #endregion
 
     /// <summary>This is a "marker" enum used to trigger the automatic matching of a delegate's argument list to the
-    // reflected method's parameter list. It serves no other purpose other than to to disambiguate the possible overloads
-    // of the CreateDelegate method.</summary>
+    /// reflected method's parameter list. It serves no other purpose other than to to disambiguate the possible overloads
+    /// of the CreateDelegate method.</summary>
     public enum ParameterList
     {
+        /// <summary>Just a marker value indicating we should build the parameter list based on the delegate signature.</summary>
         Auto
     }
 
@@ -832,13 +831,13 @@ namespace Phydeaux.Utilities
         // cache the reflection information on the ParameterCountMismatchException.CheckAndThrow method
         static MethodInfo s_CheckAndThrow;
         
-        public static MethodInfo CheckAndThrowMethodInfo
+        internal static MethodInfo CheckAndThrowMethodInfo
         {
             get
             {
                 if (s_CheckAndThrow == null)
                 {
-                    s_CheckAndThrow = typeof(ParameterCountMismatchException).GetMethod("CheckAndThrow");
+                    s_CheckAndThrow = typeof(ParameterCountMismatchException).GetMethod("CheckAndThrow", BindingFlags.Public | BindingFlags.Static);
                 }
 
                 return s_CheckAndThrow;
@@ -1636,7 +1635,7 @@ namespace Phydeaux.Utilities
                     {
                     }
 
-                    /// <summary>Represents property-set (methods that return nothing</summary>
+                    /// <summary>Represents property-set (methods that return nothing)</summary>
                     public abstract class Setter
                         : DynamicBase<ProcParams<T>>.Params.Instance.Property<VP>.Setter
                     {
@@ -2198,10 +2197,15 @@ namespace Phydeaux.Utilities
         {
             #region Internal constants
             private const BindingFlags DefaultFlags = BindingFlags.Public | BindingFlags.NonPublic;
+
+            /// <summary>BindingFlags for public and non-public static methods/fields/properties</summary>
             protected const BindingFlags StaticFlags = DefaultFlags | BindingFlags.Static;
+
+            /// <summary>BindingFlags for public and non-public instance methods/fields/properties</summary>
             protected const BindingFlags InstanceFlags = DefaultFlags | BindingFlags.Instance;
             #endregion
 
+            #region Helpers
             // emit the sequence to load the "this"
             private static void EmitLoadThis(DynamicEmit de, MemberInfo memberInfo)
             {
@@ -2241,13 +2245,15 @@ namespace Phydeaux.Utilities
 
                 de.StoreField(fieldInfo);
             }
+            #endregion
 
+            /// <summary>Represents Late-bound argument list (e.g. params object[])</summary>
             public abstract class Params
             {
                 #region Builders
-                // helpers
+                #region Helpers for Params
                 // emit an argument count check
-                protected static void EmitArgumentCountCheck(DynamicEmit de, int argumentOffset, int parameterLength, string methodName)
+                private static void EmitArgumentCountCheck(DynamicEmit de, int argumentOffset, int parameterLength, string methodName)
                 {
                     // check to see if the call has the required amount of arguments in the object[] array.
                     de.LoadType<T>();
@@ -2283,9 +2289,10 @@ namespace Phydeaux.Utilities
                     EmitArgumentCountCheck(de, argumentOffset, parameterInfos.Length, member.Name);
                     return EmitCoerceArguments(de, argumentOffset, parameterInfos);
                 }
+                #endregion
 
                 // For constructors
-                protected static D Build(ConstructorInfo constructorInfo)
+                private static D Build(ConstructorInfo constructorInfo)
                 {
                     if (constructorInfo == null)
                         throw new ArgumentNullException("constructorInfo");
@@ -2313,7 +2320,7 @@ namespace Phydeaux.Utilities
                 }
 
                 // For fields
-                protected static D Build(Type memberType, FieldInfo fieldInfo, bool wantGet)
+                private static D Build(Type memberType, FieldInfo fieldInfo, bool wantGet)
                 {
                     if (memberType == null)
                         throw new ArgumentNullException("memberType");
@@ -2353,7 +2360,7 @@ namespace Phydeaux.Utilities
                 }
 
                 // For methods
-                protected static D Build(Type returnType, MethodInfo methodInfo)
+                private static D Build(Type returnType, MethodInfo methodInfo)
                 {
                     if (returnType == null)
                         throw new ArgumentNullException("returnType");
@@ -2395,70 +2402,102 @@ namespace Phydeaux.Utilities
                 }
                 #endregion
 
+                /// <summary>Represents all instance constructors</summary>
                 public abstract class Constructor
                 {
+                    /// <summary>Builds a delegate for a constructor</summary>
+                    /// <param name="constructorInfo">The ConstructorInfo for the method to wrap</param>
+                    /// <returns>A delegate that looks like ConstructorParms&lt;T&gt;</returns>
                     public static D CreateDelegate(ConstructorInfo constructorInfo)
                     {
                         return Build(constructorInfo);
                     }
 
+                    /// <summary>Builds a delegate for a constructor</summary>
+                    /// <param name="methodHandle">The RuntimeMethodHandle for the method to wrap</param>
+                    /// <returns>A delegate that looks like ConstructorParms&lt;T&gt;</returns>
                     public static D CreateDelegate(RuntimeMethodHandle methodHandle)
                     {
                         ConstructorInfo constructorInfo = (ConstructorInfo)ConstructorInfo.GetMethodFromHandle(methodHandle);
                         return CreateDelegate(constructorInfo);
                     }
 
+                    /// <summary>Builds a delegate for the default constructor</summary>
+                    /// <returns>A delegate that looks like ConstructorParms&lt;T&gt;</returns>
                     public static D CreateDelegate()
                     {
                         return CreateDelegate(typeof(T).GetConstructor(InstanceFlags, null, Type.EmptyTypes, null));
                     }
 
+                    /// <summary>Builds a delegate for a constructor that takes several arguments of known types</summary>
+                    /// <param name="parameterTypes">A Type array giving the parameter types to match against</param>
+                    /// <returns>A delegate that looks like ConstructorParms&lt;T&gt;</returns>
                     public static D CreateDelegate(Type[] parameterTypes)
                     {
                         return CreateDelegate(typeof(T).GetConstructor(InstanceFlags, null, parameterTypes, null));
                     }
                 }
 
+                /// <summary>Represents a static member.</summary>
                 public abstract class Static
                 {
+                    /// <summary>Represents a static field.</summary>
                     public abstract class Field
                     {
+                        /// <summary>Represents a static field get method</summary>
+                        /// <typeparam name="TRet">The return type of the getter (the field type)</typeparam>
                         public abstract class Getter<TRet>
                         {
-                            // okay, for a static field Get, the delegate looks like this
-                            // StaticFunc<T, TRet> so ignore the generic types entirely
+                            /// <summary>Builds a delegate for a static field getter from a FieldInfo</summary>
+                            /// <param name="fieldInfo">The FieldInfo for the field to wrap.</param>
+                            /// <returns>A delegate that looks like StaticFuncParms&lt;T, TRet&gt;</returns>
                             public static D CreateDelegate(FieldInfo fieldInfo)
                             {
+                                // for a static field Get ignore the generic types entirely
                                 return Build(typeof(TRet), fieldInfo, true);
                             }
 
+                            /// <summary>Builds a delegate for a static field getter from a RuntimeFieldHandle</summary>
+                            /// <param name="fieldHandle">The RuntimeFieldHandle for the field to wrap.</param>
+                            /// <returns>A delegate that looks like StaticFuncParms&lt;T, TRet&gt;</returns>
                             public static D CreateDelegate(RuntimeFieldHandle fieldHandle)
                             {
                                 FieldInfo fieldInfo = (FieldInfo)FieldInfo.GetFieldFromHandle(fieldHandle);
                                 return CreateDelegate(fieldInfo);
                             }
 
+                            /// <summary>Builds a delegate for a static field getter from a name</summary>
+                            /// <param name="fieldName">The name of the field to wrap.</param>
+                            /// <returns>A delegate that looks like StaticFuncParms&lt;T, TRet&gt;</returns>
                             public static D CreateDelegate(string fieldName)
                             {
                                 return CreateDelegate(typeof(T).GetField(fieldName, StaticFlags | BindingFlags.GetField));
                             }
                         }
 
+                        /// <summary>Represents a static field setter method</summary>
                         public abstract class Setter
                         {
-                            // okay, for a static field Set, the delegate looks like this
-                            // StaticProc<T, params object[]>
+                            /// <summary>Builds a delegate for a static field setter from a FieldInfo</summary>
+                            /// <param name="fieldInfo">The FieldInfo of the field to wrap.</param>
+                            /// <returns>A delegate that looks like StaticProcParams&lt;T&gt;</returns>
                             public static D CreateDelegate(FieldInfo fieldInfo)
                             {
                                 return Build(typeof(void), fieldInfo, false);
                             }
 
+                            /// <summary>Builds a delegate for a static field setter from a RuntimeFieldHandle</summary>
+                            /// <param name="fieldHandle">The RuntimeFieldHandle of the field to wrap.</param>
+                            /// <returns>A delegate that looks like StaticProcParams&lt;T&gt;</returns>
                             public static D CreateDelegate(RuntimeFieldHandle fieldHandle)
                             {
                                 FieldInfo fieldInfo = (FieldInfo)FieldInfo.GetFieldFromHandle(fieldHandle);
                                 return CreateDelegate(fieldInfo);
                             }
 
+                            /// <summary>Builds a delegate for a static field setter from a name</summary>
+                            /// <param name="fieldName">The name of the field to wrap.</param>
+                            /// <returns>A delegate that looks like StaticProcParams&lt;T&gt;</returns>
                             public static D CreateDelegate(string fieldName)
                             {
                                 return CreateDelegate(typeof(T).GetField(fieldName, StaticFlags | BindingFlags.SetField));
@@ -2466,25 +2505,37 @@ namespace Phydeaux.Utilities
                         }
                     }
 
+                    /// <summary>Represents a static property.</summary>
                     public abstract class Property
                     {
+                        /// <summary>Represents static property-get (methods that return a value)</summary>
+                        /// <typeparam name="TRet">The type of the return value (property type)</typeparam>
                         public abstract class Getter<TRet>
                         {
-                            // okay, for a static property Get, the delegate looks like this
-                            // StaticFuncParams<T, TRet, params object[]> so ignore the generic types entirely
+                            /// <summary>Builds a delegate for a static property getter from a PropertyInfo</summary>
+                            /// <param name="propertyInfo">The PropertyInfo of the property to wrap.</param>
+                            /// <returns>A delegate that looks like StaticFuncParams&lt;T&gt;</returns>
                             public static D CreateDelegate(PropertyInfo propertyInfo)
                             {
                                 if (propertyInfo == null)
                                     throw new ArgumentNullException("propertyInfo");
 
+                                // for a static property Get ignore the generic types entirely
                                 return Build(typeof(TRet), propertyInfo.GetGetMethod(true));
                             }
 
+                            /// <summary>Builds a delegate for a static property getter from a name</summary>
+                            /// <param name="propertyName">The name of the property to wrap.</param>
+                            /// <returns>A delegate that looks like StaticFuncParams&lt;T&gt;</returns>
                             public static D CreateDelegate(string propertyName)
                             {
                                 return CreateDelegate(typeof(T).GetProperty(propertyName, StaticFlags | BindingFlags.GetProperty));
                             }
 
+                            /// <summary>Builds a delegate for a static property getter from a name and set of parameter (indexer) types</summary>
+                            /// <param name="propertyName">The name of the property to wrap.</param>
+                            /// <param name="parameterTypes">A Type array giving the parameter types to match against</param>
+                            /// <returns>A delegate that looks like StaticFuncParams&lt;T&gt;</returns>
                             public static D CreateDelegate(string propertyName, Type[] parameterTypes)
                             {
                                 return CreateDelegate(typeof(T).GetProperty(propertyName, StaticFlags | BindingFlags.GetProperty
@@ -2492,23 +2543,33 @@ namespace Phydeaux.Utilities
                             }
                         }
 
+                        /// <summary>Represents static property-set (methods that return nothing)</summary>
                         public abstract class Setter
                         {
-                            // okay, for a static property Set, the delegate looks like this
-                            // StaticProcParams<T, params object[]>
+                            /// <summary>Builds a delegate for a static property setter from a PropertyInfo</summary>
+                            /// <param name="propertyInfo">The PropertyInfo of the property to wrap.</param>
+                            /// <returns>A delegate that looks like StaticProcParams&lt;T&gt;</returns>
                             public static D CreateDelegate(PropertyInfo propertyInfo)
                             {
                                 if (propertyInfo == null)
                                     throw new ArgumentNullException("propertyInfo");
 
+                                // for a static property Set ignore the generic types entirely
                                 return Build(typeof(void), propertyInfo.GetSetMethod(true));
                             }
 
+                            /// <summary>Builds a delegate for a static property setter from a name</summary>
+                            /// <param name="propertyName">The name of the property to wrap.</param>
+                            /// <returns>A delegate that looks like StaticProcParams&lt;T&gt;</returns>
                             public static D CreateDelegate(string propertyName)
                             {
                                 return CreateDelegate(typeof(T).GetProperty(propertyName, StaticFlags | BindingFlags.SetProperty));
                             }
 
+                            /// <summary>Builds a delegate for a static property setter from a name and set of parameter (indexer) types</summary>
+                            /// <param name="propertyName">The name of the property to wrap.</param>
+                            /// <param name="parameterTypes">A Type array giving the parameter types to match against</param>
+                            /// <returns>A delegate that looks like StaticProcParams&lt;T&gt;</returns>
                             public static D CreateDelegate(string propertyName, Type[] parameterTypes)
                             {
                                 return CreateDelegate(typeof(T).GetProperty(propertyName, StaticFlags | BindingFlags.SetProperty
@@ -2517,48 +2578,79 @@ namespace Phydeaux.Utilities
                         }
                     }
 
+                    /// <summary>Represents a static procedure (method that returns nothing).</summary>
                     public abstract class Procedure
                     {
+                        /// <summary>Builds a delegate for a static procedure (method that returns nothing) from a MethodInfo.</summary>
+                        /// <param name="methodInfo">The MethodInfo of the method to wrap.</param>
+                        /// <returns>A delegate that looks like StaticProcParams&lt;T&gt;</returns>
                         public static D CreateDelegate(MethodInfo methodInfo)
                         {
                             return Build(typeof(void), methodInfo);
                         }
 
+                        /// <summary>Builds a delegate for a static procedure (method that returns nothing) from a RuntimeMethodHandle.</summary>
+                        /// <param name="methodHandle">The RuntimeMethodHandle of the method to wrap.</param>
+                        /// <returns>A delegate that looks like StaticProcParams&lt;T&gt;</returns>
                         public static D CreateDelegate(RuntimeMethodHandle methodHandle)
                         {
                             MethodInfo methodInfo = (MethodInfo)MethodInfo.GetMethodFromHandle(methodHandle);
                             return CreateDelegate(methodInfo);
                         }
 
+                        /// <summary>Builds a delegate for a static procedure (method that returns nothing) from a name.</summary>
+                        /// <param name="methodName">The name of the method to wrap.</param>
+                        /// <returns>A delegate that looks like StaticProcParams&lt;T&gt;</returns>
                         public static D CreateDelegate(string methodName)
                         {
                             return CreateDelegate(typeof(T).GetMethod(methodName, StaticFlags));
                         }
 
+                        /// <summary>Builds a delegate for a static procedure (method that returns nothing) from a name
+                        /// and set of parameter types.</summary>
+                        /// <param name="methodName">The name of the method to wrap.</param>
+                        /// <param name="parameterTypes">A Type array giving the parameter types to match against</param>
+                        /// <returns>A delegate that looks like StaticProcParams&lt;T&gt;</returns>
                         public static D CreateDelegate(string methodName, Type[] parameterTypes)
                         {
                             return CreateDelegate(typeof(T).GetMethod(methodName, StaticFlags, null, parameterTypes, null));
                         }
                     }
 
+                    /// <summary>Represents a static function (method that returns a value).</summary>
+                    /// <typeparam name="TRet">The type of the return value</typeparam>
                     public abstract class Function<TRet>
                     {
+                        /// <summary>Builds a delegate for a static function (method that returns a value) from a MethodInfo.</summary>
+                        /// <param name="methodInfo">The MethodInfo of the method to wrap.</param>
+                        /// <returns>A delegate that looks like StaticFuncParams&lt;T, TRet&gt;</returns>
                         public static D CreateDelegate(MethodInfo methodInfo)
                         {
                             return Build(typeof(TRet), methodInfo);
                         }
 
+                        /// <summary>Builds a delegate for a static function (method that returns a value) from a RuntimeMethodHandle.</summary>
+                        /// <param name="methodHandle">The RuntimeMethodHandle of the method to wrap.</param>
+                        /// <returns>A delegate that looks like StaticFuncParams&lt;T, TRet&gt;</returns>
                         public static D CreateDelegate(RuntimeMethodHandle methodHandle)
                         {
                             MethodInfo methodInfo = (MethodInfo)MethodInfo.GetMethodFromHandle(methodHandle);
                             return CreateDelegate(methodInfo);
                         }
 
+                        /// <summary>Builds a delegate for a static function (method that returns a value) from a name.</summary>
+                        /// <param name="methodName">The name of the method to wrap.</param>
+                        /// <returns>A delegate that looks like StaticFuncParams&lt;T, TRet&gt;</returns>
                         public static D CreateDelegate(string methodName)
                         {
                             return CreateDelegate(typeof(T).GetMethod(methodName, StaticFlags));
                         }
 
+                        /// <summary>Builds a delegate for a static function (method that returns a value) from a name
+                        /// and set of parameter types.</summary>
+                        /// <param name="methodName">The name of the method to wrap.</param>
+                        /// <param name="parameterTypes">A Type array giving the parameter types to match against</param>
+                        /// <returns>A delegate that looks like StaticFuncParams&lt;T, TRet&gt;</returns>
                         public static D CreateDelegate(string methodName, Type[] parameterTypes)
                         {
                             return CreateDelegate(typeof(T).GetMethod(methodName, StaticFlags, null, parameterTypes, null));
@@ -2566,42 +2658,65 @@ namespace Phydeaux.Utilities
                     }
                 }
 
+                /// <summary>Represents an instance member.</summary>
                 public abstract class Instance
                 {
+                    /// <summary>Represents an instance field.</summary>
+                    /// <typeparam name="VF">The type of the field</typeparam>
                     public abstract class Field<VF>
                     {
+                        /// <summary>Represents an instance field getter method</summary>
                         public abstract class Getter
                         {
+                            /// <summary>Builds a delegate for an instance field getter from a FieldInfo</summary>
+                            /// <param name="fieldInfo">The FieldInfo for the field to wrap.</param>
+                            /// <returns>A delegate that looks like Func&lt;T, TRet&gt;</returns>
                             public static D CreateDelegate(FieldInfo fieldInfo)
                             {
                                 return Build(typeof(VF), fieldInfo, true);
                             }
 
+                            /// <summary>Builds a delegate for an instance field getter from a RuntimeFieldHandle</summary>
+                            /// <param name="fieldHandle">The RuntimeFieldHandle for the field to wrap.</param>
+                            /// <returns>A delegate that looks like Func&lt;T, TRet&gt;</returns>
                             public static D CreateDelegate(RuntimeFieldHandle fieldHandle)
                             {
                                 FieldInfo fieldInfo = (FieldInfo)FieldInfo.GetFieldFromHandle(fieldHandle);
                                 return CreateDelegate(fieldInfo);
                             }
 
+                            /// <summary>Builds a delegate for an instance field getter from a name</summary>
+                            /// <param name="fieldName">The FieldInfo for the field to wrap.</param>
+                            /// <returns>A delegate that looks like Func&lt;T, TRet&gt;</returns>
                             public static D CreateDelegate(string fieldName)
                             {
                                 return CreateDelegate(typeof(T).GetField(fieldName, InstanceFlags | BindingFlags.GetField));
                             }
                         }
 
+                        /// <summary>Represents an instance field setter method</summary>
                         public abstract class Setter
                         {
+                            /// <summary>Builds a delegate for an instance field setter from a FieldInfo</summary>
+                            /// <param name="fieldInfo">The FieldInfo of the field to wrap.</param>
+                            /// <returns>A delegate that looks like ProcParams&lt;T&gt;</returns>
                             public static D CreateDelegate(FieldInfo fieldInfo)
                             {
                                 return Build(typeof(void), fieldInfo, false);
                             }
 
+                            /// <summary>Builds a delegate for an instance field setter from a RuntimeFieldHandle</summary>
+                            /// <param name="fieldHandle">The RuntimeFieldHandle of the field to wrap.</param>
+                            /// <returns>A delegate that looks like ProcParams&lt;T&gt;</returns>
                             public static D CreateDelegate(RuntimeFieldHandle fieldHandle)
                             {
                                 FieldInfo fieldInfo = (FieldInfo)FieldInfo.GetFieldFromHandle(fieldHandle);
                                 return CreateDelegate(fieldInfo);
                             }
 
+                            /// <summary>Builds a delegate for an instance field setter from a name</summary>
+                            /// <param name="fieldName">The name of the field to wrap.</param>
+                            /// <returns>A delegate that looks like ProcParams&lt;T&gt;</returns>
                             public static D CreateDelegate(string fieldName)
                             {
                                 return CreateDelegate(typeof(T).GetField(fieldName, InstanceFlags | BindingFlags.SetField));
@@ -2609,25 +2724,37 @@ namespace Phydeaux.Utilities
                         }
                     }
 
+                    /// <summary>Represents an instance property.</summary>
+                    /// <typeparam name="VP">The type of the property</typeparam>
                     public abstract class Property<VP>
                     {
+                        /// <summary>Represents an instance property-get (methods that return a value)</summary>
                         public abstract class Getter
                         {
-                            // okay, for an instance property Get, the delegate looks like this
-                            // FuncParams<T, TRet, params object[]> so ignore the generic types entirely
+                            /// <summary>Builds a delegate for an instance property getter from a PropertyInfo</summary>
+                            /// <param name="propertyInfo">The PropertyInfo of the property to wrap.</param>
+                            /// <returns>A delegate that looks like FuncParams&lt;T&gt;</returns>
                             public static D CreateDelegate(PropertyInfo propertyInfo)
                             {
                                 if (propertyInfo == null)
                                     throw new ArgumentNullException("propertyInfo");
 
+                                // for an instance property Get, ignore the generic types entirely
                                 return Build(typeof(VP), propertyInfo.GetGetMethod(true));
                             }
 
+                            /// <summary>Builds a delegate for an instance property getter from a name</summary>
+                            /// <param name="propertyName">The name of the property to wrap.</param>
+                            /// <returns>A delegate that looks like FuncParams&lt;T&gt;</returns>
                             public static D CreateDelegate(string propertyName)
                             {
                                 return CreateDelegate(typeof(T).GetProperty(propertyName, InstanceFlags | BindingFlags.GetProperty));
                             }
 
+                            /// <summary>Builds a delegate for an instance property getter from a name and set of parameter (indexer) types</summary>
+                            /// <param name="propertyName">The name of the property to wrap.</param>
+                            /// <param name="parameterTypes">A Type array giving the parameter types to match against</param>
+                            /// <returns>A delegate that looks like FuncParams&lt;T&gt;</returns>
                             public static D CreateDelegate(string propertyName, Type[] parameterTypes)
                             {
                                 return CreateDelegate(typeof(T).GetProperty(propertyName, InstanceFlags | BindingFlags.GetProperty
@@ -2635,10 +2762,12 @@ namespace Phydeaux.Utilities
                             }
                         }
 
+                        /// <summary>Represents an instance property-set (methods that return nothing)</summary>
                         public abstract class Setter
                         {
-                            // okay, for an instance property Set, the delegate looks like this
-                            // ProcParams<T, params object[]>
+                            /// <summary>Builds a delegate for an instance property setter from a PropertyInfo</summary>
+                            /// <param name="propertyInfo">The PropertyInfo of the property to wrap.</param>
+                            /// <returns>A delegate that looks like ProcParams&lt;T&gt;</returns>
                             public static D CreateDelegate(PropertyInfo propertyInfo)
                             {
                                 if (propertyInfo == null)
@@ -2647,11 +2776,18 @@ namespace Phydeaux.Utilities
                                 return Build(typeof(void), propertyInfo.GetSetMethod(true));
                             }
 
+                            /// <summary>Builds a delegate for an instance property setter from a name</summary>
+                            /// <param name="propertyName">The name of the property to wrap.</param>
+                            /// <returns>A delegate that looks like ProcParams&lt;T&gt;</returns>
                             public static D CreateDelegate(string propertyName)
                             {
                                 return CreateDelegate(typeof(T).GetProperty(propertyName, InstanceFlags | BindingFlags.SetProperty));
                             }
 
+                            /// <summary>Builds a delegate for an instance property setter from a name and set of parameter (indexer) types</summary>
+                            /// <param name="propertyName">The name of the property to wrap.</param>
+                            /// <param name="parameterTypes">A Type array giving the parameter types to match against</param>
+                            /// <returns>A delegate that looks like ProcParams&lt;T&gt;</returns>
                             public static D CreateDelegate(string propertyName, Type[] parameterTypes)
                             {
                                 return CreateDelegate(typeof(T).GetProperty(propertyName, InstanceFlags | BindingFlags.SetProperty
@@ -2660,48 +2796,79 @@ namespace Phydeaux.Utilities
                         }
                     }
 
+                    /// <summary>Represents an instance procedure (method that returns nothing).</summary>
                     public abstract class Procedure
                     {
+                        /// <summary>Builds a delegate for an instance procedure (method that returns nothing) from a MethodInfo.</summary>
+                        /// <param name="methodInfo">The MethodInfo of the method to wrap.</param>
+                        /// <returns>A delegate that looks like ProcParams&lt;T&gt;</returns>
                         public static D CreateDelegate(MethodInfo methodInfo)
                         {
                             return Build(typeof(void), methodInfo);
                         }
 
+                        /// <summary>Builds a delegate for an instance procedure (method that returns nothing) from a RuntimeMethodHandle.</summary>
+                        /// <param name="methodHandle">The RuntimeMethodHandle of the method to wrap.</param>
+                        /// <returns>A delegate that looks like ProcParams&lt;T&gt;</returns>
                         public static D CreateDelegate(RuntimeMethodHandle methodHandle)
                         {
                             MethodInfo methodInfo = (MethodInfo)MethodInfo.GetMethodFromHandle(methodHandle);
                             return CreateDelegate(methodInfo);
                         }
 
+                        /// <summary>Builds a delegate for an instance procedure (method that returns nothing) from a name.</summary>
+                        /// <param name="methodName">The name of the method to wrap.</param>
+                        /// <returns>A delegate that looks like ProcParams&lt;T&gt;</returns>
                         public static D CreateDelegate(string methodName)
                         {
                             return CreateDelegate(typeof(T).GetMethod(methodName, InstanceFlags));
                         }
 
+                        /// <summary>Builds a delegate for an instance procedure (method that returns nothing) from a name
+                        /// and set of parameter types.</summary>
+                        /// <param name="methodName">The name of the method to wrap.</param>
+                        /// <param name="parameterTypes">A Type array giving the parameter types to match against</param>
+                        /// <returns>A delegate that looks like ProcParams&lt;T&gt;</returns>
                         public static D CreateDelegate(string methodName, Type[] parameterTypes)
                         {
                             return CreateDelegate(typeof(T).GetMethod(methodName, InstanceFlags, null, parameterTypes, null));
                         }
                     }
 
+                    /// <summary>Represents an instance function (method that returns a value).</summary>
+                    /// <typeparam name="TRet">The type of the return value</typeparam>
                     public abstract class Function<TRet>
                     {
+                        /// <summary>Builds a delegate for an instance function (method that returns a value) from a MethodInfo.</summary>
+                        /// <param name="methodInfo">The MethodInfo of the method to wrap.</param>
+                        /// <returns>A delegate that looks like FuncParams&lt;T, TRet&gt;</returns>
                         public static D CreateDelegate(MethodInfo methodInfo)
                         {
                             return Build(typeof(TRet), methodInfo);
                         }
 
+                        /// <summary>Builds a delegate for an instance function (method that returns a value) from a RuntimeMethodHandle.</summary>
+                        /// <param name="methodHandle">The RuntimeMethodHandle of the method to wrap.</param>
+                        /// <returns>A delegate that looks like FuncParams&lt;T, TRet&gt;</returns>
                         public static D CreateDelegate(RuntimeMethodHandle methodHandle)
                         {
                             MethodInfo methodInfo = (MethodInfo)MethodInfo.GetMethodFromHandle(methodHandle);
                             return CreateDelegate(methodInfo);
                         }
 
+                        /// <summary>Builds a delegate for an instance function (method that returns a value) from a name.</summary>
+                        /// <param name="methodName">The name of the method to wrap.</param>
+                        /// <returns>A delegate that looks like FuncParams&lt;T, TRet&gt;</returns>
                         public static D CreateDelegate(string methodName)
                         {
                             return CreateDelegate(typeof(T).GetMethod(methodName, InstanceFlags));
                         }
 
+                        /// <summary>Builds a delegate for an instance function (method that returns a value) from a name
+                        /// and set of parameter types.</summary>
+                        /// <param name="methodName">The name of the method to wrap.</param>
+                        /// <param name="parameterTypes">A Type array giving the parameter types to match against</param>
+                        /// <returns>A delegate that looks like FuncParams&lt;T, TRet&gt;</returns>
                         public static D CreateDelegate(string methodName, Type[] parameterTypes)
                         {
                             return CreateDelegate(typeof(T).GetMethod(methodName, InstanceFlags, null, parameterTypes, null));
@@ -2710,11 +2877,12 @@ namespace Phydeaux.Utilities
                 }
             }
 
+            /// <summary>Represents methods that take known-typed argument list</summary>
             public abstract class Explicit
             {
                 #region Builders
                 // For constructors
-                protected static D Build(ConstructorInfo constructorInfo, Type[] knownArgumentTypes)
+                private static D Build(ConstructorInfo constructorInfo, Type[] knownArgumentTypes)
                 {
                     if (constructorInfo == null)
                         throw new ArgumentNullException("constructorInfo");
@@ -2745,7 +2913,7 @@ namespace Phydeaux.Utilities
                 }
 
                 // For fields
-                protected static D Build(Type memberType, FieldInfo fieldInfo, bool wantGet, Type[] knownArgumentTypes)
+                private static D Build(Type memberType, FieldInfo fieldInfo, bool wantGet, Type[] knownArgumentTypes)
                 {
                     if (memberType == null)
                         throw new ArgumentNullException("memberType");
@@ -2789,7 +2957,7 @@ namespace Phydeaux.Utilities
                 }
 
                 // For methods
-                protected static D Build(Type returnType, MethodInfo methodInfo, Type[] knownArgumentTypes)
+                private static D Build(Type returnType, MethodInfo methodInfo, Type[] knownArgumentTypes)
                 {
                     if (returnType == null)
                         throw new ArgumentNullException("returnType");
@@ -2863,78 +3031,114 @@ namespace Phydeaux.Utilities
                 }
                 #endregion
 
+                /// <summary>Represents a constructor that takes known-typed argument list</summary>
                 public abstract class Constructor
                 {
-                    // okay, a constructor looks like a static function returning T, the delegate looks like this
-                    // Constructor<T, V1 arg1, V2 arg2, ...) so ignore the first one...
+                    /// <summary>Builds a delegate for a constructor</summary>
+                    /// <param name="constructorInfo">The ConstructorInfo for the method to wrap</param>
+                    /// <returns>A delegate that looks like Constructor&lt;T, V1 arg1, ...&gt; </returns>
                     public static D CreateDelegate(ConstructorInfo constructorInfo)
                     {
+                        // okay, a constructor looks like a static function returning T so ignore the T...
                         return Build(constructorInfo, KnownArgumentTypes(1));
                     }
 
+                    /// <summary>Builds a delegate for a constructor</summary>
+                    /// <param name="methodHandle">The RuntimeMethodHandle for the method to wrap</param>
+                    /// <returns>A delegate that looks like Constructor&lt;T, V1 arg1, ...&gt; </returns>
                     public static D CreateDelegate(RuntimeMethodHandle methodHandle)
                     {
                         ConstructorInfo constructorInfo = (ConstructorInfo)ConstructorInfo.GetMethodFromHandle(methodHandle);
                         return CreateDelegate(constructorInfo);
                     }
 
+                    /// <summary>Builds a delegate for the default constructor</summary>
+                    /// <returns>A delegate that looks like Constructor&lt;T&gt;</returns>
                     public static D CreateDelegate()
                     {
                         return CreateDelegate(typeof(T).GetConstructor(InstanceFlags, null, Type.EmptyTypes, null));
                     }
 
+                    /// <summary>Builds a delegate for a constructor that takes several arguments of known types as dictated
+                    /// by the expected delegate's parameter (indexer) types.</summary>
+                    /// <param name="flag">A marker that indicated automatic matching against the expected delegate should be done.</param>
+                    /// <returns>A delegate that looks like Constructor&lt;T, V1 arg1, ...&gt; </returns>
                     public static D CreateDelegate(ParameterList flag)
                     {
                         // we must also strip the T to match the actual method...
                         return CreateDelegate(KnownArgumentTypes(1));
                     }
 
+                    /// <summary>Builds a delegate for a constructor that takes several arguments of known types</summary>
+                    /// <param name="parameterTypes">A Type array giving the parameters types to match against</param>
+                    /// <returns>A delegate that looks like Constructor&lt;T, V1 arg1, ...&gt; </returns>
                     public static D CreateDelegate(Type[] parameterTypes)
                     {
                         return CreateDelegate(typeof(T).GetConstructor(InstanceFlags, null, parameterTypes, null));
                     }
                 }
 
+                /// <summary>Represents a static member.</summary>
                 public abstract class Static
                 {
+                    /// <summary>Represents a static field.</summary>
+                    /// <typeparam name="VF">The type of the field</typeparam>
                     public abstract class Field<VF>
                     {
+                        /// <summary>Represents a static field get method</summary>
                         public abstract class Getter
                         {
-                            // okay, for a static field Get, the delegate looks like this
-                            // StaticFunc<T, TRet> so ignore the generic types entirely
+                            /// <summary>Builds a delegate for a static field getter from a FieldInfo</summary>
+                            /// <param name="fieldInfo">The FieldInfo for the field to wrap.</param>
+                            /// <returns>A delegate that looks like StaticFunc&lt;T, VF&gt;</returns>
                             public static D CreateDelegate(FieldInfo fieldInfo)
                             {
+                                // for a static field Get, ignore the generic types entirely
                                 return Build(typeof(VF), fieldInfo, true, Type.EmptyTypes);
                             }
 
+                            /// <summary>Builds a delegate for a static field getter from a RuntimeFieldHandle</summary>
+                            /// <param name="fieldHandle">The RuntimeFieldHandle for the field to wrap.</param>
+                            /// <returns>A delegate that looks like StaticFunc&lt;T, VF&gt;</returns>
                             public static D CreateDelegate(RuntimeFieldHandle fieldHandle)
                             {
                                 FieldInfo fieldInfo = (FieldInfo)FieldInfo.GetFieldFromHandle(fieldHandle);
                                 return CreateDelegate(fieldInfo);
                             }
 
+                            /// <summary>Builds a delegate for a static field getter from a name</summary>
+                            /// <param name="fieldName">The name of the field to wrap.</param>
+                            /// <returns>A delegate that looks like StaticFunc&lt;T, VF&gt;</returns>
                             public static D CreateDelegate(string fieldName)
                             {
                                 return CreateDelegate(typeof(T).GetField(fieldName, StaticFlags | BindingFlags.GetField));
                             }
                         }
 
+                        /// <summary>Represents a static field setter method</summary>
                         public abstract class Setter
                         {
-                            // okay, for a static field Set, the delegate looks like this
-                            // StaticProc<T, VF arg1> so pass just the field type VF...
+                            /// <summary>Builds a delegate for a static field setter from a FieldInfo</summary>
+                            /// <param name="fieldInfo">The FieldInfo of the field to wrap.</param>
+                            /// <returns>A delegate that looks like StaticProc&lt;T, VF&gt;</returns>
                             public static D CreateDelegate(FieldInfo fieldInfo)
                             {
+                                // for a static field Set pass just the field type VF...
                                 return Build(typeof(void), fieldInfo, false, new Type[] { typeof(VF) });
                             }
 
+                            /// <summary>Builds a delegate for a static field setter from a RuntimeFieldHandle</summary>
+                            /// <param name="fieldHandle">The RuntimeFieldHandle of the field to wrap.</param>
+                            /// <returns>A delegate that looks like StaticProc&lt;T, VF&gt;</returns>
                             public static D CreateDelegate(RuntimeFieldHandle fieldHandle)
                             {
                                 FieldInfo fieldInfo = (FieldInfo)FieldInfo.GetFieldFromHandle(fieldHandle);
                                 return CreateDelegate(fieldInfo);
                             }
 
+                            /// <summary>Builds a delegate for a static field setter from a name</summary>
+                            /// <param name="fieldName">The name of the field to wrap.</param>
+                            /// <returns>A delegate that looks like StaticProc&lt;T, VF&gt;</returns>
                             public static D CreateDelegate(string fieldName)
                             {
                                 return CreateDelegate(typeof(T).GetField(fieldName, StaticFlags | BindingFlags.SetField));
@@ -2942,31 +3146,48 @@ namespace Phydeaux.Utilities
                         }
                     }
 
+                    /// <summary>Represents a static property.</summary>
+                    /// <typeparam name="VP">The type of the property</typeparam>
                     public abstract class Property<VP>
                     {
+                        /// <summary>Represents static property-get (methods that return a value)</summary>
                         public abstract class Getter
                         {
-                            // okay, for a static property Get, the delegate looks like this
-                            // StaticFunc<T, VP, V1, ...> so ignore the T and VP
+                            /// <summary>Builds a delegate for a static property getter from a PropertyInfo</summary>
+                            /// <param name="propertyInfo">The PropertyInfo of the property to wrap.</param>
+                            /// <returns>A delegate that looks like StaticFunc&lt;T, VP&gt;</returns>
                             public static D CreateDelegate(PropertyInfo propertyInfo)
                             {
                                 if (propertyInfo == null)
                                     throw new ArgumentNullException("propertyInfo");
 
+                                // for a static property Get ignore the T and VP
                                 return Build(typeof(VP), propertyInfo.GetGetMethod(true), KnownArgumentTypes(2));
                             }
 
+                            /// <summary>Builds a delegate for a static property getter from a name</summary>
+                            /// <param name="propertyName">The name of the property to wrap.</param>
+                            /// <returns>A delegate that looks like StaticFunc&lt;T, VP&gt;</returns>
                             public static D CreateDelegate(string propertyName)
                             {
                                 return CreateDelegate(typeof(T).GetProperty(propertyName, StaticFlags | BindingFlags.GetProperty));
                             }
 
+                            /// <summary>Builds a delegate for a static property getter from a name that takes several arguments of 
+                            /// known types as dictated by the expected delegate's parameter (indexer) types.</summary>
+                            /// <param name="propertyName">The name of the property to wrap.</param>
+                            /// <param name="flag">A marker that indicated automatic matching against the expected delegate should be done.</param>
+                            /// <returns>A delegate that looks like StaticFunc&lt;T, VP, V1 arg1, ...&gt;</returns>
                             public static D CreateDelegate(string propertyName, ParameterList flag)
                             {
                                 // we must also strip the "this" pointer to match the actual property...
                                 return CreateDelegate(propertyName, KnownArgumentTypes(2));
                             }
 
+                            /// <summary>Builds a delegate for a static property getter from a name and set of parameter (indexer) types</summary>
+                            /// <param name="propertyName">The name of the property to wrap.</param>
+                            /// <param name="parameterTypes">A Type array giving the parameter types to match against</param>
+                            /// <returns>A delegate that looks like StaticFunc&lt;T, VP, V1 arg1, ...&gt;</returns>
                             public static D CreateDelegate(string propertyName, Type[] parameterTypes)
                             {
                                 return CreateDelegate(typeof(T).GetProperty(propertyName, StaticFlags | BindingFlags.GetProperty
@@ -2974,29 +3195,44 @@ namespace Phydeaux.Utilities
                             }
                         }
 
+                        /// <summary>Represents static property-set (methods that return nothing)</summary>
                         public abstract class Setter
                         {
-                            // okay, for a static property Set, the delegate looks like this
-                            // StaticProc<T, VP arg1, V1 arg2 ...> so ignore the T
+                            /// <summary>Builds a delegate for a static property setter from a PropertyInfo</summary>
+                            /// <param name="propertyInfo">The PropertyInfo of the property to wrap.</param>
+                            /// <returns>A delegate that looks like StaticProc&lt;T, VP, V1 arg1, ...&gt;</returns>
                             public static D CreateDelegate(PropertyInfo propertyInfo)
                             {
                                 if (propertyInfo == null)
                                     throw new ArgumentNullException("propertyInfo");
 
+                                // for a static property Set ignore the T
                                 return Build(typeof(void), propertyInfo.GetSetMethod(true), KnownArgumentTypes(1));
                             }
 
+                            /// <summary>Builds a delegate for a static property setter from a name</summary>
+                            /// <param name="propertyName">The name of the property to wrap.</param>
+                            /// <returns>A delegate that looks like StaticProc&lt;T, VP, V1 arg1, ...&gt;</returns>
                             public static D CreateDelegate(string propertyName)
                             {
                                 return CreateDelegate(typeof(T).GetProperty(propertyName, StaticFlags | BindingFlags.SetProperty));
                             }
 
+                            /// <summary>Builds a delegate for a static property setter from a name that takes several arguments of 
+                            /// known types as dictated by the expected delegate's parameter (indexer) types.</summary>
+                            /// <param name="propertyName">The name of the property to wrap.</param>
+                            /// <param name="flag">A marker that indicated automatic matching against the expected delegate should be done.</param>
+                            /// <returns>A delegate that looks like StaticProc&lt;T, VP, V1 arg1, ...&gt;</returns>
                             public static D CreateDelegate(string propertyName, ParameterList flag)
                             {
                                 // we must strip the "this" pointer to match the actual method...
                                 return CreateDelegate(propertyName, KnownArgumentTypes(1));
                             }
 
+                            /// <summary>Builds a delegate for a static property setter from a name and set of parameter (indexer) types</summary>
+                            /// <param name="propertyName">The name of the property to wrap.</param>
+                            /// <param name="parameterTypes">A Type array giving the parameter types to match against</param>
+                            /// <returns>A delegate that looks like StaticProc&lt;T, VP, V1 arg1, ...&gt;</returns>
                             public static D CreateDelegate(string propertyName, Type[] parameterTypes)
                             {
                                 return CreateDelegate(typeof(T).GetProperty(propertyName, StaticFlags | BindingFlags.SetProperty
@@ -3005,64 +3241,103 @@ namespace Phydeaux.Utilities
                         }
                     }
 
+                    /// <summary>Represents a static procedure (method that returns nothing).</summary>
                     public abstract class Procedure
                     {
-                        // okay, for a static procedure, the delegate looks like this
-                        // StaticProc<T, V1 arg1, V2 arg2, ...) so ignore the first one...
+                        /// <summary>Builds a delegate for a static procedure (method that returns nothing) from a MethodInfo.</summary>
+                        /// <param name="methodInfo">The MethodInfo of the method to wrap.</param>
+                        /// <returns>A delegate that looks like StaticProc&lt;T, V1 arg1, ...&gt;</returns>
                         public static D CreateDelegate(MethodInfo methodInfo)
                         {
+                            // for a static procedure ignore the T...
                             return Build(typeof(void), methodInfo, KnownArgumentTypes(1));
                         }
 
+                        /// <summary>Builds a delegate for a static procedure (method that returns nothing) from a RuntimeMethodHandle.</summary>
+                        /// <param name="methodHandle">The RuntimeMethodHandle of the method to wrap.</param>
+                        /// <returns>A delegate that looks like StaticProc&lt;T, V1 arg1, ...&gt;</returns>
                         public static D CreateDelegate(RuntimeMethodHandle methodHandle)
                         {
                             MethodInfo methodInfo = (MethodInfo)MethodInfo.GetMethodFromHandle(methodHandle);
                             return CreateDelegate(methodInfo);
                         }
 
+                        /// <summary>Builds a delegate for a static procedure (method that returns nothing) from a name.</summary>
+                        /// <param name="methodName">The name of the method to wrap.</param>
+                        /// <returns>A delegate that looks like StaticProc&lt;T, V1 arg1, ...&gt;</returns>
                         public static D CreateDelegate(string methodName)
                         {
                             return CreateDelegate(typeof(T).GetMethod(methodName, StaticFlags));
                         }
 
+                        /// <summary>Builds a delegate for a static procedure (method that returns nothing) from a name
+                        /// that takes several arguments of known types as dictated by the expected delegate's parameter types.</summary>
+                        /// <param name="methodName">The name of the method to wrap.</param>
+                        /// <param name="flag">A marker that indicated automatic matching against the expected delegate should be done.</param>
+                        /// <returns>A delegate that looks like StaticProc&lt;T, V1 arg1, ...&gt;</returns>
                         public static D CreateDelegate(string methodName, ParameterList flag)
                         {
                             // since this is a static method, we do NOT have an additional "this" to strip to match the actual method...
                             return CreateDelegate(methodName, KnownArgumentTypes(1));
                         }
 
+                        /// <summary>Builds a delegate for a static procedure (method that returns nothing) from a name
+                        /// and set of parameter types.</summary>
+                        /// <param name="methodName">The name of the method to wrap.</param>
+                        /// <param name="parameterTypes">A Type array giving the parameter types to match against</param>
+                        /// <returns>A delegate that looks like StaticProc&lt;T, V1 arg1, ...&gt;</returns>
                         public static D CreateDelegate(string methodName, Type[] parameterTypes)
                         {
                             return CreateDelegate(typeof(T).GetMethod(methodName, StaticFlags, null, parameterTypes, null));
                         }
                     }
 
+                    /// <summary>Represents a static function (method that returns a value).</summary>
+                    /// <typeparam name="TRet">The type of the return value</typeparam>
                     public abstract class Function<TRet>
                     {
-                        // okay, for a static function, the delegate looks like this
-                        // StaticFunc<T, TRet, V1 arg1, V2 arg2, ...) so ignore the first two...
+                        /// <summary>Builds a delegate for a static function (method that returns a value) from a MethodInfo.</summary>
+                        /// <param name="methodInfo">The MethodInfo of the method to wrap.</param>
+                        /// <returns>A delegate that looks like StaticFunc&lt;T, TRet, V1 arg1, ...&gt;</returns>
                         public static D CreateDelegate(MethodInfo methodInfo)
                         {
+                            // for a static function ignore the T and TRet..
                             return Build(typeof(TRet), methodInfo, KnownArgumentTypes(2));
                         }
 
+                        /// <summary>Builds a delegate for a static function (method that returns a value) from a RuntimeMethodHandle.</summary>
+                        /// <param name="methodHandle">The RuntimeMethodHandle of the method to wrap.</param>
+                        /// <returns>A delegate that looks like StaticFunc&lt;T, TRet, V1 arg1, ...&gt;</returns>
                         public static D CreateDelegate(RuntimeMethodHandle methodHandle)
                         {
                             MethodInfo methodInfo = (MethodInfo)MethodInfo.GetMethodFromHandle(methodHandle);
                             return CreateDelegate(methodInfo);
                         }
 
+                        /// <summary>Builds a delegate for a static function (method that returns a value) from a name.</summary>
+                        /// <param name="methodName">The name of the method to wrap.</param>
+                        /// <returns>A delegate that looks like StaticFunc&lt;T, TRet, V1 arg1, ...&gt;</returns>
                         public static D CreateDelegate(string methodName)
                         {
                             return CreateDelegate(typeof(T).GetMethod(methodName, StaticFlags));
                         }
 
+                        /// <summary>Builds a delegate for a static function (method that returns a value) from a name 
+                        /// that takes several arguments of known types as dictated by the expected delegate's parameter types.</summary>
+                        /// <param name="methodName">The name of the property to wrap.</param>
+                        /// <param name="flag">A marker that indicated automatic matching against the expected delegate should be done.</param>
+                        /// <returns>A delegate that looks like StaticFunc&lt;T, TRet, V1 arg1, ...&gt;</returns>
                         public static D CreateDelegate(string methodName, ParameterList flag)
                         {
                             // since this is a static method, we do NOT have an additional "this" to strip to match the actual method...
                             return CreateDelegate(methodName, KnownArgumentTypes(2));
                         }
 
+                        /// <summary>Builds a delegate for a static function (method that returns a value) from a name
+                        /// and set of parameter types.</summary>
+                        /// <param name="methodName">The name of the method to wrap.</param>
+                        /// <param name="parameterTypes">A Type array giving the parameter types to match against</param>
+                        /// <returns>A delegate that looks like StaticFunc&lt;T, TRet, V1 arg1, ...&gt;</returns>
                         public static D CreateDelegate(string methodName, Type[] parameterTypes)
                         {
                             return CreateDelegate(typeof(T).GetMethod(methodName, StaticFlags, null, parameterTypes, null));
@@ -3070,46 +3345,67 @@ namespace Phydeaux.Utilities
                     }
                 }
 
+                /// <summary>Represents an instance member.</summary>
                 public abstract class Instance
                 {
+                    /// <summary>Represents an instance field.</summary>
+                    /// <typeparam name="VF">The type of the field</typeparam>
                     public abstract class Field<VF>
                     {
+                        /// <summary>Represents an instance field getter method</summary>
                         public abstract class Getter
                         {
-                            // okay, for an instance field Get, the delegate looks like this
-                            // Func<T, VF> so ignore the generic types entirely
+                            /// <summary>Builds a delegate for an instance field getter from a FieldInfo</summary>
+                            /// <param name="fieldInfo">The FieldInfo for the field to wrap.</param>
+                            /// <returns>A delegate that looks like Func&lt;T, VF&gt;</returns>
                             public static D CreateDelegate(FieldInfo fieldInfo)
                             {
+                                // for an instance field Get ignore the generic types entirely
                                 return Build(typeof(VF), fieldInfo, true, new Type[] { typeof(T) });
                             }
 
+                            /// <summary>Builds a delegate for an instance field getter from a RuntimeFieldHandle</summary>
+                            /// <param name="fieldHandle">The RuntimeFieldHandle for the field to wrap.</param>
+                            /// <returns>A delegate that looks like Func&lt;T, VF&gt;</returns>
                             public static D CreateDelegate(RuntimeFieldHandle fieldHandle)
                             {
                                 FieldInfo fieldInfo = (FieldInfo)FieldInfo.GetFieldFromHandle(fieldHandle);
                                 return CreateDelegate(fieldInfo);
                             }
 
+                            /// <summary>Builds a delegate for an instance field getter from a name</summary>
+                            /// <param name="fieldName">The name of the field to wrap.</param>
+                            /// <returns>A delegate that looks like Func&lt;T, VF&gt;</returns>
                             public static D CreateDelegate(string fieldName)
                             {
                                 return CreateDelegate(typeof(T).GetField(fieldName, InstanceFlags | BindingFlags.GetField));
                             }
                         }
 
+                        /// <summary>Represents an instance field setter method</summary>
                         public abstract class Setter
                         {
-                            // okay, for an instance field Set, the delegate looks like this
-                            // Proc<T, VF arg1> so pass just the known type...
+                            /// <summary>Builds a delegate for an instance field setter from a FieldInfo</summary>
+                            /// <param name="fieldInfo">The FieldInfo of the field to wrap.</param>
+                            /// <returns>A delegate that looks like Proc&lt;T, VF&gt;</returns>
                             public static D CreateDelegate(FieldInfo fieldInfo)
                             {
+                                // for an instance field Set pass just the known type...
                                 return Build(typeof(void), fieldInfo, false, new Type[] { typeof(T), typeof(VF) });
                             }
 
+                            /// <summary>Builds a delegate for an instance field setter from a RuntimeFieldHandle</summary>
+                            /// <param name="fieldHandle">The RuntimeFieldHandle of the field to wrap.</param>
+                            /// <returns>A delegate that looks like Proc&lt;T, VF&gt;</returns>
                             public static D CreateDelegate(RuntimeFieldHandle fieldHandle)
                             {
                                 FieldInfo fieldInfo = (FieldInfo)FieldInfo.GetFieldFromHandle(fieldHandle);
                                 return CreateDelegate(fieldInfo);
                             }
 
+                            /// <summary>Builds a delegate for an instance field setter from a name</summary>
+                            /// <param name="fieldName">The name of the field to wrap.</param>
+                            /// <returns>A delegate that looks like Proc&lt;T, VF&gt;</returns>
                             public static D CreateDelegate(string fieldName)
                             {
                                 return CreateDelegate(typeof(T).GetField(fieldName, InstanceFlags | BindingFlags.SetField));
@@ -3117,31 +3413,48 @@ namespace Phydeaux.Utilities
                         }
                     }
 
+                    /// <summary>Represents an instance property.</summary>
+                    /// <typeparam name="VP">The type of the property</typeparam>
                     public abstract class Property<VP>
                     {
+                        /// <summary>Represents an instance property-get (methods that return a value)</summary>
                         public abstract class Getter
                         {
-                            // okay, for an instance property Get, the delegate looks like this
-                            // Func<T, TRet, V1, ...> so ignore the TRet
+                            /// <summary>Builds a delegate for an instance property getter from a PropertyInfo</summary>
+                            /// <param name="propertyInfo">The PropertyInfo of the property to wrap.</param>
+                            /// <returns>A delegate that looks like Func&lt;T, VP&gt;</returns>
                             public static D CreateDelegate(PropertyInfo propertyInfo)
                             {
                                 if (propertyInfo == null)
                                     throw new ArgumentNullException("propertyInfo");
 
+                                // for an instance property Get ignore the TRet
                                 return Build(typeof(VP), propertyInfo.GetGetMethod(true), KnownArgumentTypes(1, 1));
                             }
 
+                            /// <summary>Builds a delegate for an instance property getter from a name</summary>
+                            /// <param name="propertyName">The name of the property to wrap.</param>
+                            /// <returns>A delegate that looks like Func&lt;T, VP&gt;</returns>
                             public static D CreateDelegate(string propertyName)
                             {
                                 return CreateDelegate(typeof(T).GetProperty(propertyName, InstanceFlags | BindingFlags.GetProperty));
                             }
 
+                            /// <summary>Builds a delegate for an instance property getter from a name that takes several arguments of 
+                            /// known types as dictated by the expected delegate's parameter (indexer) types.</summary>
+                            /// <param name="propertyName">The name of the property to wrap.</param>
+                            /// <param name="flag">A marker that indicated automatic matching against the expected delegate should be done.</param>
+                            /// <returns>A delegate that looks like Func&lt;T, VP, V1 arg1, ...&gt;</returns>
                             public static D CreateDelegate(string propertyName, ParameterList flag)
                             {
                                 // we must also strip the "this" pointer to match the actual property...
                                 return CreateDelegate(propertyName, KnownArgumentTypes(2));
                             }
 
+                            /// <summary>Builds a delegate for an instance property getter from a name and set of parameter (indexer) types</summary>
+                            /// <param name="propertyName">The name of the property to wrap.</param>
+                            /// <param name="parameterTypes">A Type array giving the parameter types to match against</param>
+                            /// <returns>A delegate that looks like Func&lt;T, VP, V1 arg1, ...&gt;</returns>
                             public static D CreateDelegate(string propertyName, Type[] parameterTypes)
                             {
                                 return CreateDelegate(typeof(T).GetProperty(propertyName, InstanceFlags | BindingFlags.GetProperty
@@ -3149,29 +3462,44 @@ namespace Phydeaux.Utilities
                             }
                         }
 
+                        /// <summary>Represents an instance property-set (methods that return nothing)</summary>
                         public abstract class Setter
                         {
-                            // okay, for an instance property Set, the delegate looks like this
-                            // Proc<T, V1 arg1, V2 arg2 ...> so we want everything
+                            /// <summary>Builds a delegate for an instance property setter from a PropertyInfo</summary>
+                            /// <param name="propertyInfo">The PropertyInfo of the property to wrap.</param>
+                            /// <returns>A delegate that looks like Proc&lt;T, VP, V1 arg1, ...&gt;</returns>
                             public static D CreateDelegate(PropertyInfo propertyInfo)
                             {
                                 if (propertyInfo == null)
                                     throw new ArgumentNullException("propertyInfo");
 
+                                // for an instance property Set we want everything
                                 return Build(typeof(void), propertyInfo.GetSetMethod(true), KnownArgumentTypes(0));
                             }
 
+                            /// <summary>Builds a delegate for an instance property setter from a name</summary>
+                            /// <param name="propertyName">The name of the property to wrap.</param>
+                            /// <returns>A delegate that looks like Proc&lt;T, VP, V1 arg1, ...&gt;</returns>
                             public static D CreateDelegate(string propertyName)
                             {
                                 return CreateDelegate(typeof(T).GetProperty(propertyName, InstanceFlags | BindingFlags.SetProperty));
                             }
 
+                            /// <summary>Builds a delegate for an instance property setter from a name that takes several arguments of 
+                            /// known types as dictated by the expected delegate's parameter (indexer) types.</summary>
+                            /// <param name="propertyName">The name of the property to wrap.</param>
+                            /// <param name="flag">A marker that indicated automatic matching against the expected delegate should be done.</param>
+                            /// <returns>A delegate that looks like Proc&lt;T, VP, V1 arg1, ...&gt;</returns>
                             public static D CreateDelegate(string propertyName, ParameterList flag)
                             {
                                 // we must strip the "this" pointer to match the actual method...
                                 return CreateDelegate(propertyName, KnownArgumentTypes(1));
                             }
 
+                            /// <summary>Builds a delegate for an instance property setter from a name and set of parameter (indexer) types</summary>
+                            /// <param name="propertyName">The name of the property to wrap.</param>
+                            /// <param name="parameterTypes">A Type array giving the parameter types to match against</param>
+                            /// <returns>A delegate that looks like Proc&lt;T, VP, V1 arg1, ...&gt;</returns>
                             public static D CreateDelegate(string propertyName, Type[] parameterTypes)
                             {
                                 return CreateDelegate(typeof(T).GetProperty(propertyName, InstanceFlags | BindingFlags.SetProperty
@@ -3180,64 +3508,103 @@ namespace Phydeaux.Utilities
                         }
                     }
 
+                    /// <summary>Represents an instance procedure (method that returns nothing).</summary>
                     public abstract class Procedure
                     {
-                        // okay, for an instance procedure, the delegate looks like this
-                        // Proc<T, V1 arg1, V2 arg2, ...) so we want everything...
+                        /// <summary>Builds a delegate for an instance procedure (method that returns nothing) from a MethodInfo.</summary>
+                        /// <param name="methodInfo">The MethodInfo of the method to wrap.</param>
+                        /// <returns>A delegate that looks like Proc&lt;T, V1 arg1, ...&gt;</returns>
                         public static D CreateDelegate(MethodInfo methodInfo)
                         {
+                            // for an instance procedure we want everything...
                             return Build(typeof(void), methodInfo, KnownArgumentTypes(0));
                         }
 
+                        /// <summary>Builds a delegate for an instance procedure (method that returns nothing) from a RuntimeMethodHandle.</summary>
+                        /// <param name="methodHandle">The RuntimeMethodHandle of the method to wrap.</param>
+                        /// <returns>A delegate that looks like Proc&lt;T, V1 arg1, ...&gt;</returns>
                         public static D CreateDelegate(RuntimeMethodHandle methodHandle)
                         {
                             MethodInfo methodInfo = (MethodInfo)MethodInfo.GetMethodFromHandle(methodHandle);
                             return CreateDelegate(methodInfo);
                         }
 
+                        /// <summary>Builds a delegate for an instance procedure (method that returns nothing) from a name.</summary>
+                        /// <param name="methodName">The name of the method to wrap.</param>
+                        /// <returns>A delegate that looks like Proc&lt;T, V1 arg1, ...&gt;</returns>
                         public static D CreateDelegate(string methodName)
                         {
                             return CreateDelegate(typeof(T).GetMethod(methodName, InstanceFlags));
                         }
 
+                        /// <summary>Builds a delegate for an instance procedure (method that returns nothing) from a name
+                        /// that takes several arguments of known types as dictated by the expected delegate's parameter types.</summary>
+                        /// <param name="methodName">The name of the method to wrap.</param>
+                        /// <param name="flag">A marker that indicated automatic matching against the expected delegate should be done.</param>
+                        /// <returns>A delegate that looks like Proc&lt;T, V1 arg1, ...&gt;</returns>
                         public static D CreateDelegate(string methodName, ParameterList flag)
                         {
                             // we must strip the "this" pointer to match the actual method...
                             return CreateDelegate(methodName, KnownArgumentTypes(1));
                         }
 
+                        /// <summary>Builds a delegate for an instance procedure (method that returns nothing) from a name
+                        /// and set of parameter types.</summary>
+                        /// <param name="methodName">The name of the method to wrap.</param>
+                        /// <param name="parameterTypes">A Type array giving the parameter types to match against</param>
+                        /// <returns>A delegate that looks like Proc&lt;T, V1 arg1, ...&gt;</returns>
                         public static D CreateDelegate(string methodName, Type[] parameterTypes)
                         {
                             return CreateDelegate(typeof(T).GetMethod(methodName, InstanceFlags, null, parameterTypes, null));
                         }
                     }
 
+                    /// <summary>Represents an instance function (method that returns a value).</summary>
+                    /// <typeparam name="TRet">The type of the return value</typeparam>
                     public abstract class Function<TRet>
                     {
-                        // okay, for an instance function, the delegate looks like this
-                        // Func<T, TRet, V1 arg1, V2 arg2, ...) so we want everything except the TRet...
+                        /// <summary>Builds a delegate for an instance function (method that returns a value) from a MethodInfo.</summary>
+                        /// <param name="methodInfo">The MethodInfo of the method to wrap.</param>
+                        /// <returns>A delegate that looks like Func&lt;T, TRet, V1 arg1, ...&gt;</returns>
                         public static D CreateDelegate(MethodInfo methodInfo)
                         {
+                            // for an instance function we want everything except the TRet...
                             return Build(typeof(TRet), methodInfo, KnownArgumentTypes(1, 1));
                         }
 
+                        /// <summary>Builds a delegate for an instance function (method that returns a value) from a RuntimeMethodHandle.</summary>
+                        /// <param name="methodHandle">The RuntimeMethodHandle of the method to wrap.</param>
+                        /// <returns>A delegate that looks like Func&lt;T, TRet, V1 arg1, ...&gt;</returns>
                         public static D CreateDelegate(RuntimeMethodHandle methodHandle)
                         {
                             MethodInfo methodInfo = (MethodInfo)MethodInfo.GetMethodFromHandle(methodHandle);
                             return CreateDelegate(methodInfo);
                         }
 
+                        /// <summary>Builds a delegate for an instance function (method that returns a value) from a name.</summary>
+                        /// <param name="methodName">The name of the method to wrap.</param>
+                        /// <returns>A delegate that looks like Func&lt;T, TRet, V1 arg1, ...&gt;</returns>
                         public static D CreateDelegate(string methodName)
                         {
                             return CreateDelegate(typeof(T).GetMethod(methodName, InstanceFlags));
                         }
 
+                        /// <summary>Builds a delegate for an instance function (method that returns a value) from a name 
+                        /// that takes several arguments of known types as dictated by the expected delegate's parameter types.</summary>
+                        /// <param name="methodName">The name of the property to wrap.</param>
+                        /// <param name="flag">A marker that indicated automatic matching against the expected delegate should be done.</param>
+                        /// <returns>A delegate that looks like Func&lt;T, TRet, V1 arg1, ...&gt;</returns>
                         public static D CreateDelegate(string methodName, ParameterList flag)
                         {
                             // we must also strip the "this" pointer to match the actual method...
                             return CreateDelegate(methodName, KnownArgumentTypes(2));
                         }
 
+                        /// <summary>Builds a delegate for an instance function (method that returns a value) from a name
+                        /// and set of parameter types.</summary>
+                        /// <param name="methodName">The name of the method to wrap.</param>
+                        /// <param name="parameterTypes">A Type array giving the parameter types to match against</param>
+                        /// <returns>A delegate that looks like Func&lt;T, TRet, V1 arg1, ...&gt;</returns>
                         public static D CreateDelegate(string methodName, Type[] parameterTypes)
                         {
                             return CreateDelegate(typeof(T).GetMethod(methodName, InstanceFlags, null, parameterTypes, null));
