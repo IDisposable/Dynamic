@@ -235,10 +235,10 @@ namespace DynamicComparerSample
                 Func<T, T, T, Gender> breed = Dynamic<T>.Instance.Function<T>.Explicit<T, Gender>.CreateDelegate("Breed");
                 Proc<T> mutate = Dynamic<T>.Instance.Procedure.Explicit.CreateDelegate("Mutate");
                 StaticFunc<T, int, T, T> ageDifference = Dynamic<T>.Static.Function<int>.Explicit<T, T>.CreateDelegate("AgeDifference");
-                StaticFunc<T, int> getAllowableAgeDifference = Dynamic<T>.Static.Field<int>.Explicit.Getter.CreateDelegate("allowableAgeDifference");
-                StaticProc<T, int> setAllowableAgeDifference = Dynamic<T>.Static.Field<int>.Explicit.Setter.CreateDelegate("allowableAgeDifference");
-                Func<T, double> getAge = Dynamic<T>.Instance.Field<double>.Explicit.Getter.CreateDelegate("age");
-                Proc<T, double> setAge = Dynamic<T>.Instance.Field<double>.Explicit.Setter.CreateDelegate("age");
+                StaticFunc<T, int> getAllowableAgeDifference = Dynamic<T>.Static.Field<int>.Getter.CreateDelegate("allowableAgeDifference");
+                StaticProc<T, int> setAllowableAgeDifference = Dynamic<T>.Static.Field<int>.Setter.CreateDelegate("allowableAgeDifference");
+                Func<T, double> getAge = Dynamic<T>.Instance.Field<double>.Getter.CreateDelegate("age");
+                Proc<T, double> setAge = Dynamic<T>.Instance.Field<double>.Setter.CreateDelegate("age");
 
                 StaticFunc<T, int> getPropAllowableAgeDifference = Dynamic<T>.Static.Property<int>.Explicit.Getter.CreateDelegate("AllowableAgeDifference");
                 StaticProc<T, int> setPropAllowableAgeDifference = Dynamic<T>.Static.Property<int>.Explicit.Setter.CreateDelegate("AllowableAgeDifference");
@@ -471,10 +471,10 @@ namespace DynamicComparerSample
                 Func<T, T, T, Gender> breed = Dynamic<T>.Instance.Function<T>.Explicit<T, Gender>.CreateDelegate("Breed");
                 Proc<T> mutate = Dynamic<T>.Instance.Procedure.Explicit.CreateDelegate("Mutate");
                 StaticFunc<T, int, T, T> ageDifference = Dynamic<T>.Static.Function<int>.Explicit<T, T>.CreateDelegate("AgeDifference");
-                StaticFunc<T, int> getAllowableAgeDifference = Dynamic<T>.Static.Field<int>.Explicit.Getter.CreateDelegate("allowableAgeDifference");
-                StaticProc<T, int> setAllowableAgeDifference = Dynamic<T>.Static.Field<int>.Explicit.Setter.CreateDelegate("allowableAgeDifference");
-                Func<T, double> getAge = Dynamic<T>.Instance.Field<double>.Explicit.Getter.CreateDelegate("age");
-                Proc<T, double> setAge = Dynamic<T>.Instance.Field<double>.Explicit.Setter.CreateDelegate("age");
+                StaticFunc<T, int> getAllowableAgeDifference = Dynamic<T>.Static.Field<int>.Getter.CreateDelegate("allowableAgeDifference");
+                StaticProc<T, int> setAllowableAgeDifference = Dynamic<T>.Static.Field<int>.Setter.CreateDelegate("allowableAgeDifference");
+                Func<T, double> getAge = Dynamic<T>.Instance.Field<double>.Getter.CreateDelegate("age");
+                Proc<T, double> setAge = Dynamic<T>.Instance.Field<double>.Setter.CreateDelegate("age");
                 generate.Stop();
 
                 creating.Start();
@@ -582,10 +582,10 @@ namespace DynamicComparerSample
                 FuncParams<T, T> breed = Dynamic<T>.Instance.Function<T>.Params.CreateDelegate("Breed");
                 ProcParams<T> mutate = Dynamic<T>.Instance.Procedure.Params.CreateDelegate("Mutate");
                 StaticFuncParams<T, int> ageDifference = Dynamic<T>.Static.Function<int>.Params.CreateDelegate("AgeDifference");
-                StaticFuncParams<T, int> getAllowableAgeDifference = Dynamic<T>.Static.Field<int>.Params.Getter.CreateDelegate("allowableAgeDifference");
-                StaticProcParams<T> setAllowableAgeDifference = Dynamic<T>.Static.Field<int>.Params.Setter.CreateDelegate("allowableAgeDifference");
-                FuncParams<T, double> getAge = Dynamic<T>.Instance.Field<double>.Params.Getter.CreateDelegate("age");
-                ProcParams<T> setAge = Dynamic<T>.Instance.Field<double>.Params.Setter.CreateDelegate("age");
+                StaticFunc<T, int> getAllowableAgeDifference = Dynamic<T>.Static.Field<int>.Getter.CreateDelegate("allowableAgeDifference");
+                StaticProc<T, int> setAllowableAgeDifference = Dynamic<T>.Static.Field<int>.Setter.CreateDelegate("allowableAgeDifference");
+                Func<T, double> getAge = Dynamic<T>.Instance.Field<double>.Getter.CreateDelegate("age");
+                Proc<T, double> setAge = Dynamic<T>.Instance.Field<double>.Setter.CreateDelegate("age");
                 generate.Stop();
 
                 creating.Start();

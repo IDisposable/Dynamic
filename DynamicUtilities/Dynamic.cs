@@ -6,56 +6,453 @@ namespace Phydeaux.Utilities
 {
     #region Delegate definitions
     #region Constructors
-    // Late-bound argument list (e.g. params object[])
+    /// <summary>Defines a delegate to a constructor with a params array of weak-typed argument values.</summary>
+    /// <typeparam name="T">The type of the constructed object</typeparam>
+    /// <param name="parameters">The array of argument values (weak-typed)</param>
     public delegate T ConstructorParams<T>(params object[] parameters);
 
-    #region Explicit arguments
+    #region Explicit arguments (up to 9, consider passing an object if you think you need more!)
+    /// <summary>Defines a delegate to a constructor that takes no arguments.</summary>
+    /// <typeparam name="T">The type of the constructed object</typeparam>
     public delegate T Constructor<T>();
+
+    /// <summary>Defines a delegate to a constructor that takes a single strong-typed argument.</summary>
+    /// <typeparam name="T">The type of the constructed object</typeparam>
+    /// <typeparam name="V1">The type of the first argument</typeparam>
+    /// <param name="arg1">The first argument value</param>
     public delegate T Constructor<T, V1>(V1 arg1);
+
+    /// <summary>Defines a delegate to a constructor that takes two strong-typed arguments.</summary>
+    /// <typeparam name="T">The type of the constructed object</typeparam>
+    /// <typeparam name="V1">The type of the first argument</typeparam>
+    /// <param name="arg1">The first argument value</param>
+    /// <typeparam name="V2">The type of the second argument</typeparam>
+    /// <param name="arg2">The second argument value</param>
     public delegate T Constructor<T, V1, V2>(V1 arg1, V2 arg2);
+
+    /// <summary>Defines a delegate to a constructor that takes three strong-typed arguments.</summary>
+    /// <typeparam name="T">The type of the constructed object</typeparam>
+    /// <typeparam name="V1">The type of the first argument</typeparam>
+    /// <param name="arg1">The first argument value</param>
+    /// <typeparam name="V2">The type of the second argument</typeparam>
+    /// <param name="arg2">The second argument value</param>
+    /// <typeparam name="V3">The type of the third argument</typeparam>
+    /// <param name="arg3">The third argument value</param>
     public delegate T Constructor<T, V1, V2, V3>(V1 arg1, V2 arg2, V3 arg3);
+
+    /// <summary>Defines a delegate to a constructor that takes four strong-typed arguments.</summary>
+    /// <typeparam name="T">The type of the constructed object</typeparam>
+    /// <typeparam name="V1">The type of the first argument</typeparam>
+    /// <param name="arg1">The first argument value</param>
+    /// <typeparam name="V2">The type of the second argument</typeparam>
+    /// <param name="arg2">The second argument value</param>
+    /// <typeparam name="V3">The type of the third argument</typeparam>
+    /// <param name="arg3">The third argument value</param>
+    /// <typeparam name="V4">The type of the fourth argument</typeparam>
+    /// <param name="arg4">The fourth argument value</param>
     public delegate T Constructor<T, V1, V2, V3, V4>(V1 arg1, V2 arg2, V3 arg3, V4 arg4);
+
+    /// <summary>Defines a delegate to a constructor that takes five strong-typed arguments.</summary>
+    /// <typeparam name="T">The type of the constructed object</typeparam>
+    /// <typeparam name="V1">The type of the first argument</typeparam>
+    /// <param name="arg1">The first argument value</param>
+    /// <typeparam name="V2">The type of the second argument</typeparam>
+    /// <param name="arg2">The second argument value</param>
+    /// <typeparam name="V3">The type of the third argument</typeparam>
+    /// <param name="arg3">The third argument value</param>
+    /// <typeparam name="V4">The type of the fourth argument</typeparam>
+    /// <param name="arg4">The fourth argument value</param>
+    /// <typeparam name="V5">The type of the fifth argument</typeparam>
+    /// <param name="arg5">The fifth argument value</param>
     public delegate T Constructor<T, V1, V2, V3, V4, V5>(V1 arg1, V2 arg2, V3 arg3, V4 arg4, V5 arg5);
+
+    /// <summary>Defines a delegate to a constructor that takes six strong-typed arguments.</summary>
+    /// <typeparam name="T">The type of the constructed object</typeparam>
+    /// <typeparam name="V1">The type of the first argument</typeparam>
+    /// <param name="arg1">The first argument value</param>
+    /// <typeparam name="V2">The type of the second argument</typeparam>
+    /// <param name="arg2">The second argument value</param>
+    /// <typeparam name="V3">The type of the third argument</typeparam>
+    /// <param name="arg3">The third argument value</param>
+    /// <typeparam name="V4">The type of the fourth argument</typeparam>
+    /// <param name="arg4">The fourth argument value</param>
+    /// <typeparam name="V5">The type of the fifth argument</typeparam>
+    /// <param name="arg5">The fifth argument value</param>
+    /// <typeparam name="V6">The type of the sixth argument</typeparam>
+    /// <param name="arg6">The sixth argument value</param>
     public delegate T Constructor<T, V1, V2, V3, V4, V5, V6>(V1 arg1, V2 arg2, V3 arg3, V4 arg4, V5 arg5, V6 arg6);
+
+    /// <summary>Defines a delegate to a constructor that takes seven strong-typed arguments.</summary>
+    /// <typeparam name="T">The type of the constructed object</typeparam>
+    /// <typeparam name="V1">The type of the first argument</typeparam>
+    /// <param name="arg1">The first argument value</param>
+    /// <typeparam name="V2">The type of the second argument</typeparam>
+    /// <param name="arg2">The second argument value</param>
+    /// <typeparam name="V3">The type of the third argument</typeparam>
+    /// <param name="arg3">The third argument value</param>
+    /// <typeparam name="V4">The type of the fourth argument</typeparam>
+    /// <param name="arg4">The fourth argument value</param>
+    /// <typeparam name="V5">The type of the fifth argument</typeparam>
+    /// <param name="arg5">The fifth argument value</param>
+    /// <typeparam name="V6">The type of the sixth argument</typeparam>
+    /// <param name="arg6">The sixth argument value</param>
+    /// <typeparam name="V7">The type of the seventh argument</typeparam>
+    /// <param name="arg7">The seventh argument value</param>
     public delegate T Constructor<T, V1, V2, V3, V4, V5, V6, V7>(V1 arg1, V2 arg2, V3 arg3, V4 arg4, V5 arg5, V6 arg6, V7 arg7);
+
+    /// <summary>Defines a delegate to a constructor that takes eight strong-typed arguments.</summary>
+    /// <typeparam name="T">The type of the constructed object</typeparam>
+    /// <typeparam name="V1">The type of the first argument</typeparam>
+    /// <param name="arg1">The first argument value</param>
+    /// <typeparam name="V2">The type of the second argument</typeparam>
+    /// <param name="arg2">The second argument value</param>
+    /// <typeparam name="V3">The type of the third argument</typeparam>
+    /// <param name="arg3">The third argument value</param>
+    /// <typeparam name="V4">The type of the fourth argument</typeparam>
+    /// <param name="arg4">The fourth argument value</param>
+    /// <typeparam name="V5">The type of the fifth argument</typeparam>
+    /// <param name="arg5">The fifth argument value</param>
+    /// <typeparam name="V6">The type of the sixth argument</typeparam>
+    /// <param name="arg6">The sixth argument value</param>
+    /// <typeparam name="V7">The type of the seventh argument</typeparam>
+    /// <param name="arg7">The seventh argument value</param>
+    /// <typeparam name="V8">The type of the eighth argument</typeparam>
+    /// <param name="arg8">The eighth argument value</param>
     public delegate T Constructor<T, V1, V2, V3, V4, V5, V6, V7, V8>(V1 arg1, V2 arg2, V3 arg3, V4 arg4, V5 arg5, V6 arg6, V7 arg7, V8 arg8);
+
+    /// <summary>Defines a delegate to a constructor that takes nine strong-typed arguments.</summary>
+    /// <typeparam name="T">The type of the constructed object</typeparam>
+    /// <typeparam name="V1">The type of the first argument</typeparam>
+    /// <param name="arg1">The first argument value</param>
+    /// <typeparam name="V2">The type of the second argument</typeparam>
+    /// <param name="arg2">The second argument value</param>
+    /// <typeparam name="V3">The type of the third argument</typeparam>
+    /// <param name="arg3">The third argument value</param>
+    /// <typeparam name="V4">The type of the fourth argument</typeparam>
+    /// <param name="arg4">The fourth argument value</param>
+    /// <typeparam name="V5">The type of the fifth argument</typeparam>
+    /// <param name="arg5">The fifth argument value</param>
+    /// <typeparam name="V6">The type of the sixth argument</typeparam>
+    /// <param name="arg6">The sixth argument value</param>
+    /// <typeparam name="V7">The type of the seventh argument</typeparam>
+    /// <param name="arg7">The seventh argument value</param>
+    /// <typeparam name="V8">The type of the eighth argument</typeparam>
+    /// <param name="arg8">The eighth argument value</param>
+    /// <typeparam name="V9">The type of the ninth argument</typeparam>
+    /// <param name="arg9">The ninth argument value</param>
     public delegate T Constructor<T, V1, V2, V3, V4, V5, V6, V7, V8, V9>(V1 arg1, V2 arg2, V3 arg3, V4 arg4, V5 arg5, V6 arg6, V7 arg7, V8 arg8, V9 arg9);
     #endregion
     #endregion
 
     #region Procedures (methods that return nothing)
     #region Instance methods
-    // Late-bound argument list (e.g. params object[])
+    /// <summary>Defines a delegate to a instance procedure (method that doesn't return anything) with a params array of weak-typed
+    /// argument values.</summary>
+    /// <typeparam name="T">The type of the instance method target</typeparam>
+    /// <param name="target">The target instance (this)</param>
+    /// <param name="parameters">The array of argument values (weak-typed)</param>
     public delegate void ProcParams<T>(T target, params object[] parameters);
 
     #region Explicit arguments (up to 9, consider passing an object if you think you need more!)
+    /// <summary>Defines a delegate to a instance procedure (method that doesn't return anything) that takes no arguments</summary>
+    /// <typeparam name="T">The type of the instance method target</typeparam>
+    /// <param name="target">The target instance (this)</param>
     public delegate void Proc<T>(T target);
+
+    /// <summary>Defines a delegate to a instance procedure (method that doesn't return anything) that takes a single
+    /// strong-typed argument.</summary>
+    /// <typeparam name="T">The type of the instance method target</typeparam>
+    /// <param name="target">The target instance (this)</param>
+    /// <typeparam name="V1">The type of the first argument</typeparam>
+    /// <param name="arg1">The first argument value</param>
     public delegate void Proc<T, V1>(T target, V1 arg1);
+
+    /// <summary>Defines a delegate to a instance procedure (method that doesn't return anything) that takes two
+    /// strong-typed arguments.</summary>
+    /// <typeparam name="T">The type of the instance method target</typeparam>
+    /// <param name="target">The target instance (this)</param>
+    /// <typeparam name="V1">The type of the first argument</typeparam>
+    /// <param name="arg1">The first argument value</param>
+    /// <typeparam name="V2">The type of the second argument</typeparam>
+    /// <param name="arg2">The second argument value</param>
     public delegate void Proc<T, V1, V2>(T target, V1 arg1, V2 arg2);
+
+    /// <summary>Defines a delegate to a instance procedure (method that doesn't return anything) that takes three
+    /// strong-typed arguments.</summary>
+    /// <typeparam name="T">The type of the instance method target</typeparam>
+    /// <param name="target">The target instance (this)</param>
+    /// <typeparam name="V1">The type of the first argument</typeparam>
+    /// <param name="arg1">The first argument value</param>
+    /// <typeparam name="V2">The type of the second argument</typeparam>
+    /// <param name="arg2">The second argument value</param>
+    /// <typeparam name="V3">The type of the third argument</typeparam>
+    /// <param name="arg3">The third argument value</param>
     public delegate void Proc<T, V1, V2, V3>(T target, V1 arg1, V2 arg2, V3 arg3);
+
+    /// <summary>Defines a delegate to a instance procedure (method that doesn't return anything) that takes four
+    /// strong-typed arguments.</summary>
+    /// <typeparam name="T">The type of the instance method target</typeparam>
+    /// <param name="target">The target instance (this)</param>
+    /// <typeparam name="V1">The type of the first argument</typeparam>
+    /// <param name="arg1">The first argument value</param>
+    /// <typeparam name="V2">The type of the second argument</typeparam>
+    /// <param name="arg2">The second argument value</param>
+    /// <typeparam name="V3">The type of the third argument</typeparam>
+    /// <param name="arg3">The third argument value</param>
+    /// <typeparam name="V4">The type of the fourth argument</typeparam>
+    /// <param name="arg4">The fourth argument value</param>
     public delegate void Proc<T, V1, V2, V3, V4>(T target, V1 arg1, V2 arg2, V3 arg3, V4 arg4);
+
+    /// <summary>Defines a delegate to a instance procedure (method that doesn't return anything) that takes five
+    /// strong-typed arguments.</summary>
+    /// <typeparam name="T">The type of the instance method target</typeparam>
+    /// <param name="target">The target instance (this)</param>
+    /// <typeparam name="V1">The type of the first argument</typeparam>
+    /// <param name="arg1">The first argument value</param>
+    /// <typeparam name="V2">The type of the second argument</typeparam>
+    /// <param name="arg2">The second argument value</param>
+    /// <typeparam name="V3">The type of the third argument</typeparam>
+    /// <param name="arg3">The third argument value</param>
+    /// <typeparam name="V4">The type of the fourth argument</typeparam>
+    /// <param name="arg4">The fourth argument value</param>
+    /// <typeparam name="V5">The type of the fifth argument</typeparam>
+    /// <param name="arg5">The fifth argument value</param>
     public delegate void Proc<T, V1, V2, V3, V4, V5>(T target, V1 arg1, V2 arg2, V3 arg3, V4 arg4, V5 arg5);
+
+    /// <summary>Defines a delegate to a instance procedure (method that doesn't return anything) that takes six
+    /// strong-typed arguments.</summary>
+    /// <typeparam name="T">The type of the instance method target</typeparam>
+    /// <param name="target">The target instance (this)</param>
+    /// <typeparam name="V1">The type of the first argument</typeparam>
+    /// <param name="arg1">The first argument value</param>
+    /// <typeparam name="V2">The type of the second argument</typeparam>
+    /// <param name="arg2">The second argument value</param>
+    /// <typeparam name="V3">The type of the third argument</typeparam>
+    /// <param name="arg3">The third argument value</param>
+    /// <typeparam name="V4">The type of the fourth argument</typeparam>
+    /// <param name="arg4">The fourth argument value</param>
+    /// <typeparam name="V5">The type of the fifth argument</typeparam>
+    /// <param name="arg5">The fifth argument value</param>
+    /// <typeparam name="V6">The type of the sixth argument</typeparam>
+    /// <param name="arg6">The sixth argument value</param>
     public delegate void Proc<T, V1, V2, V3, V4, V5, V6>(T target, V1 arg1, V2 arg2, V3 arg3, V4 arg4, V5 arg5, V6 arg6);
+
+    /// <summary>Defines a delegate to a instance procedure (method that doesn't return anything) that takes seven
+    /// strong-typed arguments.</summary>
+    /// <typeparam name="T">The type of the instance method target</typeparam>
+    /// <param name="target">The target instance (this)</param>
+    /// <typeparam name="V1">The type of the first argument</typeparam>
+    /// <param name="arg1">The first argument value</param>
+    /// <typeparam name="V2">The type of the second argument</typeparam>
+    /// <param name="arg2">The second argument value</param>
+    /// <typeparam name="V3">The type of the third argument</typeparam>
+    /// <param name="arg3">The third argument value</param>
+    /// <typeparam name="V4">The type of the fourth argument</typeparam>
+    /// <param name="arg4">The fourth argument value</param>
+    /// <typeparam name="V5">The type of the fifth argument</typeparam>
+    /// <param name="arg5">The fifth argument value</param>
+    /// <typeparam name="V6">The type of the sixth argument</typeparam>
+    /// <param name="arg6">The sixth argument value</param>
+    /// <typeparam name="V7">The type of the seventh argument</typeparam>
+    /// <param name="arg7">The seventh argument value</param>
     public delegate void Proc<T, V1, V2, V3, V4, V5, V6, V7>(T target, V1 arg1, V2 arg2, V3 arg3, V4 arg4, V5 arg5, V6 arg6, V7 arg7);
+
+    /// <summary>Defines a delegate to a instance procedure (method that doesn't return anything) that takes eight
+    /// strong-typed arguments.</summary>
+    /// <typeparam name="T">The type of the instance method target</typeparam>
+    /// <param name="target">The target instance (this)</param>
+    /// <typeparam name="V1">The type of the first argument</typeparam>
+    /// <param name="arg1">The first argument value</param>
+    /// <typeparam name="V2">The type of the second argument</typeparam>
+    /// <param name="arg2">The second argument value</param>
+    /// <typeparam name="V3">The type of the third argument</typeparam>
+    /// <param name="arg3">The third argument value</param>
+    /// <typeparam name="V4">The type of the fourth argument</typeparam>
+    /// <param name="arg4">The fourth argument value</param>
+    /// <typeparam name="V5">The type of the fifth argument</typeparam>
+    /// <param name="arg5">The fifth argument value</param>
+    /// <typeparam name="V6">The type of the sixth argument</typeparam>
+    /// <param name="arg6">The sixth argument value</param>
+    /// <typeparam name="V7">The type of the seventh argument</typeparam>
+    /// <param name="arg7">The seventh argument value</param>
+    /// <typeparam name="V8">The type of the eighth argument</typeparam>
+    /// <param name="arg8">The eighth argument value</param>
     public delegate void Proc<T, V1, V2, V3, V4, V5, V6, V7, V8>(T target, V1 arg1, V2 arg2, V3 arg3, V4 arg4, V5 arg5, V6 arg6, V7 arg7, V8 arg8);
+
+    /// <summary>Defines a delegate to a instance procedure (method that doesn't return anything) that takes nine
+    /// strong-typed arguments.</summary>
+    /// <typeparam name="T">The type of the instance method target</typeparam>
+    /// <param name="target">The target instance (this)</param>
+    /// <typeparam name="V1">The type of the first argument</typeparam>
+    /// <param name="arg1">The first argument value</param>
+    /// <typeparam name="V2">The type of the second argument</typeparam>
+    /// <param name="arg2">The second argument value</param>
+    /// <typeparam name="V3">The type of the third argument</typeparam>
+    /// <param name="arg3">The third argument value</param>
+    /// <typeparam name="V4">The type of the fourth argument</typeparam>
+    /// <param name="arg4">The fourth argument value</param>
+    /// <typeparam name="V5">The type of the fifth argument</typeparam>
+    /// <param name="arg5">The fifth argument value</param>
+    /// <typeparam name="V6">The type of the sixth argument</typeparam>
+    /// <param name="arg6">The sixth argument value</param>
+    /// <typeparam name="V7">The type of the seventh argument</typeparam>
+    /// <param name="arg7">The seventh argument value</param>
+    /// <typeparam name="V8">The type of the eighth argument</typeparam>
+    /// <param name="arg8">The eighth argument value</param>
+    /// <typeparam name="V9">The type of the ninth argument</typeparam>
+    /// <param name="arg9">The ninth argument value</param>
     public delegate void Proc<T, V1, V2, V3, V4, V5, V6, V7, V8, V9>(T target, V1 arg1, V2 arg2, V3 arg3, V4 arg4, V5 arg5, V6 arg6, V7 arg7, V8 arg8, V9 arg9);
     #endregion
     #endregion
 
     #region Static methods
-    // Late-bound argument list (e.g. params object[])
+    /// <summary>Defines a delegate to a static procedure (method that doesn't return anything) with a params array of weak-typed
+    /// argument values.</summary>
+    /// <typeparam name="T">The type of the static method target</typeparam>
+    /// <param name="parameters">The array of argument values (weak-typed)</param>
     public delegate void StaticProcParams<T>(params object[] parameters);
 
     #region Explicit arguments (up to 9, consider passing an object if you think you need more!)
+    /// <summary>Defines a delegate to a static procedure (method that doesn't return anything) that takes nine
+    /// strong-typed arguments.</summary>
+    /// <typeparam name="T">The type of the static method target</typeparam>
     public delegate void StaticProc<T>();
+
+    /// <summary>Defines a delegate to a static procedure (method that doesn't return anything) that takes a single
+    /// strong-typed argument.</summary>
+    /// <typeparam name="T">The type of the static method target</typeparam>
+    /// <typeparam name="V1">The type of the first argument</typeparam>
+    /// <param name="arg1">The first argument value</param>
     public delegate void StaticProc<T, V1>(V1 arg1);
+
+    /// <summary>Defines a delegate to a static procedure (method that doesn't return anything) that takes two
+    /// strong-typed arguments.</summary>
+    /// <typeparam name="T">The type of the static method target</typeparam>
+    /// <typeparam name="V1">The type of the first argument</typeparam>
+    /// <param name="arg1">The first argument value</param>
+    /// <typeparam name="V2">The type of the second argument</typeparam>
+    /// <param name="arg2">The second argument value</param>
+    /// <typeparam name="V3">The type of the third argument</typeparam>
     public delegate void StaticProc<T, V1, V2>(V1 arg1, V2 arg2);
+
+    /// <summary>Defines a delegate to a static procedure (method that doesn't return anything) that takes three
+    /// strong-typed arguments.</summary>
+    /// <typeparam name="T">The type of the static method target</typeparam>
+    /// <typeparam name="V1">The type of the first argument</typeparam>
+    /// <param name="arg1">The first argument value</param>
+    /// <typeparam name="V2">The type of the second argument</typeparam>
+    /// <param name="arg2">The second argument value</param>
+    /// <typeparam name="V3">The type of the third argument</typeparam>
+    /// <param name="arg3">The third argument value</param>
+    /// <typeparam name="V4">The type of the fourth argument</typeparam>
     public delegate void StaticProc<T, V1, V2, V3>(V1 arg1, V2 arg2, V3 arg3);
+
+    /// <summary>Defines a delegate to a static procedure (method that doesn't return anything) that takes four
+    /// strong-typed arguments.</summary>
+    /// <typeparam name="T">The type of the static method target</typeparam>
+    /// <typeparam name="V1">The type of the first argument</typeparam>
+    /// <param name="arg1">The first argument value</param>
+    /// <typeparam name="V2">The type of the second argument</typeparam>
+    /// <param name="arg2">The second argument value</param>
+    /// <typeparam name="V3">The type of the third argument</typeparam>
+    /// <param name="arg3">The third argument value</param>
+    /// <typeparam name="V4">The type of the fourth argument</typeparam>
+    /// <param name="arg4">The fourth argument value</param>
     public delegate void StaticProc<T, V1, V2, V3, V4>(V1 arg1, V2 arg2, V3 arg3, V4 arg4);
+
+    /// <summary>Defines a delegate to a static procedure (method that doesn't return anything) that takes five
+    /// strong-typed arguments.</summary>
+    /// <typeparam name="T">The type of the static method target</typeparam>
+    /// <typeparam name="V1">The type of the first argument</typeparam>
+    /// <param name="arg1">The first argument value</param>
+    /// <typeparam name="V2">The type of the second argument</typeparam>
+    /// <param name="arg2">The second argument value</param>
+    /// <typeparam name="V3">The type of the third argument</typeparam>
+    /// <param name="arg3">The third argument value</param>
+    /// <typeparam name="V4">The type of the fourth argument</typeparam>
+    /// <param name="arg4">The fourth argument value</param>
+    /// <typeparam name="V5">The type of the fifth argument</typeparam>
+    /// <param name="arg5">The fifth argument value</param>
     public delegate void StaticProc<T, V1, V2, V3, V4, V5>(V1 arg1, V2 arg2, V3 arg3, V4 arg4, V5 arg5);
+
+    /// <summary>Defines a delegate to a static procedure (method that doesn't return anything) that takes six
+    /// strong-typed arguments.</summary>
+    /// <typeparam name="T">The type of the static method target</typeparam>
+    /// <typeparam name="V1">The type of the first argument</typeparam>
+    /// <param name="arg1">The first argument value</param>
+    /// <typeparam name="V2">The type of the second argument</typeparam>
+    /// <param name="arg2">The second argument value</param>
+    /// <typeparam name="V3">The type of the third argument</typeparam>
+    /// <param name="arg3">The third argument value</param>
+    /// <typeparam name="V4">The type of the fourth argument</typeparam>
+    /// <param name="arg4">The fourth argument value</param>
+    /// <typeparam name="V5">The type of the fifth argument</typeparam>
+    /// <param name="arg5">The fifth argument value</param>
+    /// <typeparam name="V6">The type of the sixth argument</typeparam>
+    /// <param name="arg6">The sixth argument value</param>
     public delegate void StaticProc<T, V1, V2, V3, V4, V5, V6>(V1 arg1, V2 arg2, V3 arg3, V4 arg4, V5 arg5, V6 arg6);
+
+    /// <summary>Defines a delegate to a static procedure (method that doesn't return anything) that takes seven
+    /// strong-typed arguments.</summary>
+    /// <typeparam name="T">The type of the static method target</typeparam>
+    /// <typeparam name="V1">The type of the first argument</typeparam>
+    /// <param name="arg1">The first argument value</param>
+    /// <typeparam name="V2">The type of the second argument</typeparam>
+    /// <param name="arg2">The second argument value</param>
+    /// <typeparam name="V3">The type of the third argument</typeparam>
+    /// <param name="arg3">The third argument value</param>
+    /// <typeparam name="V4">The type of the fourth argument</typeparam>
+    /// <param name="arg4">The fourth argument value</param>
+    /// <typeparam name="V5">The type of the fifth argument</typeparam>
+    /// <param name="arg5">The fifth argument value</param>
+    /// <typeparam name="V6">The type of the sixth argument</typeparam>
+    /// <param name="arg6">The sixth argument value</param>
+    /// <typeparam name="V7">The type of the seventh argument</typeparam>
+    /// <param name="arg7">The seventh argument value</param>
     public delegate void StaticProc<T, V1, V2, V3, V4, V5, V6, V7>(V1 arg1, V2 arg2, V3 arg3, V4 arg4, V5 arg5, V6 arg6, V7 arg7);
+
+    /// <summary>Defines a delegate to a static procedure (method that doesn't return anything) that takes eight
+    /// strong-typed arguments.</summary>
+    /// <typeparam name="T">The type of the static method target</typeparam>
+    /// <typeparam name="V1">The type of the first argument</typeparam>
+    /// <param name="arg1">The first argument value</param>
+    /// <typeparam name="V2">The type of the second argument</typeparam>
+    /// <param name="arg2">The second argument value</param>
+    /// <typeparam name="V3">The type of the third argument</typeparam>
+    /// <param name="arg3">The third argument value</param>
+    /// <typeparam name="V4">The type of the fourth argument</typeparam>
+    /// <param name="arg4">The fourth argument value</param>
+    /// <typeparam name="V5">The type of the fifth argument</typeparam>
+    /// <param name="arg5">The fifth argument value</param>
+    /// <typeparam name="V6">The type of the sixth argument</typeparam>
+    /// <param name="arg6">The sixth argument value</param>
+    /// <typeparam name="V7">The type of the seventh argument</typeparam>
+    /// <param name="arg7">The seventh argument value</param>
+    /// <typeparam name="V8">The type of the eighth argument</typeparam>
+    /// <param name="arg8">The eighth argument value</param>
     public delegate void StaticProc<T, V1, V2, V3, V4, V5, V6, V7, V8>(V1 arg1, V2 arg2, V3 arg3, V4 arg4, V5 arg5, V6 arg6, V7 arg7, V8 arg8);
+
+    /// <summary>Defines a delegate to a static procedure (method that doesn't return anything) that takes nine
+    /// strong-typed arguments.</summary>
+    /// <typeparam name="T">The type of the static method target</typeparam>
+    /// <typeparam name="V1">The type of the first argument</typeparam>
+    /// <param name="arg1">The first argument value</param>
+    /// <typeparam name="V2">The type of the second argument</typeparam>
+    /// <param name="arg2">The second argument value</param>
+    /// <typeparam name="V3">The type of the third argument</typeparam>
+    /// <param name="arg3">The third argument value</param>
+    /// <typeparam name="V4">The type of the fourth argument</typeparam>
+    /// <param name="arg4">The fourth argument value</param>
+    /// <typeparam name="V5">The type of the fifth argument</typeparam>
+    /// <param name="arg5">The fifth argument value</param>
+    /// <typeparam name="V6">The type of the sixth argument</typeparam>
+    /// <param name="arg6">The sixth argument value</param>
+    /// <typeparam name="V7">The type of the seventh argument</typeparam>
+    /// <param name="arg7">The seventh argument value</param>
+    /// <typeparam name="V8">The type of the eighth argument</typeparam>
+    /// <param name="arg8">The eighth argument value</param>
+    /// <typeparam name="V9">The type of the ninth argument</typeparam>
+    /// <param name="arg9">The ninth argument value</param>
     public delegate void StaticProc<T, V1, V2, V3, V4, V5, V6, V7, V8, V9>(V1 arg1, V2 arg2, V3 arg3, V4 arg4, V5 arg5, V6 arg6, V7 arg7, V8 arg8, V9 arg9);
     #endregion
     #endregion
@@ -63,61 +460,365 @@ namespace Phydeaux.Utilities
 
     #region Functions (methods that return a TRet)
     #region Instance methods
-    // Late-bound argument list (e.g. params object[])
+    /// <summary>Defines a delegate to a instance function (method that return something) with a params array of weak-typed
+    /// argument values.</summary>
+    /// <typeparam name="T">The type of the instance method target</typeparam>
+    /// <typeparam name="TRet">The type of the return value</typeparam>
+    /// <param name="target">The target instance (this)</param>
+    /// <param name="parameters">The array of argument values (weak-typed)</param>
     public delegate TRet FuncParams<T, TRet>(T target, params object[] parameters);
 
     #region Explicit arguments
-    // Known return type (TRet), explicit arguments (up to 9, consider passing an object if you think you need more!)
+    /// <summary>Defines a delegate to a instance function (method that returns something) that takes no arguments.</summary>
+    /// <typeparam name="T">The type of the instance method target</typeparam>
+    /// <param name="target">The target instance (this)</param>
+    /// <typeparam name="TRet">The type of the return value</typeparam>
     public delegate TRet Func<T, TRet>(T target);
+
+    /// <summary>Defines a delegate to a instance function (method that returns something) that takes a single
+    /// strong-typed argument.</summary>
+    /// <typeparam name="T">The type of the instance method target</typeparam>
+    /// <param name="target">The target instance (this)</param>
+    /// <typeparam name="TRet">The type of the return value</typeparam>
+    /// <typeparam name="V1">The type of the first argument</typeparam>
+    /// <param name="arg1">The first argument value</param>
     public delegate TRet Func<T, TRet, V1>(T target, V1 arg1);
+
+    /// <summary>Defines a delegate to a instance function (method that returns something) that takes two
+    /// strong-typed arguments.</summary>
+    /// <typeparam name="T">The type of the instance method target</typeparam>
+    /// <param name="target">The target instance (this)</param>
+    /// <typeparam name="TRet">The type of the return value</typeparam>
+    /// <typeparam name="V1">The type of the first argument</typeparam>
+    /// <param name="arg1">The first argument value</param>
+    /// <typeparam name="V2">The type of the second argument</typeparam>
+    /// <param name="arg2">The second argument value</param>
     public delegate TRet Func<T, TRet, V1, V2>(T target, V1 arg1, V2 arg2);
+
+    /// <summary>Defines a delegate to a instance function (method that returns something) that takes three
+    /// strong-typed arguments.</summary>
+    /// <typeparam name="T">The type of the instance method target</typeparam>
+    /// <param name="target">The target instance (this)</param>
+    /// <typeparam name="TRet">The type of the return value</typeparam>
+    /// <typeparam name="V1">The type of the first argument</typeparam>
+    /// <param name="arg1">The first argument value</param>
+    /// <typeparam name="V2">The type of the second argument</typeparam>
+    /// <param name="arg2">The second argument value</param>
+    /// <typeparam name="V3">The type of the third argument</typeparam>
+    /// <param name="arg3">The third argument value</param>
     public delegate TRet Func<T, TRet, V1, V2, V3>(T target, V1 arg1, V2 arg2, V3 arg3);
+
+    /// <summary>Defines a delegate to a instance function (method that returns something) that takes four
+    /// strong-typed arguments.</summary>
+    /// <typeparam name="T">The type of the instance method target</typeparam>
+    /// <param name="target">The target instance (this)</param>
+    /// <typeparam name="TRet">The type of the return value</typeparam>
+    /// <typeparam name="V1">The type of the first argument</typeparam>
+    /// <param name="arg1">The first argument value</param>
+    /// <typeparam name="V2">The type of the second argument</typeparam>
+    /// <param name="arg2">The second argument value</param>
+    /// <typeparam name="V3">The type of the third argument</typeparam>
+    /// <param name="arg3">The third argument value</param>
+    /// <typeparam name="V4">The type of the fourth argument</typeparam>
+    /// <param name="arg4">The fourth argument value</param>
     public delegate TRet Func<T, TRet, V1, V2, V3, V4>(T target, V1 arg1, V2 arg2, V3 arg3, V4 arg4);
+
+    /// <summary>Defines a delegate to a instance function (method that returns something) that takes five
+    /// strong-typed arguments.</summary>
+    /// <typeparam name="T">The type of the instance method target</typeparam>
+    /// <param name="target">The target instance (this)</param>
+    /// <typeparam name="TRet">The type of the return value</typeparam>
+    /// <typeparam name="V1">The type of the first argument</typeparam>
+    /// <param name="arg1">The first argument value</param>
+    /// <typeparam name="V2">The type of the second argument</typeparam>
+    /// <param name="arg2">The second argument value</param>
+    /// <typeparam name="V3">The type of the third argument</typeparam>
+    /// <param name="arg3">The third argument value</param>
+    /// <typeparam name="V4">The type of the fourth argument</typeparam>
+    /// <param name="arg4">The fourth argument value</param>
+    /// <typeparam name="V5">The type of the fifth argument</typeparam>
+    /// <param name="arg5">The fifth argument value</param>
     public delegate TRet Func<T, TRet, V1, V2, V3, V4, V5>(T target, V1 arg1, V2 arg2, V3 arg3, V4 arg4, V5 arg5);
+
+    /// <summary>Defines a delegate to a instance function (method that returns something) that takes six
+    /// strong-typed arguments.</summary>
+    /// <typeparam name="T">The type of the instance method target</typeparam>
+    /// <param name="target">The target instance (this)</param>
+    /// <typeparam name="TRet">The type of the return value</typeparam>
+    /// <typeparam name="V1">The type of the first argument</typeparam>
+    /// <param name="arg1">The first argument value</param>
+    /// <typeparam name="V2">The type of the second argument</typeparam>
+    /// <param name="arg2">The second argument value</param>
+    /// <typeparam name="V3">The type of the third argument</typeparam>
+    /// <param name="arg3">The third argument value</param>
+    /// <typeparam name="V4">The type of the fourth argument</typeparam>
+    /// <param name="arg4">The fourth argument value</param>
+    /// <typeparam name="V5">The type of the fifth argument</typeparam>
+    /// <param name="arg5">The fifth argument value</param>
+    /// <typeparam name="V6">The type of the sixth argument</typeparam>
+    /// <param name="arg6">The sixth argument value</param>
     public delegate TRet Func<T, TRet, V1, V2, V3, V4, V5, V6>(T target, V1 arg1, V2 arg2, V3 arg3, V4 arg4, V5 arg5, V6 arg6);
+
+    /// <summary>Defines a delegate to a instance function (method that returns something) that takes seven
+    /// strong-typed arguments.</summary>
+    /// <typeparam name="T">The type of the instance method target</typeparam>
+    /// <param name="target">The target instance (this)</param>
+    /// <typeparam name="TRet">The type of the return value</typeparam>
+    /// <typeparam name="V1">The type of the first argument</typeparam>
+    /// <param name="arg1">The first argument value</param>
+    /// <typeparam name="V2">The type of the second argument</typeparam>
+    /// <param name="arg2">The second argument value</param>
+    /// <typeparam name="V3">The type of the third argument</typeparam>
+    /// <param name="arg3">The third argument value</param>
+    /// <typeparam name="V4">The type of the fourth argument</typeparam>
+    /// <param name="arg4">The fourth argument value</param>
+    /// <typeparam name="V5">The type of the fifth argument</typeparam>
+    /// <param name="arg5">The fifth argument value</param>
+    /// <typeparam name="V6">The type of the sixth argument</typeparam>
+    /// <param name="arg6">The sixth argument value</param>
+    /// <typeparam name="V7">The type of the seventh argument</typeparam>
+    /// <param name="arg7">The seventh argument value</param>
     public delegate TRet Func<T, TRet, V1, V2, V3, V4, V5, V6, V7>(T target, V1 arg1, V2 arg2, V3 arg3, V4 arg4, V5 arg5, V6 arg6, V7 arg7);
+
+    /// <summary>Defines a delegate to a instance function (method that returns something) that takes eight
+    /// strong-typed arguments.</summary>
+    /// <typeparam name="T">The type of the instance method target</typeparam>
+    /// <param name="target">The target instance (this)</param>
+    /// <typeparam name="TRet">The type of the return value</typeparam>
+    /// <typeparam name="V1">The type of the first argument</typeparam>
+    /// <param name="arg1">The first argument value</param>
+    /// <typeparam name="V2">The type of the second argument</typeparam>
+    /// <param name="arg2">The second argument value</param>
+    /// <typeparam name="V3">The type of the third argument</typeparam>
+    /// <param name="arg3">The third argument value</param>
+    /// <typeparam name="V4">The type of the fourth argument</typeparam>
+    /// <param name="arg4">The fourth argument value</param>
+    /// <typeparam name="V5">The type of the fifth argument</typeparam>
+    /// <param name="arg5">The fifth argument value</param>
+    /// <typeparam name="V6">The type of the sixth argument</typeparam>
+    /// <param name="arg6">The sixth argument value</param>
+    /// <typeparam name="V7">The type of the seventh argument</typeparam>
+    /// <param name="arg7">The seventh argument value</param>
+    /// <typeparam name="V8">The type of the eighth argument</typeparam>
+    /// <param name="arg8">The eighth argument value</param>
     public delegate TRet Func<T, TRet, V1, V2, V3, V4, V5, V6, V7, V8>(T target, V1 arg1, V2 arg2, V3 arg3, V4 arg4, V5 arg5, V6 arg6, V7 arg7, V8 arg8);
+
+    /// <summary>Defines a delegate to a instance function (method that returns something) that takes nine
+    /// strong-typed arguments.</summary>
+    /// <typeparam name="T">The type of the instance method target</typeparam>
+    /// <param name="target">The target instance (this)</param>
+    /// <typeparam name="TRet">The type of the return value</typeparam>
+    /// <typeparam name="V1">The type of the first argument</typeparam>
+    /// <param name="arg1">The first argument value</param>
+    /// <typeparam name="V2">The type of the second argument</typeparam>
+    /// <param name="arg2">The second argument value</param>
+    /// <typeparam name="V3">The type of the third argument</typeparam>
+    /// <param name="arg3">The third argument value</param>
+    /// <typeparam name="V4">The type of the fourth argument</typeparam>
+    /// <param name="arg4">The fourth argument value</param>
+    /// <typeparam name="V5">The type of the fifth argument</typeparam>
+    /// <param name="arg5">The fifth argument value</param>
+    /// <typeparam name="V6">The type of the sixth argument</typeparam>
+    /// <param name="arg6">The sixth argument value</param>
+    /// <typeparam name="V7">The type of the seventh argument</typeparam>
+    /// <param name="arg7">The seventh argument value</param>
+    /// <typeparam name="V8">The type of the eighth argument</typeparam>
+    /// <param name="arg8">The eighth argument value</param>
+    /// <typeparam name="V9">The type of the ninth argument</typeparam>
+    /// <param name="arg9">The ninth argument value</param>
     public delegate TRet Func<T, TRet, V1, V2, V3, V4, V5, V6, V7, V8, V9>(T target, V1 arg1, V2 arg2, V3 arg3, V4 arg4, V5 arg5, V6 arg6, V7 arg7, V8 arg8, V9 arg9);
     #endregion
     #endregion
 
     #region Static methods
-    // Late-bound argument list (e.g. params object[])
+    /// <summary>Defines a delegate to a static function (method that return something) with a params array of weak-typed
+    /// argument values.</summary>
+    /// <typeparam name="T">The type of the static method target</typeparam>
+    /// <typeparam name="TRet">The type of the return value</typeparam>
+    /// <param name="parameters">The array of argument values (weak-typed)</param>
     public delegate TRet StaticFuncParams<T, TRet>(params object[] parameters);
 
     #region Explicit arguments
+    /// <summary>Defines a delegate to a static function (method that returns something) that takes no arguments.</summary>
+    /// <typeparam name="T">The type of the static method target</typeparam>
+    /// <typeparam name="TRet">The type of the return value</typeparam>
     public delegate TRet StaticFunc<T, TRet>();
+
+    /// <summary>Defines a delegate to a static function (method that returns something) that takes a single
+    /// strong-typed argument.</summary>
+    /// <typeparam name="T">The type of the static method target</typeparam>
+    /// <typeparam name="TRet">The type of the return value</typeparam>
+    /// <typeparam name="V1">The type of the first argument</typeparam>
+    /// <param name="arg1">The first argument value</param>
     public delegate TRet StaticFunc<T, TRet, V1>(V1 arg1);
+
+    /// <summary>Defines a delegate to a static function (method that returns something) that takes two
+    /// strong-typed arguments.</summary>
+    /// <typeparam name="T">The type of the static method target</typeparam>
+    /// <typeparam name="TRet">The type of the return value</typeparam>
+    /// <typeparam name="V1">The type of the first argument</typeparam>
+    /// <param name="arg1">The first argument value</param>
+    /// <typeparam name="V2">The type of the second argument</typeparam>
+    /// <param name="arg2">The second argument value</param>
     public delegate TRet StaticFunc<T, TRet, V1, V2>(V1 arg1, V2 arg2);
+
+    /// <summary>Defines a delegate to a static function (method that returns something) that takes three
+    /// strong-typed arguments.</summary>
+    /// <typeparam name="T">The type of the static method target</typeparam>
+    /// <typeparam name="TRet">The type of the return value</typeparam>
+    /// <typeparam name="V1">The type of the first argument</typeparam>
+    /// <param name="arg1">The first argument value</param>
+    /// <typeparam name="V2">The type of the second argument</typeparam>
+    /// <param name="arg2">The second argument value</param>
+    /// <typeparam name="V3">The type of the third argument</typeparam>
+    /// <param name="arg3">The third argument value</param>
     public delegate TRet StaticFunc<T, TRet, V1, V2, V3>(V1 arg1, V2 arg2, V3 arg3);
+
+    /// <summary>Defines a delegate to a static function (method that returns something) that takes four
+    /// strong-typed arguments.</summary>
+    /// <typeparam name="T">The type of the static method target</typeparam>
+    /// <typeparam name="TRet">The type of the return value</typeparam>
+    /// <typeparam name="V1">The type of the first argument</typeparam>
+    /// <param name="arg1">The first argument value</param>
+    /// <typeparam name="V2">The type of the second argument</typeparam>
+    /// <param name="arg2">The second argument value</param>
+    /// <typeparam name="V3">The type of the third argument</typeparam>
+    /// <param name="arg3">The third argument value</param>
+    /// <typeparam name="V4">The type of the fourth argument</typeparam>
+    /// <param name="arg4">The fourth argument value</param>
     public delegate TRet StaticFunc<T, TRet, V1, V2, V3, V4>(V1 arg1, V2 arg2, V3 arg3, V4 arg4);
+
+    /// <summary>Defines a delegate to a static function (method that returns something) that takes five
+    /// strong-typed arguments.</summary>
+    /// <typeparam name="T">The type of the static method target</typeparam>
+    /// <typeparam name="TRet">The type of the return value</typeparam>
+    /// <typeparam name="V1">The type of the first argument</typeparam>
+    /// <param name="arg1">The first argument value</param>
+    /// <typeparam name="V2">The type of the second argument</typeparam>
+    /// <param name="arg2">The second argument value</param>
+    /// <typeparam name="V3">The type of the third argument</typeparam>
+    /// <param name="arg3">The third argument value</param>
+    /// <typeparam name="V4">The type of the fourth argument</typeparam>
+    /// <param name="arg4">The fourth argument value</param>
+    /// <typeparam name="V5">The type of the fifth argument</typeparam>
+    /// <param name="arg5">The fifth argument value</param>
     public delegate TRet StaticFunc<T, TRet, V1, V2, V3, V4, V5>(V1 arg1, V2 arg2, V3 arg3, V4 arg4, V5 arg5);
+
+    /// <summary>Defines a delegate to a static function (method that returns something) that takes six
+    /// strong-typed arguments.</summary>
+    /// <typeparam name="T">The type of the static method target</typeparam>
+    /// <typeparam name="TRet">The type of the return value</typeparam>
+    /// <typeparam name="V1">The type of the first argument</typeparam>
+    /// <param name="arg1">The first argument value</param>
+    /// <typeparam name="V2">The type of the second argument</typeparam>
+    /// <param name="arg2">The second argument value</param>
+    /// <typeparam name="V3">The type of the third argument</typeparam>
+    /// <param name="arg3">The third argument value</param>
+    /// <typeparam name="V4">The type of the fourth argument</typeparam>
+    /// <param name="arg4">The fourth argument value</param>
+    /// <typeparam name="V5">The type of the fifth argument</typeparam>
+    /// <param name="arg5">The fifth argument value</param>
+    /// <typeparam name="V6">The type of the sixth argument</typeparam>
+    /// <param name="arg6">The sixth argument value</param>
     public delegate TRet StaticFunc<T, TRet, V1, V2, V3, V4, V5, V6>(V1 arg1, V2 arg2, V3 arg3, V4 arg4, V5 arg5, V6 arg6);
+
+    /// <summary>Defines a delegate to a static function (method that returns something) that takes seven
+    /// strong-typed arguments.</summary>
+    /// <typeparam name="T">The type of the static method target</typeparam>
+    /// <typeparam name="TRet">The type of the return value</typeparam>
+    /// <typeparam name="V1">The type of the first argument</typeparam>
+    /// <param name="arg1">The first argument value</param>
+    /// <typeparam name="V2">The type of the second argument</typeparam>
+    /// <param name="arg2">The second argument value</param>
+    /// <typeparam name="V3">The type of the third argument</typeparam>
+    /// <param name="arg3">The third argument value</param>
+    /// <typeparam name="V4">The type of the fourth argument</typeparam>
+    /// <param name="arg4">The fourth argument value</param>
+    /// <typeparam name="V5">The type of the fifth argument</typeparam>
+    /// <param name="arg5">The fifth argument value</param>
+    /// <typeparam name="V6">The type of the sixth argument</typeparam>
+    /// <param name="arg6">The sixth argument value</param>
+    /// <typeparam name="V7">The type of the seventh argument</typeparam>
+    /// <param name="arg7">The seventh argument value</param>
     public delegate TRet StaticFunc<T, TRet, V1, V2, V3, V4, V5, V6, V7>(V1 arg1, V2 arg2, V3 arg3, V4 arg4, V5 arg5, V6 arg6, V7 arg7);
+
+    /// <summary>Defines a delegate to a static function (method that returns something) that takes eight
+    /// strong-typed arguments.</summary>
+    /// <typeparam name="T">The type of the static method target</typeparam>
+    /// <typeparam name="TRet">The type of the return value</typeparam>
+    /// <typeparam name="V1">The type of the first argument</typeparam>
+    /// <param name="arg1">The first argument value</param>
+    /// <typeparam name="V2">The type of the second argument</typeparam>
+    /// <param name="arg2">The second argument value</param>
+    /// <typeparam name="V3">The type of the third argument</typeparam>
+    /// <param name="arg3">The third argument value</param>
+    /// <typeparam name="V4">The type of the fourth argument</typeparam>
+    /// <param name="arg4">The fourth argument value</param>
+    /// <typeparam name="V5">The type of the fifth argument</typeparam>
+    /// <param name="arg5">The fifth argument value</param>
+    /// <typeparam name="V6">The type of the sixth argument</typeparam>
+    /// <param name="arg6">The sixth argument value</param>
+    /// <typeparam name="V7">The type of the seventh argument</typeparam>
+    /// <param name="arg7">The seventh argument value</param>
+    /// <typeparam name="V8">The type of the eighth argument</typeparam>
+    /// <param name="arg8">The eighth argument value</param>
     public delegate TRet StaticFunc<T, TRet, V1, V2, V3, V4, V5, V6, V7, V8>(V1 arg1, V2 arg2, V3 arg3, V4 arg4, V5 arg5, V6 arg6, V7 arg7, V8 arg8);
+
+    /// <summary>Defines a delegate to a static function (method that returns something) that takes nine
+    /// strong-typed arguments.</summary>
+    /// <typeparam name="T">The type of the static method target</typeparam>
+    /// <typeparam name="TRet">The type of the return value</typeparam>
+    /// <typeparam name="V1">The type of the first argument</typeparam>
+    /// <param name="arg1">The first argument value</param>
+    /// <typeparam name="V2">The type of the second argument</typeparam>
+    /// <param name="arg2">The second argument value</param>
+    /// <typeparam name="V3">The type of the third argument</typeparam>
+    /// <param name="arg3">The third argument value</param>
+    /// <typeparam name="V4">The type of the fourth argument</typeparam>
+    /// <param name="arg4">The fourth argument value</param>
+    /// <typeparam name="V5">The type of the fifth argument</typeparam>
+    /// <param name="arg5">The fifth argument value</param>
+    /// <typeparam name="V6">The type of the sixth argument</typeparam>
+    /// <param name="arg6">The sixth argument value</param>
+    /// <typeparam name="V7">The type of the seventh argument</typeparam>
+    /// <param name="arg7">The seventh argument value</param>
+    /// <typeparam name="V8">The type of the eighth argument</typeparam>
+    /// <param name="arg8">The eighth argument value</param>
+    /// <typeparam name="V9">The type of the ninth argument</typeparam>
+    /// <param name="arg9">The ninth argument value</param>
     public delegate TRet StaticFunc<T, TRet, V1, V2, V3, V4, V5, V6, V7, V8, V9>(V1 arg1, V2 arg2, V3 arg3, V4 arg4, V5 arg5, V6 arg6, V7 arg7, V8 arg8, V9 arg9);
     #endregion
     #endregion
     #endregion
     #endregion
 
-    // This marker enum is used to trigger the automatic matching of a delegate's argument list to the
-    // reflected method's parameter list
+    /// <summary>This is a "marker" enum used to trigger the automatic matching of a delegate's argument list to the
+    // reflected method's parameter list. It serves no other purpose other than to to disambiguate the possible overloads
+    // of the CreateDelegate method.</summary>
     public enum ParameterList
     {
         Auto
     }
 
-    /// <summary>
-    /// Exception thrown when the arguments passed to a delegate do not match the parameter count of the method being called
-    /// </summary>
+    /// <summary>Exception thrown when the arguments passed to a delegate do not match the parameter count of the method being called</summary>
     public class ParameterCountMismatchException : ArgumentException
     {
         private const string ErrorFormat = "Method {0}.{1} takes {2} arguments, passed {3}.";
 
-        /// <summary>
-        /// Constructs a ParameterCountMismatchException and fills in the error message based on the characteristics specified
-        /// </summary>
+        /// <summary>Checks the parameter counts and throws a ParameterCountMismatchException if they are not the same.</summary>
+        /// <param name="type">The Type the method is being called against</param>
+        /// <param name="methodName">The method name being called</param>
+        /// <param name="expectedParameterCount">The number of parameters that method expects</param>
+        /// <param name="actualArgumentCount">The number of arguments specified at call time (for Params-type delegates) or at
+        /// CreateDelegate time (for Explicit-type delegates)</param>
+        public static void CheckAndThrow(Type type, string methodName, int expectedParameterCount, int actualArgumentCount)
+        {
+            if (expectedParameterCount != actualArgumentCount)
+                throw new ParameterCountMismatchException(type, methodName, expectedParameterCount, actualArgumentCount);
+        }
+
+        /// <summary>Constructs a ParameterCountMismatchException and fills in the error message based on the characteristics 
+        /// specified</summary>
         /// <param name="type">The Type the method is being called against</param>
         /// <param name="methodName">The method name being called</param>
         /// <param name="expectedParameterCount">The number of parameters that method expects</param>
@@ -127,42 +828,48 @@ namespace Phydeaux.Utilities
             : base(string.Format(ErrorFormat, type, methodName, expectedParameterCount, actualArgumentCount))
         {
         }
+
+        // cache the reflection information on the ParameterCountMismatchException.CheckAndThrow method
+        static MethodInfo s_CheckAndThrow;
+        
+        public static MethodInfo CheckAndThrowMethodInfo
+        {
+            get
+            {
+                if (s_CheckAndThrow == null)
+                {
+                    s_CheckAndThrow = typeof(ParameterCountMismatchException).GetMethod("CheckAndThrow");
+                }
+
+                return s_CheckAndThrow;
+            }
+        }
     }
 
-    /// <summary>
-    /// Dynamic method wrapper class
-    /// </summary>
+    /// <summary>Dynamic method wrapper class</summary>
     /// <typeparam name="T">The type implementing the method desired.</typeparam>
     /// <remarks>
     /// You can use any reference or value-type, including built-in primitive types
     /// </remarks>
     public abstract class Dynamic<T>
     {
-        /// <summary>
-        /// Represents all instance constructors
-        /// </summary>
+        /// <summary>Represents all instance constructors</summary>
         public class Constructor
         {
-            /// <summary>
-            /// Represents Late-bound argument list (e.g. params object[])
-            /// </summary>
+            /// <summary>Represents Late-bound argument list (e.g. params object[])</summary>
             public class Params
                 : DynamicBase<ConstructorParams<T>>.Params.Constructor
             {
             }
 
             #region Explicit arguments
-            /// <summary>
-            /// Represents a constructor that takes known-typed argument list (empty)
-            /// </summary>
+            /// <summary>Represents a constructor that takes known-typed argument list (empty)</summary>
             public class Explicit
                 : DynamicBase<Constructor<T>>.Explicit.Constructor
             {
             }
 
-            /// <summary>
-            /// Represents constructor that takes known-typed argument list (one argument)
-            /// </summary>
+            /// <summary>Represents constructor that takes known-typed argument list (one argument)</summary>
             /// <typeparam name="V1">The type of the first argument</typeparam>
             /// <remarks>
             /// Argument types must be compatible, but need not exactly match the actual
@@ -174,9 +881,7 @@ namespace Phydeaux.Utilities
             {
             }
 
-            /// <summary>
-            /// Represents constructor that takes known-typed argument list (two arguments)
-            /// </summary>
+            /// <summary>Represents constructor that takes known-typed argument list (two arguments)</summary>
             /// <typeparam name="V1">The type of the first argument</typeparam>
             /// <typeparam name="V2">The type of the second argument</typeparam>
             /// <remarks>
@@ -189,9 +894,7 @@ namespace Phydeaux.Utilities
             {
             }
 
-            /// <summary>
-            /// Represents constructor that takes known-typed argument list (three arguments)
-            /// </summary>
+            /// <summary>Represents constructor that takes known-typed argument list (three arguments)</summary>
             /// <typeparam name="V1">The type of the first argument</typeparam>
             /// <typeparam name="V2">The type of the second argument</typeparam>
             /// <typeparam name="V3">The type of the third argument</typeparam>
@@ -205,9 +908,7 @@ namespace Phydeaux.Utilities
             {
             }
 
-            /// <summary>
-            /// Represents constructor that takes known-typed argument list (four arguments)
-            /// </summary>
+            /// <summary>Represents constructor that takes known-typed argument list (four arguments)</summary>
             /// <typeparam name="V1">The type of the first argument</typeparam>
             /// <typeparam name="V2">The type of the second argument</typeparam>
             /// <typeparam name="V3">The type of the third argument</typeparam>
@@ -222,9 +923,7 @@ namespace Phydeaux.Utilities
             {
             }
 
-            /// <summary>
-            /// Represents constructor that takes known-typed argument list (five arguments)
-            /// </summary>
+            /// <summary>Represents constructor that takes known-typed argument list (five arguments)</summary>
             /// <typeparam name="V1">The type of the first argument</typeparam>
             /// <typeparam name="V2">The type of the second argument</typeparam>
             /// <typeparam name="V3">The type of the third argument</typeparam>
@@ -240,9 +939,7 @@ namespace Phydeaux.Utilities
             {
             }
 
-            /// <summary>
-            /// Represents constructor that takes known-typed argument list (six arguments)
-            /// </summary>
+            /// <summary>Represents constructor that takes known-typed argument list (six arguments)</summary>
             /// <typeparam name="V1">The type of the first argument</typeparam>
             /// <typeparam name="V2">The type of the second argument</typeparam>
             /// <typeparam name="V3">The type of the third argument</typeparam>
@@ -259,9 +956,7 @@ namespace Phydeaux.Utilities
             {
             }
 
-            /// <summary>
-            /// Represents constructor that takes known-typed argument list (seven arguments)
-            /// </summary>
+            /// <summary>Represents constructor that takes known-typed argument list (seven arguments)</summary>
             /// <typeparam name="V1">The type of the first argument</typeparam>
             /// <typeparam name="V2">The type of the second argument</typeparam>
             /// <typeparam name="V3">The type of the third argument</typeparam>
@@ -279,9 +974,7 @@ namespace Phydeaux.Utilities
             {
             }
 
-            /// <summary>
-            /// Represents constructor that takes known-typed argument list (eight arguments)
-            /// </summary>
+            /// <summary>Represents constructor that takes known-typed argument list (eight arguments)</summary>
             /// <typeparam name="V1">The type of the first argument</typeparam>
             /// <typeparam name="V2">The type of the second argument</typeparam>
             /// <typeparam name="V3">The type of the third argument</typeparam>
@@ -300,9 +993,7 @@ namespace Phydeaux.Utilities
             {
             }
 
-            /// <summary>
-            /// Represents constructor that takes known-typed argument list (nine arguments)
-            /// </summary>
+            /// <summary>Represents constructor that takes known-typed argument list (nine arguments)</summary>
             /// <typeparam name="V1">The type of the first argument</typeparam>
             /// <typeparam name="V2">The type of the second argument</typeparam>
             /// <typeparam name="V3">The type of the third argument</typeparam>
@@ -324,94 +1015,47 @@ namespace Phydeaux.Utilities
             #endregion
         }
 
-        /// <summary>
-        /// Represents static methods (no "this" instance passed)
-        /// </summary>
+        /// <summary>Represents static methods (no "this" instance passed)</summary>
         public abstract class Static
         {
-            /// <summary>
-            /// Represents the static fields (for Get and/or Set)
-            /// </summary>
+            /// <summary>Represents the static fields (for Get and/or Set)</summary>
             /// <typeparam name="VF">The type of the field</typeparam>
             public abstract class Field<VF>
             {
-                /// <summary>
-                /// Represents Late-bound argument list (e.g. params object[])
-                /// </summary>
-                public abstract class Params
+                /// <summary>Represents a field-getter.</summary>
+                public abstract class Getter
+                    : DynamicBase<StaticFunc<T, VF>>.Explicit.Static.Field<VF>.Getter
                 {
-                    /// <summary>
-                    /// Represents a field-getter.
-                    /// </summary>
-                    public abstract class Getter
-                        : DynamicBase<StaticFuncParams<T, VF>>.Params.Static.Field.Getter<VF>
-                    {
-                    }
-
-                    /// <summary>
-                    /// Represents a field-setter.
-                    /// </summary>
-                    public abstract class Setter
-                        : DynamicBase<StaticProcParams<T>>.Params.Static.Field.Setter
-                    {
-                    }
                 }
 
-                /// <summary>
-                /// Represents methods that take known-typed argument list (empty)
-                /// </summary>
-                public abstract class Explicit
+                /// <summary>Represents a field-setter.</summary>
+                public abstract class Setter
+                    : DynamicBase<StaticProc<T, VF>>.Explicit.Static.Field<VF>.Setter
                 {
-                    /// <summary>
-                    /// Represents a field-getter.
-                    /// </summary>
-                    public abstract class Getter
-                        : DynamicBase<StaticFunc<T, VF>>.Explicit.Static.Field<VF>.Getter
-                    {
-                    }
-
-                    /// <summary>
-                    /// Represents a field-setter.
-                    /// </summary>
-                    public abstract class Setter
-                        : DynamicBase<StaticProc<T, VF>>.Explicit.Static.Field<VF>.Setter
-                    {
-                    }
                 }
             }
 
-            /// <summary>
-            /// Represents the static properties (for Get and/or Set with/with-out indexers)
-            /// </summary>
+            /// <summary>Represents the static properties (for Get and/or Set with/with-out indexers)</summary>
             /// <typeparam name="VP">The type of the property</typeparam>
             public abstract class Property<VP>
             {
-                /// <summary>
-                /// Represents Late-bound argument list (e.g. params object[])
-                /// </summary>
+                /// <summary>Represents Late-bound argument list (e.g. params object[])</summary>
                 public abstract class Params
                 {
-                    /// <summary>
-                    /// Represents property-get (methods that return a value)
-                    /// </summary>
-                    /// <typeparam name="TRet">The type of the return value</typeparam>
+                    /// <summary>Represents property-get (methods that return a value)</summary>
                     public abstract class Getter
                         : DynamicBase<StaticFuncParams<T, VP>>.Params.Static.Property.Getter<VP>
                     {
                     }
 
-                    /// <summary>
-                    /// Represents property-set (methods that return nothing)
-                    /// </summary>
+                    /// <summary>Represents property-set (methods that return nothing)</summary>
                     public abstract class Setter
                         : DynamicBase<StaticProcParams<T>>.Params.Static.Property.Setter
                     {
                     }
                 }
 
-                /// <summary>
-                /// Represents methods that take known-typed argument list (no indexer)
-                /// </summary>
+                /// <summary>Represents methods that take known-typed argument list (no indexer)</summary>
                 /// <remarks>
                 /// Argument types must be compatible, but need not exactly match the actual
                 /// method. This means that if the method takes an argument of type object,
@@ -419,26 +1063,20 @@ namespace Phydeaux.Utilities
                 /// </remarks>
                 public abstract class Explicit
                 {
-                    /// <summary>
-                    /// Represents property-get (methods that return a value)
-                    /// </summary>
+                    /// <summary>Represents property-get (methods that return a value)</summary>
                     public abstract class Getter
                         : DynamicBase<StaticFunc<T, VP>>.Explicit.Static.Property<VP>.Getter
                     {
                     }
 
-                    /// <summary>
-                    /// Represents property-set (methods that return nothing)
-                    /// </summary>
+                    /// <summary>property-set (methods that return nothing)</summary>
                     public abstract class Setter
                         : DynamicBase<StaticProc<T, VP>>.Explicit.Static.Property<VP>.Setter
                     {
                     }
                 }
 
-                /// <summary>
-                /// Represents methods that take known-typed argument list (one indexer argument)
-                /// </summary>
+                /// <summary>Represents methods that take known-typed argument list (one indexer argument)</summary>
                 /// <typeparam name="V1">The type of the first indexer argument</typeparam>
                 /// <remarks>
                 /// Argument types must be compatible, but need not exactly match the actual
@@ -447,26 +1085,20 @@ namespace Phydeaux.Utilities
                 /// </remarks>
                 public class Explicit<V1>
                 {
-                    /// <summary>
-                    /// Represents property-get (methods that return a value)
-                    /// </summary>
+                    /// <summary>Represents property-get (methods that return a value)</summary>
                     public abstract class Getter
                         : DynamicBase<StaticFunc<T, VP, V1>>.Explicit.Static.Property<VP>.Getter
                     {
                     }
 
-                    /// <summary>
-                    /// Represents property-set (methods that return nothing)
-                    /// </summary>
+                    /// <summary>Represents property-set (methods that return nothing)</summary>
                     public abstract class Setter
                         : DynamicBase<StaticProc<T, VP, V1>>.Explicit.Static.Property<VP>.Setter
                     {
                     }
                 }
 
-                /// <summary>
-                /// Represents methods that take known-typed argument list (two indexer arguments)
-                /// </summary>
+                /// <summary>Represents methods that take known-typed argument list (two indexer arguments)</summary>
                 /// <typeparam name="V1">The type of the first indexer argument</typeparam>
                 /// <typeparam name="V2">The type of the second indexer argument</typeparam>
                 /// <remarks>
@@ -476,26 +1108,20 @@ namespace Phydeaux.Utilities
                 /// </remarks>
                 public class Explicit<V1, V2>
                 {
-                    /// <summary>
-                    /// Represents property-get (methods that return a value)
-                    /// </summary>
+                    /// <summary>Represents property-get (methods that return a value)</summary>
                     public abstract class Getter
                         : DynamicBase<StaticFunc<T, VP, V1, V2>>.Explicit.Static.Property<VP>.Getter
                     {
                     }
 
-                    /// <summary>
-                    /// Represents property-set (methods that return nothing)
-                    /// </summary>
+                    /// <summary>Represents property-set (methods that return nothing)</summary>
                     public abstract class Setter
                         : DynamicBase<StaticProc<T, VP, V1, V2>>.Explicit.Static.Property<VP>.Setter
                     {
                     }
                 }
 
-                /// <summary>
-                /// Represents methods that take known-typed argument list (three indexer arguments)
-                /// </summary>
+                /// <summary>Represents methods that take known-typed argument list (three indexer arguments)</summary>
                 /// <typeparam name="V1">The type of the first indexer argument</typeparam>
                 /// <typeparam name="V2">The type of the second indexer argument</typeparam>
                 /// <typeparam name="V3">The type of the third indexer argument</typeparam>
@@ -506,26 +1132,20 @@ namespace Phydeaux.Utilities
                 /// </remarks>
                 public class Explicit<V1, V2, V3>
                 {
-                    /// <summary>
-                    /// Represents property-get (methods that return a value)
-                    /// </summary>
+                    /// <summary>Represents property-get (methods that return a value)</summary>
                     public abstract class Getter
                         : DynamicBase<StaticFunc<T, VP, V1, V2, V3>>.Explicit.Static.Property<VP>.Getter
                     {
                     }
 
-                    /// <summary>
-                    /// Represents property-set (methods that return nothing)
-                    /// </summary>
+                    /// <summary>Represents property-set (methods that return nothing)</summary>
                     public abstract class Setter
                         : DynamicBase<StaticProc<T, VP, V1, V2, V3>>.Explicit.Static.Property<VP>.Setter
                     {
                     }
                 }
 
-                /// <summary>
-                /// Represents methods that take known-typed argument list (four indexer arguments)
-                /// </summary>
+                /// <summary>Represents methods that take known-typed argument list (four indexer arguments)</summary>
                 /// <typeparam name="V1">The type of the first indexer argument</typeparam>
                 /// <typeparam name="V2">The type of the second indexer argument</typeparam>
                 /// <typeparam name="V3">The type of the third indexer argument</typeparam>
@@ -537,26 +1157,20 @@ namespace Phydeaux.Utilities
                 /// </remarks>
                 public class Explicit<V1, V2, V3, V4>
                 {
-                    /// <summary>
-                    /// Represents property-get (methods that return a value)
-                    /// </summary>
+                    /// <summary>Represents property-get (methods that return a value)</summary>
                     public abstract class Getter
                         : DynamicBase<StaticFunc<T, VP, V1, V2, V3, V4>>.Explicit.Static.Property<VP>.Getter
                     {
                     }
 
-                    /// <summary>
-                    /// Represents property-set (methods that return nothing)
-                    /// </summary>
+                    /// <summary>Represents property-set (methods that return nothing)</summary>
                     public abstract class Setter
                         : DynamicBase<StaticProc<T, VP, V1, V2, V3, V4>>.Explicit.Static.Property<VP>.Setter
                     {
                     }
                 }
 
-                /// <summary>
-                /// Represents methods that take known-typed argument list (five indexer arguments)
-                /// </summary>
+                /// <summary>Represents methods that take known-typed argument list (five indexer arguments)</summary>
                 /// <typeparam name="V1">The type of the first indexer argument</typeparam>
                 /// <typeparam name="V2">The type of the second indexer argument</typeparam>
                 /// <typeparam name="V3">The type of the third indexer argument</typeparam>
@@ -569,26 +1183,20 @@ namespace Phydeaux.Utilities
                 /// </remarks>
                 public class Explicit<V1, V2, V3, V4, V5>
                 {
-                    /// <summary>
-                    /// Represents property-get (methods that return a value)
-                    /// </summary>
+                    /// <summary>Represents property-get (methods that return a value)</summary>
                     public abstract class Getter
                         : DynamicBase<StaticFunc<T, VP, V1, V2, V3, V4, V5>>.Explicit.Static.Property<VP>.Getter
                     {
                     }
 
-                    /// <summary>
-                    /// Represents property-set (methods that return nothing)
-                    /// </summary>
+                    /// <summary>Represents property-set (methods that return nothing)</summary>
                     public abstract class Setter
                         : DynamicBase<StaticProc<T, VP, V1, V2, V3, V4, V5>>.Explicit.Static.Property<VP>.Setter
                     {
                     }
                 }
 
-                /// <summary>
-                /// Represents methods that take known-typed argument list (six indexer arguments)
-                /// </summary>
+                /// <summary>Represents methods that take known-typed argument list (six indexer arguments)</summary>
                 /// <typeparam name="V1">The type of the first indexer argument</typeparam>
                 /// <typeparam name="V2">The type of the second indexer argument</typeparam>
                 /// <typeparam name="V3">The type of the third indexer argument</typeparam>
@@ -602,26 +1210,20 @@ namespace Phydeaux.Utilities
                 /// </remarks>
                 public class Explicit<V1, V2, V3, V4, V5, V6>
                 {
-                    /// <summary>
-                    /// Represents property-get (methods that return a value)
-                    /// </summary>
+                    /// <summary>Represents property-get (methods that return a value)</summary>
                     public abstract class Getter
                         : DynamicBase<StaticFunc<T, VP, V1, V2, V3, V4, V5, V6>>.Explicit.Static.Property<VP>.Getter
                     {
                     }
 
-                    /// <summary>
-                    /// Represents property-set (methods that return nothing)
-                    /// </summary>
+                    /// <summary>Represents property-set (methods that return nothing)</summary>
                     public abstract class Setter
                         : DynamicBase<StaticProc<T, VP, V1, V2, V3, V4, V5, V6>>.Explicit.Static.Property<VP>.Setter
                     {
                     }
                 }
 
-                /// <summary>
-                /// Represents methods that take known-typed argument list (seven indexer arguments)
-                /// </summary>
+                /// <summary>Represents methods that take known-typed argument list (seven indexer arguments)</summary>
                 /// <typeparam name="V1">The type of the first indexer argument</typeparam>
                 /// <typeparam name="V2">The type of the second indexer argument</typeparam>
                 /// <typeparam name="V3">The type of the third indexer argument</typeparam>
@@ -636,26 +1238,20 @@ namespace Phydeaux.Utilities
                 /// </remarks>
                 public class Explicit<V1, V2, V3, V4, V5, V6, V7>
                 {
-                    /// <summary>
-                    /// Represents property-get (methods that return a value)
-                    /// </summary>
+                    /// <summary>Represents property-get (methods that return a value)</summary>
                     public abstract class Getter
                         : DynamicBase<StaticFunc<T, VP, V1, V2, V3, V4, V5, V6, V7>>.Explicit.Static.Property<VP>.Getter
                     {
                     }
 
-                    /// <summary>
-                    /// Represents property-set (methods that return nothing)
-                    /// </summary>
+                    /// <summary>Represents property-set (methods that return nothing)</summary>
                     public abstract class Setter
                         : DynamicBase<StaticProc<T, VP, V1, V2, V3, V4, V5, V6, V7>>.Explicit.Static.Property<VP>.Setter
                     {
                     }
                 }
 
-                /// <summary>
-                /// Represents methods that take known-typed argument list (eight indexer arguments)
-                /// </summary>
+                /// <summary>Represents methods that take known-typed argument list (eight indexer arguments)</summary>
                 /// <typeparam name="V1">The type of the first indexer argument</typeparam>
                 /// <typeparam name="V2">The type of the second indexer argument</typeparam>
                 /// <typeparam name="V3">The type of the third indexer argument</typeparam>
@@ -671,17 +1267,13 @@ namespace Phydeaux.Utilities
                 /// </remarks>
                 public class Explicit<V1, V2, V3, V4, V5, V6, V7, V8>
                 {
-                    /// <summary>
-                    /// Represents property-get (methods that return a value)
-                    /// </summary>
+                    /// <summary>Represents property-get (methods that return a value)</summary>
                     public abstract class Getter
                         : DynamicBase<StaticFunc<T, VP, V1, V2, V3, V4, V5, V6, V7, V8>>.Explicit.Static.Property<VP>.Getter
                     {
                     }
 
-                    /// <summary>
-                    /// Represents property-set (methods that return nothing)
-                    /// </summary>
+                    /// <summary>Represents property-set (methods that return nothing)</summary>
                     public abstract class Setter
                         : DynamicBase<StaticProc<T, VP, V1, V2, V3, V4, V5, V6, V7, V8>>.Explicit.Static.Property<VP>.Setter
                     {
@@ -689,30 +1281,22 @@ namespace Phydeaux.Utilities
                 }
             }
 
-            /// <summary>
-            /// Represents procedures (methods that return nothing)
-            /// </summary>
+            /// <summary>Represents procedures (methods that return nothing)</summary>
             public abstract class Procedure
             {
-                /// <summary>
-                /// Represents Late-bound argument list (e.g. params object[])
-                /// </summary>
+                /// <summary>Represents Late-bound argument list (e.g. params object[])</summary>
                 public class Params
                     : DynamicBase<StaticProcParams<T>>.Params.Static.Procedure
                 {
                 }
 
-                /// <summary>
-                /// Represents methods that take known-typed argument list (empty)
-                /// </summary>
+                /// <summary>Represents methods that take known-typed argument list (empty)</summary>
                 public class Explicit
                     : DynamicBase<StaticProc<T>>.Explicit.Static.Procedure
                 {
                 }
 
-                /// <summary>
-                /// Represents methods that take known-typed argument list (one argument)
-                /// </summary>
+                /// <summary>Represents methods that take known-typed argument list (one argument)</summary>
                 /// <typeparam name="V1">The type of the first argument</typeparam>
                 /// <remarks>
                 /// Argument types must be compatible, but need not exactly match the actual
@@ -724,9 +1308,7 @@ namespace Phydeaux.Utilities
                 {
                 }
 
-                /// <summary>
-                /// Represents methods that take known-typed argument list (two arguments)
-                /// </summary>
+                /// <summary>Represents methods that take known-typed argument list (two arguments)</summary>
                 /// <typeparam name="V1">The type of the first argument</typeparam>
                 /// <typeparam name="V2">The type of the second argument</typeparam>
                 /// <remarks>
@@ -739,9 +1321,7 @@ namespace Phydeaux.Utilities
                 {
                 }
 
-                /// <summary>
-                /// Represents methods that take known-typed argument list (three arguments)
-                /// </summary>
+                /// <summary>Represents methods that take known-typed argument list (three arguments)</summary>
                 /// <typeparam name="V1">The type of the first argument</typeparam>
                 /// <typeparam name="V2">The type of the second argument</typeparam>
                 /// <typeparam name="V3">The type of the third argument</typeparam>
@@ -755,9 +1335,7 @@ namespace Phydeaux.Utilities
                 {
                 }
 
-                /// <summary>
-                /// Represents methods that take known-typed argument list (four arguments)
-                /// </summary>
+                /// <summary>Represents methods that take known-typed argument list (four arguments)</summary>
                 /// <typeparam name="V1">The type of the first argument</typeparam>
                 /// <typeparam name="V2">The type of the second argument</typeparam>
                 /// <typeparam name="V3">The type of the third argument</typeparam>
@@ -772,9 +1350,7 @@ namespace Phydeaux.Utilities
                 {
                 }
 
-                /// <summary>
-                /// Represents methods that take known-typed argument list (five arguments)
-                /// </summary>
+                /// <summary>Represents methods that take known-typed argument list (five arguments)</summary>
                 /// <typeparam name="V1">The type of the first argument</typeparam>
                 /// <typeparam name="V2">The type of the second argument</typeparam>
                 /// <typeparam name="V3">The type of the third argument</typeparam>
@@ -790,9 +1366,7 @@ namespace Phydeaux.Utilities
                 {
                 }
 
-                /// <summary>
-                /// Represents methods that take known-typed argument list (six arguments)
-                /// </summary>
+                /// <summary>Represents methods that take known-typed argument list (six arguments)</summary>
                 /// <typeparam name="V1">The type of the first argument</typeparam>
                 /// <typeparam name="V2">The type of the second argument</typeparam>
                 /// <typeparam name="V3">The type of the third argument</typeparam>
@@ -809,9 +1383,7 @@ namespace Phydeaux.Utilities
                 {
                 }
 
-                /// <summary>
-                /// Represents methods that take known-typed argument list (seven arguments)
-                /// </summary>
+                /// <summary>Represents methods that take known-typed argument list (seven arguments)</summary>
                 /// <typeparam name="V1">The type of the first argument</typeparam>
                 /// <typeparam name="V2">The type of the second argument</typeparam>
                 /// <typeparam name="V3">The type of the third argument</typeparam>
@@ -829,9 +1401,7 @@ namespace Phydeaux.Utilities
                 {
                 }
 
-                /// <summary>
-                /// Represents methods that take known-typed argument list (eight arguments)
-                /// </summary>
+                /// <summary>Represents methods that take known-typed argument list (eight arguments)</summary>
                 /// <typeparam name="V1">The type of the first argument</typeparam>
                 /// <typeparam name="V2">The type of the second argument</typeparam>
                 /// <typeparam name="V3">The type of the third argument</typeparam>
@@ -850,9 +1420,7 @@ namespace Phydeaux.Utilities
                 {
                 }
 
-                /// <summary>
-                /// Represents methods that take known-typed argument list (nine arguments)
-                /// </summary>
+                /// <summary>Represents methods that take known-typed argument list (nine arguments)</summary>
                 /// <typeparam name="V1">The type of the first argument</typeparam>
                 /// <typeparam name="V2">The type of the second argument</typeparam>
                 /// <typeparam name="V3">The type of the third argument</typeparam>
@@ -873,31 +1441,23 @@ namespace Phydeaux.Utilities
                 }
             }
 
-            /// <summary>
-            /// Represents functions (methods that return a value)
-            /// </summary>
+            /// <summary>Represents functions (methods that return a value)</summary>
             /// <typeparam name="TRet">The type of the return value</typeparam>
             public abstract class Function<TRet>
             {
-                /// <summary>
-                /// Represents Late-bound argument list (e.g. params object[])
-                /// </summary>
+                /// <summary>Represents Late-bound argument list (e.g. params object[])</summary>
                 public class Params
                     : DynamicBase<StaticFuncParams<T, TRet>>.Params.Static.Function<TRet>
                 {
                 }
 
-                /// <summary>
-                /// Represents methods that take known-typed argument list (empty)
-                /// </summary>
+                /// <summary>Represents methods that take known-typed argument list (empty)</summary>
                 public class Explicit
                     : DynamicBase<StaticFunc<T, TRet>>.Explicit.Static.Function<TRet>
                 {
                 }
 
-                /// <summary>
-                /// Represents methods that take known-typed argument list (one argument)
-                /// </summary>
+                /// <summary>Represents methods that take known-typed argument list (one argument)</summary>
                 /// <typeparam name="V1">The type of the first argument</typeparam>
                 /// <remarks>
                 /// Argument types must be compatible, but need not exactly match the actual
@@ -909,9 +1469,7 @@ namespace Phydeaux.Utilities
                 {
                 }
 
-                /// <summary>
-                /// Represents methods that take known-typed argument list (two arguments)
-                /// </summary>
+                /// <summary>Represents methods that take known-typed argument list (two arguments)</summary>
                 /// <typeparam name="V1">The type of the first argument</typeparam>
                 /// <typeparam name="V2">The type of the second argument</typeparam>
                 /// <remarks>
@@ -924,9 +1482,7 @@ namespace Phydeaux.Utilities
                 {
                 }
 
-                /// <summary>
-                /// Represents methods that take known-typed argument list (three arguments)
-                /// </summary>
+                /// <summary>Represents methods that take known-typed argument list (three arguments)</summary>
                 /// <typeparam name="V1">The type of the first argument</typeparam>
                 /// <typeparam name="V2">The type of the second argument</typeparam>
                 /// <typeparam name="V3">The type of the third argument</typeparam>
@@ -940,9 +1496,7 @@ namespace Phydeaux.Utilities
                 {
                 }
 
-                /// <summary>
-                /// Represents methods that take known-typed argument list (four arguments)
-                /// </summary>
+                /// <summary>Represents methods that take known-typed argument list (four arguments)</summary>
                 /// <typeparam name="V1">The type of the first argument</typeparam>
                 /// <typeparam name="V2">The type of the second argument</typeparam>
                 /// <typeparam name="V3">The type of the third argument</typeparam>
@@ -957,9 +1511,7 @@ namespace Phydeaux.Utilities
                 {
                 }
 
-                /// <summary>
-                /// Represents methods that take known-typed argument list (five arguments)
-                /// </summary>
+                /// <summary>Represents methods that take known-typed argument list (five arguments)</summary>
                 /// <typeparam name="V1">The type of the first argument</typeparam>
                 /// <typeparam name="V2">The type of the second argument</typeparam>
                 /// <typeparam name="V3">The type of the third argument</typeparam>
@@ -975,9 +1527,7 @@ namespace Phydeaux.Utilities
                 {
                 }
 
-                /// <summary>
-                /// Represents methods that take known-typed argument list (six arguments)
-                /// </summary>
+                /// <summary>Represents methods that take known-typed argument list (six arguments)</summary>
                 /// <typeparam name="V1">The type of the first argument</typeparam>
                 /// <typeparam name="V2">The type of the second argument</typeparam>
                 /// <typeparam name="V3">The type of the third argument</typeparam>
@@ -994,9 +1544,7 @@ namespace Phydeaux.Utilities
                 {
                 }
 
-                /// <summary>
-                /// Represents methods that take known-typed argument list (seven arguments)
-                /// </summary>
+                /// <summary>Represents methods that take known-typed argument list (seven arguments)</summary>
                 /// <typeparam name="V1">The type of the first argument</typeparam>
                 /// <typeparam name="V2">The type of the second argument</typeparam>
                 /// <typeparam name="V3">The type of the third argument</typeparam>
@@ -1014,9 +1562,7 @@ namespace Phydeaux.Utilities
                 {
                 }
 
-                /// <summary>
-                /// Represents methods that take known-typed argument list (eight arguments)
-                /// </summary>
+                /// <summary>Represents methods that take known-typed argument list (eight arguments)</summary>
                 /// <typeparam name="V1">The type of the first argument</typeparam>
                 /// <typeparam name="V2">The type of the second argument</typeparam>
                 /// <typeparam name="V3">The type of the third argument</typeparam>
@@ -1035,9 +1581,7 @@ namespace Phydeaux.Utilities
                 {
                 }
 
-                /// <summary>
-                /// Represents methods that take known-typed argument list (nine arguments)
-                /// </summary>
+                /// <summary>Represents methods that take known-typed argument list (nine arguments)</summary>
                 /// <typeparam name="V1">The type of the first argument</typeparam>
                 /// <typeparam name="V2">The type of the second argument</typeparam>
                 /// <typeparam name="V3">The type of the third argument</typeparam>
@@ -1059,94 +1603,47 @@ namespace Phydeaux.Utilities
             }
         }
 
-        /// <summary>
-        /// Represents instance methods (those that get a "this" argument)
-        /// </summary>
+        /// <summary>Represents instance methods (those that get a "this" argument)</summary>
         public abstract class Instance
         {
-            /// <summary>
-            /// Represents the instance fields (for Get and/or Set)
-            /// </summary>
+            /// <summary>Represents the instance fields (for Get and/or Set</summary>
             /// <typeparam name="VF">The type of the field</typeparam>
             public abstract class Field<VF>
             {
-                /// <summary>
-                /// Represents Late-bound argument list (e.g. params object[])
-                /// </summary>
-                public abstract class Params
+                /// <summary>Represents a field-getter</summary>
+                public abstract class Getter
+                    : DynamicBase<Func<T, VF>>.Explicit.Instance.Field<VF>.Getter
                 {
-                    /// <summary>
-                    /// Represents a field-getter.
-                    /// </summary>
-                    /// <typeparam name="TRet">The type of the field (in our view)</typeparam>
-                    public abstract class Getter
-                        : DynamicBase<FuncParams<T, VF>>.Params.Instance.Field<VF>.Getter
-                    {
-                    }
-
-                    /// <summary>
-                    /// Represents a field-setter.
-                    /// </summary>
-                    public abstract class Setter
-                        : DynamicBase<ProcParams<T>>.Params.Instance.Field<VF>.Setter
-                    {
-                    }
                 }
 
-                /// <summary>
-                /// Represents methods that take known-typed argument list (empty)
-                /// </summary>
-                public abstract class Explicit
+                /// <summary>Represents a field-setter</summary>
+                public abstract class Setter
+                    : DynamicBase<Proc<T, VF>>.Explicit.Instance.Field<VF>.Setter
                 {
-                    /// <summary>
-                    /// Represents a field-getter.
-                    /// </summary>
-                    public abstract class Getter
-                        : DynamicBase<Func<T, VF>>.Explicit.Instance.Field<VF>.Getter
-                    {
-                    }
-
-                    /// <summary>
-                    /// Represents a field-setter.
-                    /// </summary>
-                    public abstract class Setter
-                        : DynamicBase<Proc<T, VF>>.Explicit.Instance.Field<VF>.Setter
-                    {
-                    }
                 }
             }
 
-            /// <summary>
-            /// Represents the static properties (for Get and/or Set with/with-out indexers)
-            /// </summary>
+            /// <summary>Represents the static properties (for Get and/or Set with/with-out indexers</summary>
             /// <typeparam name="VP">The type of the property</typeparam>
             public abstract class Property<VP>
             {
-                /// <summary>
-                /// Represents Late-bound argument list (e.g. params object[])
-                /// </summary>
+                /// <summary>Represents Late-bound argument list (e.g. params object[])</summary>
                 public abstract class Params
                 {
-                    /// <summary>
-                    /// Represents property-get (methods that return a value)
-                    /// </summary>
+                    /// <summary>Represents property-get (methods that return a value)</summary>
                     public abstract class Getter
                         : DynamicBase<FuncParams<T, VP>>.Params.Instance.Property<VP>.Getter
                     {
                     }
 
-                    /// <summary>
-                    /// Represents property-set (methods that return nothing)
-                    /// </summary>
+                    /// <summary>Represents property-set (methods that return nothing</summary>
                     public abstract class Setter
                         : DynamicBase<ProcParams<T>>.Params.Instance.Property<VP>.Setter
                     {
                     }
                 }
 
-                /// <summary>
-                /// Represents methods that take known-typed argument list (no indexer)
-                /// </summary>
+                /// <summary>Represents methods that take known-typed argument list (no indexer)</summary>
                 /// <remarks>
                 /// Argument types must be compatible, but need not exactly match the actual
                 /// method. This means that if the method takes an argument of type object,
@@ -1154,26 +1651,20 @@ namespace Phydeaux.Utilities
                 /// </remarks>
                 public abstract class Explicit
                 {
-                    /// <summary>
-                    /// Represents property-get (methods that return a value)
-                    /// </summary>
+                    /// <summary>Represents property-get (methods that return a value</summary>
                     public abstract class Getter
                         : DynamicBase<Func<T, VP>>.Explicit.Instance.Property<VP>.Getter
                     {
                     }
 
-                    /// <summary>
-                    /// Represents property-set (methods that return nothing)
-                    /// </summary>
+                    /// <summary>Represents property-set (methods that return nothing</summary>
                     public abstract class Setter
                         : DynamicBase<Proc<T, VP>>.Explicit.Instance.Property<VP>.Setter
                     {
                     }
                 }
 
-                /// <summary>
-                /// Represents methods that take known-typed argument list (one indexer argument)
-                /// </summary>
+                /// <summary>Represents methods that take known-typed argument list (one indexer argument)</summary>
                 /// <typeparam name="V1">The type of the first indexer argument</typeparam>
                 /// <remarks>
                 /// Argument types must be compatible, but need not exactly match the actual
@@ -1182,26 +1673,20 @@ namespace Phydeaux.Utilities
                 /// </remarks>
                 public class Explicit<V1>
                 {
-                    /// <summary>
-                    /// Represents property-get (methods that return a value)
-                    /// </summary>
+                    /// <summary>Represents property-get (methods that return a value</summary>
                     public abstract class Getter
                         : DynamicBase<Func<T, VP, V1>>.Explicit.Instance.Property<VP>.Getter
                     {
                     }
 
-                    /// <summary>
-                    /// Represents property-set (methods that return nothing)
-                    /// </summary>
+                    /// <summary>Represents property-set (methods that return nothing</summary>
                     public abstract class Setter
                         : DynamicBase<Proc<T, VP, V1>>.Explicit.Instance.Property<VP>.Setter
                     {
                     }
                 }
 
-                /// <summary>
-                /// Represents methods that take known-typed argument list (two indexer arguments)
-                /// </summary>
+                /// <summary>Represents methods that take known-typed argument list (two indexer arguments)</summary>
                 /// <typeparam name="V1">The type of the first indexer argument</typeparam>
                 /// <typeparam name="V2">The type of the second indexer argument</typeparam>
                 /// <remarks>
@@ -1211,26 +1696,20 @@ namespace Phydeaux.Utilities
                 /// </remarks>
                 public class Explicit<V1, V2>
                 {
-                    /// <summary>
-                    /// Represents property-get (methods that return a value)
-                    /// </summary>
+                    /// <summary>Represents property-get (methods that return a value</summary>
                     public abstract class Getter
                         : DynamicBase<Func<T, VP, V1, V2>>.Explicit.Instance.Property<VP>.Getter
                     {
                     }
 
-                    /// <summary>
-                    /// Represents property-set (methods that return nothing)
-                    /// </summary>
+                    /// <summary>Represents property-set (methods that return nothing</summary>
                     public abstract class Setter
                         : DynamicBase<Proc<T, VP, V1, V2>>.Explicit.Instance.Property<VP>.Setter
                     {
                     }
                 }
 
-                /// <summary>
-                /// Represents methods that take known-typed argument list (three indexer arguments)
-                /// </summary>
+                /// <summary>Represents methods that take known-typed argument list (three indexer arguments)</summary>
                 /// <typeparam name="V1">The type of the first indexer argument</typeparam>
                 /// <typeparam name="V2">The type of the second indexer argument</typeparam>
                 /// <typeparam name="V3">The type of the third indexer argument</typeparam>
@@ -1241,26 +1720,20 @@ namespace Phydeaux.Utilities
                 /// </remarks>
                 public class Explicit<V1, V2, V3>
                 {
-                    /// <summary>
-                    /// Represents property-get (methods that return a value)
-                    /// </summary>
+                    /// <summary>Represents property-get (methods that return a value</summary>
                     public abstract class Getter
                         : DynamicBase<Func<T, VP, V1, V2, V3>>.Explicit.Instance.Property<VP>.Getter
                     {
                     }
 
-                    /// <summary>
-                    /// Represents property-set (methods that return nothing)
-                    /// </summary>
+                    /// <summary>Represents property-set (methods that return nothing</summary>
                     public abstract class Setter
                         : DynamicBase<Proc<T, VP, V1, V2, V3>>.Explicit.Instance.Property<VP>.Setter
                     {
                     }
                 }
 
-                /// <summary>
-                /// Represents methods that take known-typed argument list (four indexer arguments)
-                /// </summary>
+                /// <summary>Represents methods that take known-typed argument list (four indexer arguments)</summary>
                 /// <typeparam name="V1">The type of the first indexer argument</typeparam>
                 /// <typeparam name="V2">The type of the second indexer argument</typeparam>
                 /// <typeparam name="V3">The type of the third indexer argument</typeparam>
@@ -1272,26 +1745,20 @@ namespace Phydeaux.Utilities
                 /// </remarks>
                 public class Explicit<V1, V2, V3, V4>
                 {
-                    /// <summary>
-                    /// Represents property-get (methods that return a value)
-                    /// </summary>
+                    /// <summary>Represents property-get (methods that return a value</summary>
                     public abstract class Getter
                         : DynamicBase<Func<T, VP, V1, V2, V3, V4>>.Explicit.Instance.Property<VP>.Getter
                     {
                     }
 
-                    /// <summary>
-                    /// Represents property-set (methods that return nothing)
-                    /// </summary>
+                    /// <summary>Represents property-set (methods that return nothing</summary>
                     public abstract class Setter
                         : DynamicBase<Proc<T, VP, V1, V2, V3, V4>>.Explicit.Instance.Property<VP>.Setter
                     {
                     }
                 }
 
-                /// <summary>
-                /// Represents methods that take known-typed argument list (five indexer arguments)
-                /// </summary>
+                /// <summary>Represents methods that take known-typed argument list (five indexer arguments)</summary>
                 /// <typeparam name="V1">The type of the first indexer argument</typeparam>
                 /// <typeparam name="V2">The type of the second indexer argument</typeparam>
                 /// <typeparam name="V3">The type of the third indexer argument</typeparam>
@@ -1304,26 +1771,20 @@ namespace Phydeaux.Utilities
                 /// </remarks>
                 public class Explicit<V1, V2, V3, V4, V5>
                 {
-                    /// <summary>
-                    /// Represents property-get (methods that return a value)
-                    /// </summary>
+                    /// <summary>Represents property-get (methods that return a value</summary>
                     public abstract class Getter
                         : DynamicBase<Func<T, VP, V1, V2, V3, V4, V5>>.Explicit.Instance.Property<VP>.Getter
                     {
                     }
 
-                    /// <summary>
-                    /// Represents property-set (methods that return nothing)
-                    /// </summary>
+                    /// <summary>Represents property-set (methods that return nothing</summary>
                     public abstract class Setter
                         : DynamicBase<Proc<T, VP, V1, V2, V3, V4, V5>>.Explicit.Instance.Property<VP>.Setter
                     {
                     }
                 }
 
-                /// <summary>
-                /// Represents methods that take known-typed argument list (six indexer arguments)
-                /// </summary>
+                /// <summary>Represents methods that take known-typed argument list (six indexer arguments)</summary>
                 /// <typeparam name="V1">The type of the first indexer argument</typeparam>
                 /// <typeparam name="V2">The type of the second indexer argument</typeparam>
                 /// <typeparam name="V3">The type of the third indexer argument</typeparam>
@@ -1337,26 +1798,20 @@ namespace Phydeaux.Utilities
                 /// </remarks>
                 public class Explicit<V1, V2, V3, V4, V5, V6>
                 {
-                    /// <summary>
-                    /// Represents property-get (methods that return a value)
-                    /// </summary>
+                    /// <summary>Represents property-get (methods that return a value</summary>
                     public abstract class Getter
                         : DynamicBase<Func<T, VP, V1, V2, V3, V4, V5, V6>>.Explicit.Instance.Property<VP>.Getter
                     {
                     }
 
-                    /// <summary>
-                    /// Represents property-set (methods that return nothing)
-                    /// </summary>
+                    /// <summary>Represents property-set (methods that return nothing</summary>
                     public abstract class Setter
                         : DynamicBase<Proc<T, VP, V1, V2, V3, V4, V5, V6>>.Explicit.Instance.Property<VP>.Setter
                     {
                     }
                 }
 
-                /// <summary>
-                /// Represents methods that take known-typed argument list (seven indexer arguments)
-                /// </summary>
+                /// <summary>Represents methods that take known-typed argument list (seven indexer arguments)</summary>
                 /// <typeparam name="V1">The type of the first indexer argument</typeparam>
                 /// <typeparam name="V2">The type of the second indexer argument</typeparam>
                 /// <typeparam name="V3">The type of the third indexer argument</typeparam>
@@ -1371,26 +1826,20 @@ namespace Phydeaux.Utilities
                 /// </remarks>
                 public class Explicit<V1, V2, V3, V4, V5, V6, V7>
                 {
-                    /// <summary>
-                    /// Represents property-get (methods that return a value)
-                    /// </summary>
+                    /// <summary>Represents property-get (methods that return a value</summary>
                     public abstract class Getter
                         : DynamicBase<Func<T, VP, V1, V2, V3, V4, V5, V6, V7>>.Explicit.Instance.Property<VP>.Getter
                     {
                     }
 
-                    /// <summary>
-                    /// Represents property-set (methods that return nothing)
-                    /// </summary>
+                    /// <summary>Represents property-set (methods that return nothing</summary>
                     public abstract class Setter
                         : DynamicBase<Proc<T, VP, V1, V2, V3, V4, V5, V6, V7>>.Explicit.Instance.Property<VP>.Setter
                     {
                     }
                 }
 
-                /// <summary>
-                /// Represents methods that take known-typed argument list (eight indexer arguments)
-                /// </summary>
+                /// <summary>Represents methods that take known-typed argument list (eight indexer arguments)</summary>
                 /// <typeparam name="V1">The type of the first indexer argument</typeparam>
                 /// <typeparam name="V2">The type of the second indexer argument</typeparam>
                 /// <typeparam name="V3">The type of the third indexer argument</typeparam>
@@ -1406,17 +1855,13 @@ namespace Phydeaux.Utilities
                 /// </remarks>
                 public class Explicit<V1, V2, V3, V4, V5, V6, V7, V8>
                 {
-                    /// <summary>
-                    /// Represents property-get (methods that return a value)
-                    /// </summary>
+                    /// <summary>Represents property-get (methods that return a value</summary>
                     public abstract class Getter
                         : DynamicBase<Func<T, VP, V1, V2, V3, V4, V5, V6, V7, V8>>.Explicit.Instance.Property<VP>.Getter
                     {
                     }
 
-                    /// <summary>
-                    /// Represents property-set (methods that return nothing)
-                    /// </summary>
+                    /// <summary>Represents property-set (methods that return nothing</summary>
                     public abstract class Setter
                         : DynamicBase<Proc<T, VP, V1, V2, V3, V4, V5, V6, V7, V8>>.Explicit.Instance.Property<VP>.Setter
                     {
@@ -1424,30 +1869,22 @@ namespace Phydeaux.Utilities
                 }
             }
 
-            /// <summary>
-            /// Represents procedures (methods that return nothing)
-            /// </summary>
+            /// <summary>Represents procedures (methods that return nothing</summary>
             public abstract class Procedure
             {
-                /// <summary>
-                /// Represents Late-bound argument list (e.g. params object[])
-                /// </summary>
+                /// <summary>Represents Late-bound argument list (e.g. params object[]</summary>
                 public class Params
                     : DynamicBase<ProcParams<T>>.Params.Instance.Procedure
                 {
                 }
 
-                /// <summary>
-                /// Represents methods that take known-typed argument list (empty)
-                /// </summary>
+                /// <summary>Represents methods that take known-typed argument list (empty</summary>
                 public class Explicit
                     : DynamicBase<Proc<T>>.Explicit.Instance.Procedure
                 {
                 }
 
-                /// <summary>
-                /// Represents methods that take known-typed argument list (one argument)
-                /// </summary>
+                /// <summary>Represents methods that take known-typed argument list (one argument</summary>
                 /// <typeparam name="V1">The type of the first argument</typeparam>
                 /// <remarks>
                 /// Argument types must be compatible, but need not exactly match the actual
@@ -1459,9 +1896,7 @@ namespace Phydeaux.Utilities
                 {
                 }
 
-                /// <summary>
-                /// Represents methods that take known-typed argument list (two arguments)
-                /// </summary>
+                /// <summary>Represents methods that take known-typed argument list (two arguments</summary>
                 /// <typeparam name="V1">The type of the first argument</typeparam>
                 /// <typeparam name="V2">The type of the second argument</typeparam>
                 /// <remarks>
@@ -1474,9 +1909,7 @@ namespace Phydeaux.Utilities
                 {
                 }
 
-                /// <summary>
-                /// Represents methods that take known-typed argument list (three arguments)
-                /// </summary>
+                /// <summary>Represents methods that take known-typed argument list (three arguments</summary>
                 /// <typeparam name="V1">The type of the first argument</typeparam>
                 /// <typeparam name="V2">The type of the second argument</typeparam>
                 /// <typeparam name="V3">The type of the third argument</typeparam>
@@ -1490,9 +1923,7 @@ namespace Phydeaux.Utilities
                 {
                 }
 
-                /// <summary>
-                /// Represents methods that take known-typed argument list (four arguments)
-                /// </summary>
+                /// <summary>Represents methods that take known-typed argument list (four arguments</summary>
                 /// <typeparam name="V1">The type of the first argument</typeparam>
                 /// <typeparam name="V2">The type of the second argument</typeparam>
                 /// <typeparam name="V3">The type of the third argument</typeparam>
@@ -1507,9 +1938,7 @@ namespace Phydeaux.Utilities
                 {
                 }
 
-                /// <summary>
-                /// Represents methods that take known-typed argument list (five arguments)
-                /// </summary>
+                /// <summary>Represents methods that take known-typed argument list (five arguments</summary>
                 /// <typeparam name="V1">The type of the first argument</typeparam>
                 /// <typeparam name="V2">The type of the second argument</typeparam>
                 /// <typeparam name="V3">The type of the third argument</typeparam>
@@ -1525,9 +1954,7 @@ namespace Phydeaux.Utilities
                 {
                 }
 
-                /// <summary>
-                /// Represents methods that take known-typed argument list (six arguments)
-                /// </summary>
+                /// <summary>Represents methods that take known-typed argument list (six arguments</summary>
                 /// <typeparam name="V1">The type of the first argument</typeparam>
                 /// <typeparam name="V2">The type of the second argument</typeparam>
                 /// <typeparam name="V3">The type of the third argument</typeparam>
@@ -1544,9 +1971,7 @@ namespace Phydeaux.Utilities
                 {
                 }
 
-                /// <summary>
-                /// Represents methods that take known-typed argument list (seven arguments)
-                /// </summary>
+                /// <summary>Represents methods that take known-typed argument list (seven arguments</summary>
                 /// <typeparam name="V1">The type of the first argument</typeparam>
                 /// <typeparam name="V2">The type of the second argument</typeparam>
                 /// <typeparam name="V3">The type of the third argument</typeparam>
@@ -1564,9 +1989,7 @@ namespace Phydeaux.Utilities
                 {
                 }
 
-                /// <summary>
-                /// Represents methods that take known-typed argument list (eight arguments)
-                /// </summary>
+                /// <summary>Represents methods that take known-typed argument list (eight arguments</summary>
                 /// <typeparam name="V1">The type of the first argument</typeparam>
                 /// <typeparam name="V2">The type of the second argument</typeparam>
                 /// <typeparam name="V3">The type of the third argument</typeparam>
@@ -1585,9 +2008,7 @@ namespace Phydeaux.Utilities
                 {
                 }
 
-                /// <summary>
-                /// Represents methods that take known-typed argument list (nine arguments)
-                /// </summary>
+                /// <summary>Represents methods that take known-typed argument list (nine arguments</summary>
                 /// <typeparam name="V1">The type of the first argument</typeparam>
                 /// <typeparam name="V2">The type of the second argument</typeparam>
                 /// <typeparam name="V3">The type of the third argument</typeparam>
@@ -1608,31 +2029,23 @@ namespace Phydeaux.Utilities
                 }
             }
 
-            /// <summary>
-            /// Represents functions (methods that return a value)
-            /// </summary>
+            /// <summary>Represents functions (methods that return a value</summary>
             /// <typeparam name="TRet">The type of the return value</typeparam>
             public abstract class Function<TRet>
             {
-                /// <summary>
-                /// Represents Late-bound argument list (e.g. params object[])
-                /// </summary>
+                /// <summary>Represents Late-bound argument list (e.g. params object[]</summary>
                 public class Params
                     : DynamicBase<FuncParams<T, TRet>>.Params.Instance.Function<TRet>
                 {
                 }
 
-                /// <summary>
-                /// Represents methods with no arguments
-                /// </summary>
+                /// <summary>Represents methods with no argument</summary>
                 public class Explicit
                     : DynamicBase<Func<T, TRet>>.Explicit.Instance.Function<TRet>
                 {
                 }
 
-                /// <summary>
-                /// Represents methods that take known-typed argument list (one argument)
-                /// </summary>
+                /// <summary>Represents methods that take known-typed argument list (one argument</summary>
                 /// <typeparam name="V1">The type of the first argument</typeparam>
                 /// <remarks>
                 /// Argument types must be compatible, but need not exactly match the actual
@@ -1644,9 +2057,7 @@ namespace Phydeaux.Utilities
                 {
                 }
 
-                /// <summary>
-                /// Represents methods that take known-typed argument list (two arguments)
-                /// </summary>
+                /// <summary>Represents methods that take known-typed argument list (two arguments</summary>
                 /// <typeparam name="V1">The type of the first argument</typeparam>
                 /// <typeparam name="V2">The type of the second argument</typeparam>
                 /// <remarks>
@@ -1659,9 +2070,7 @@ namespace Phydeaux.Utilities
                 {
                 }
 
-                /// <summary>
-                /// Represents methods that take known-typed argument list (three arguments)
-                /// </summary>
+                /// <summary>Represents methods that take known-typed argument list (three arguments</summary>
                 /// <typeparam name="V1">The type of the first argument</typeparam>
                 /// <typeparam name="V2">The type of the second argument</typeparam>
                 /// <typeparam name="V3">The type of the third argument</typeparam>
@@ -1675,9 +2084,7 @@ namespace Phydeaux.Utilities
                 {
                 }
 
-                /// <summary>
-                /// Represents methods that take known-typed argument list (four arguments)
-                /// </summary>
+                /// <summary>Represents methods that take known-typed argument list (four arguments</summary>
                 /// <typeparam name="V1">The type of the first argument</typeparam>
                 /// <typeparam name="V2">The type of the second argument</typeparam>
                 /// <typeparam name="V3">The type of the third argument</typeparam>
@@ -1692,9 +2099,7 @@ namespace Phydeaux.Utilities
                 {
                 }
 
-                /// <summary>
-                /// Represents methods that take known-typed argument list (five arguments)
-                /// </summary>
+                /// <summary>Represents methods that take known-typed argument list (five arguments</summary>
                 /// <typeparam name="V1">The type of the first argument</typeparam>
                 /// <typeparam name="V2">The type of the second argument</typeparam>
                 /// <typeparam name="V3">The type of the third argument</typeparam>
@@ -1710,9 +2115,7 @@ namespace Phydeaux.Utilities
                 {
                 }
 
-                /// <summary>
-                /// Represents methods that take known-typed argument list (six arguments)
-                /// </summary>
+                /// <summary>Represents methods that take known-typed argument list (six arguments</summary>
                 /// <typeparam name="V1">The type of the first argument</typeparam>
                 /// <typeparam name="V2">The type of the second argument</typeparam>
                 /// <typeparam name="V3">The type of the third argument</typeparam>
@@ -1729,9 +2132,7 @@ namespace Phydeaux.Utilities
                 {
                 }
 
-                /// <summary>
-                /// Represents methods that take known-typed argument list (seven arguments)
-                /// </summary>
+                /// <summary>Represents methods that take known-typed argument list (seven arguments</summary>
                 /// <typeparam name="V1">The type of the first argument</typeparam>
                 /// <typeparam name="V2">The type of the second argument</typeparam>
                 /// <typeparam name="V3">The type of the third argument</typeparam>
@@ -1749,9 +2150,7 @@ namespace Phydeaux.Utilities
                 {
                 }
 
-                /// <summary>
-                /// Represents methods that take known-typed argument list (eight arguments)
-                /// </summary>
+                /// <summary>Represents methods that take known-typed argument list (eight arguments</summary>
                 /// <typeparam name="V1">The type of the first argument</typeparam>
                 /// <typeparam name="V2">The type of the second argument</typeparam>
                 /// <typeparam name="V3">The type of the third argument</typeparam>
@@ -1770,9 +2169,7 @@ namespace Phydeaux.Utilities
                 {
                 }
 
-                /// <summary>
-                /// Represents methods that take known-typed argument list (nine arguments)
-                /// </summary>
+                /// <summary>Represents methods that take known-typed argument list (nine arguments</summary>
                 /// <typeparam name="V1">The type of the first argument</typeparam>
                 /// <typeparam name="V2">The type of the second argument</typeparam>
                 /// <typeparam name="V3">The type of the third argument</typeparam>
@@ -1794,10 +2191,8 @@ namespace Phydeaux.Utilities
             }
         }
 
-        /// <summary>
-        /// Über Base class for all Dynamic classes, this class holds all the code generation and is specialized and 
-        /// JITted against the delegate signature
-        /// </summary>
+        /// <summary>Über Base class for all Dynamic classes, this class holds all the code generation and is 
+        /// specialized and JITted against the delegate signature</summary>
         /// <typeparam name="D">The delegate type that we call-through</typeparam>
         public abstract class DynamicBase<D> where D : class
         {
@@ -1807,9 +2202,88 @@ namespace Phydeaux.Utilities
             protected const BindingFlags InstanceFlags = DefaultFlags | BindingFlags.Instance;
             #endregion
 
+            // emit the sequence to load the "this"
+            private static void EmitLoadThis(DynamicEmit de, MemberInfo memberInfo)
+            {
+                de.LoadArgument(typeof(T).IsValueType, 0);  // get the "this" pointer we were passed
+
+                // if we can't directly (assume/assign), then do an explicit cast.
+                if (memberInfo.DeclaringType != null && !memberInfo.DeclaringType.IsAssignableFrom(typeof(T)))
+                {
+                    de.CastTo(typeof(T), memberInfo.DeclaringType);
+                }
+            }
+
+            // emit sequence to get a field
+            private static void EmitGetField(DynamicEmit de, FieldInfo fieldInfo, Type memberType)
+            {
+                de.LoadField(fieldInfo);
+                de.CastTo(fieldInfo.FieldType, memberType);
+            }
+
+            // emit sequence to set a field
+            private static void EmitSetField(DynamicEmit de, int argumentOffset, FieldInfo fieldInfo, Type knownArgumentType)
+            {
+                // emit code to convert the weak-typed boxed argument we were given to the
+                // correctly-typed value, which we can then pass to the real method...
+                de.LoadArgument(argumentOffset);
+
+                if (knownArgumentType == null)
+                {
+                    de.LoadLiteral(0);
+                    de.LoadElementReference();
+                    de.CastTo(fieldInfo.FieldType);
+                }
+                else
+                {
+                    de.CastTo(knownArgumentType, fieldInfo.FieldType);
+                }
+
+                de.StoreField(fieldInfo);
+            }
+
             public abstract class Params
             {
                 #region Builders
+                // helpers
+                // emit an argument count check
+                protected static void EmitArgumentCountCheck(DynamicEmit de, int argumentOffset, int parameterLength, string methodName)
+                {
+                    // check to see if the call has the required amount of arguments in the object[] array.
+                    de.LoadType<T>();
+                    de.LoadLiteral(methodName);
+                    de.LoadLiteral(parameterLength);    // expected parameter length
+                    de.LoadArgument(argumentOffset);
+                    de.LoadArrayLength();
+                    de.Convert<int>();                  // actual parameters supplied length
+                    de.Call(ParameterCountMismatchException.CheckAndThrowMethodInfo);
+                }
+
+                // emit code to convert the weak-typed boxed arguments we were given to the
+                // correctly-typed local values, which we can then pass to the real method...
+                private static LocalBuilder[] EmitCoerceArguments(DynamicEmit de, int argumentOffset, ParameterInfo[] parameterInfos)
+                {
+                    LocalBuilder[] locals = new LocalBuilder[parameterInfos.Length];
+                    for (int i = 0; i < locals.Length; i++)
+                    {
+                        Type parameterType = parameterInfos[i].ParameterType;
+                        de.LoadArgument(argumentOffset);
+                        de.LoadLiteral(i);
+                        de.LoadElementReference();
+                        de.CastTo(parameterType);
+                        locals[i] = de.DeclareLocal(parameterType);
+                        de.StoreLocal(locals[i].LocalIndex);
+                    }
+                    return locals;
+                }
+
+                // emit both a check of the argument count and coercion of the arguments to matching types
+                private static LocalBuilder[] EmitArgumentCheckAndCoerce(DynamicEmit de, int argumentOffset, ParameterInfo[] parameterInfos, MemberInfo member)
+                {
+                    EmitArgumentCountCheck(de, argumentOffset, parameterInfos.Length, member.Name);
+                    return EmitCoerceArguments(de, argumentOffset, parameterInfos);
+                }
+
                 // For constructors
                 protected static D Build(ConstructorInfo constructorInfo)
                 {
@@ -1824,42 +2298,7 @@ namespace Phydeaux.Utilities
                     DynamicEmit de = new DynamicEmit(dm);
 
                     ParameterInfo[] parameterInfos = constructorInfo.GetParameters();
-                    int parameterLength = parameterInfos.Length;
-
-                    // emit an argument count check
-                    Label argCountOkay = de.DefineLabel();
-
-                    // check to see if the call has the required amount of arguments in the object[] array.
-                    de.LoadArgument(0);
-                    de.LoadArrayLength();
-                    de.Convert<int>();
-                    de.BranchEqual(argCountOkay, true, parameterLength);
-
-                    // emit exception construction and throw
-                    de.LoadType<T>();
-                    de.LoadLiteral(constructorInfo.Name);
-                    de.LoadLiteral(parameterLength);
-                    de.LoadArgument(0);
-                    de.LoadArrayLength();
-                    de.Convert<int>();
-                    de.NewObject(typeof(ParameterCountMismatchException).GetConstructor(new Type[] { typeof(Type), typeof(string), typeof(int), typeof(int) }));
-                    de.Throw();
-
-                    de.MarkLabel(argCountOkay);
-
-                    // emit code to convert the weak-typed boxed arguments we were given to the
-                    // correctly-typed local values, which we can then pass to the real method...
-                    LocalBuilder[] locals = new LocalBuilder[parameterLength];
-                    for (int i = 0; i < locals.Length; i++)
-                    {
-                        Type parameterType = parameterInfos[i].ParameterType;
-                        de.LoadArgument(0);
-                        de.LoadLiteral(i);
-                        de.LoadElementReference();
-                        de.CastTo(parameterType);
-                        locals[i] = de.DeclareLocal(parameterType);
-                        de.StoreLocal(locals[i].LocalIndex);
-                    }
+                    LocalBuilder[] locals = EmitArgumentCheckAndCoerce(de, 0, parameterInfos, constructorInfo);
 
                     // now build up the call stack...
                     for (int i = 0; i < locals.Length; i++)
@@ -1896,54 +2335,18 @@ namespace Phydeaux.Utilities
 
                     int parameterLength = wantGet ? 0 : 1;
 
-                    // emit an argument count check
-                    Label argCountOkay = de.DefineLabel();
-
-                    // check to see if the call has the required amount of arguments in the object[] array.
-                    de.LoadArgument(argumentOffset);
-                    de.LoadArrayLength();
-                    de.Convert<int>();
-                    de.BranchEqual(argCountOkay, true, parameterLength);
-
-                    // emit exception construction and throw
-                    de.LoadType<T>();
-                    de.LoadLiteral(fieldInfo.Name);
-                    de.LoadLiteral(parameterLength);
-                    de.LoadArgument(argumentOffset);
-                    de.LoadArrayLength();
-                    de.Convert<int>();
-                    de.NewObject(typeof(ParameterCountMismatchException).GetConstructor(new Type[] { typeof(Type), typeof(string), typeof(int), typeof(int) }));
-                    de.Throw();
-
-                    de.MarkLabel(argCountOkay);
+                    EmitArgumentCountCheck(de, argumentOffset, parameterLength, fieldInfo.Name);
 
                     // now build up the call stack...
                     if (!fieldInfo.IsStatic)
                     {
-                        de.LoadArgument(typeof(T).IsValueType, 0);  // get the "this" pointer we were passed
-
-                        // if we can't directly (assume/assign), then do an explicit cast.
-                        if (fieldInfo.DeclaringType != null && !fieldInfo.DeclaringType.IsAssignableFrom(typeof(T)))
-                        {
-                            de.CastTo(typeof(T), fieldInfo.DeclaringType);
-                        }
+                        EmitLoadThis(de, fieldInfo);
                     }
 
                     if (wantGet)
-                    {
-                        de.LoadField(fieldInfo);
-                        de.CastTo(fieldInfo.FieldType, memberType);
-                    }
+                        EmitGetField(de, fieldInfo, memberType);
                     else
-                    {
-                        // emit code to convert the weak-typed boxed argument we were given to the
-                        // correctly-typed value, which we can then pass to the real method...
-                        de.LoadArgument(argumentOffset);
-                        de.LoadLiteral(0);
-                        de.LoadElementReference();
-                        de.CastTo(fieldInfo.FieldType);
-                        de.StoreField(fieldInfo);
-                    }
+                        EmitSetField(de, argumentOffset, fieldInfo, null);
 
                     de.Return();
                     return dm.CreateDelegate(typeof(D)) as D;
@@ -1971,53 +2374,12 @@ namespace Phydeaux.Utilities
                     DynamicEmit de = new DynamicEmit(dm);
 
                     ParameterInfo[] parameterInfos = methodInfo.GetParameters();
-                    int parameterLength = parameterInfos.Length;
-
-                    // emit an argument count check
-                    Label argCountOkay = de.DefineLabel();
-
-                    // check to see if the call has the required amount of arguments in the object[] array.
-                    de.LoadArgument(argumentOffset);
-                    de.LoadArrayLength();
-                    de.Convert<int>();
-                    de.BranchEqual(argCountOkay, true, parameterLength);
-
-                    // emit exception construction and throw
-                    de.LoadType<T>();
-                    de.LoadLiteral(methodInfo.Name);
-                    de.LoadLiteral(parameterLength);
-                    de.LoadArgument(argumentOffset);
-                    de.LoadArrayLength();
-                    de.Convert<int>();
-                    de.NewObject(typeof(ParameterCountMismatchException).GetConstructor(new Type[] { typeof(Type), typeof(string), typeof(int), typeof(int) }));
-                    de.Throw();
-
-                    de.MarkLabel(argCountOkay);
-
-                    // emit code to convert the weak-typed boxed arguments we were given to the
-                    // correctly-typed local values, which we can then pass to the real method...
-                    LocalBuilder[] locals = new LocalBuilder[parameterInfos.Length];
-                    for (int i = 0; i < locals.Length; i++)
-                    {
-                        Type parameterType = parameterInfos[i].ParameterType;
-                        de.LoadArgument(argumentOffset);
-                        de.LoadLiteral(i);
-                        de.LoadElementReference();
-                        de.CastTo(parameterType);
-                        locals[i] = de.DeclareLocal(parameterType);
-                        de.StoreLocal(locals[i].LocalIndex);
-                    }
+                    LocalBuilder[] locals = EmitArgumentCheckAndCoerce(de, argumentOffset, parameterInfos, methodInfo);
 
                     // now build up the call stack...
                     if (!methodInfo.IsStatic)
                     {
-                        de.LoadArgument(typeof(T).IsValueType, 0);  // get the "this" pointer we were passed
-
-                        // if we can't directly (assume/assign), then do an explicit cast.
-                        if (methodInfo.DeclaringType != null && !methodInfo.DeclaringType.IsAssignableFrom(typeof(T)))
-                        {
-                            de.CastTo(typeof(T), methodInfo.DeclaringType);
-                        }
+                        EmitLoadThis(de, methodInfo);
                     }
 
                     for (int i = 0; i < locals.Length; i++)
@@ -2275,7 +2637,7 @@ namespace Phydeaux.Utilities
 
                         public abstract class Setter
                         {
-                            // okay, for am instance property Set, the delegate looks like this
+                            // okay, for an instance property Set, the delegate looks like this
                             // ProcParams<T, params object[]>
                             public static D CreateDelegate(PropertyInfo propertyInfo)
                             {
@@ -2414,28 +2776,13 @@ namespace Phydeaux.Utilities
                     // now build up the call stack...
                     if (!fieldInfo.IsStatic)
                     {
-                        de.LoadArgument(typeof(T).IsValueType, 0);  // get the "this" pointer we were passed
-
-                        // if we can't directly (assume/assign), then do an explicit cast.
-                        if (fieldInfo.DeclaringType != null && !fieldInfo.DeclaringType.IsAssignableFrom(typeof(T)))
-                        {
-                            de.CastTo(typeof(T), fieldInfo.DeclaringType);
-                        }
+                        EmitLoadThis(de, fieldInfo);
                     }
 
                     if (wantGet)
-                    {
-                        de.LoadField(fieldInfo);
-                        de.CastTo(fieldInfo.FieldType, memberType);
-                    }
+                        EmitGetField(de, fieldInfo, memberType);
                     else
-                    {
-                        // emit code to convert the weak-typed boxed argument we were given to the
-                        // correctly-typed value, which we can then pass to the real method...
-                        de.LoadArgument(argumentOffset);
-                        de.CastTo(knownArgumentTypes[argumentOffset], fieldInfo.FieldType);
-                        de.StoreField(fieldInfo);
-                    }
+                        EmitSetField(de, argumentOffset, fieldInfo, knownArgumentTypes[argumentOffset]);
 
                     de.Return();
                     return dm.CreateDelegate(typeof(D)) as D;
@@ -2473,13 +2820,7 @@ namespace Phydeaux.Utilities
                     // now build up call stack...
                     if (!methodInfo.IsStatic)
                     {
-                        de.LoadArgument(typeof(T).IsValueType, 0);  // get the "this" pointer we were passed
-
-                        // if we can't directly (assume/assign), then do an explicit cast.
-                        if (methodInfo.DeclaringType != null && !methodInfo.DeclaringType.IsAssignableFrom(typeof(T)))
-                        {
-                            de.CastTo(typeof(T), methodInfo.DeclaringType);
-                        }
+                        EmitLoadThis(de, methodInfo);
                     }
 
                     for (int i = 0; i < parameterInfos.Length; i++)
@@ -2582,7 +2923,7 @@ namespace Phydeaux.Utilities
                         public abstract class Setter
                         {
                             // okay, for a static field Set, the delegate looks like this
-                            // StaticProc<T, VF arg1> so pass just the known type...
+                            // StaticProc<T, VF arg1> so pass just the field type VF...
                             public static D CreateDelegate(FieldInfo fieldInfo)
                             {
                                 return Build(typeof(void), fieldInfo, false, new Type[] { typeof(VF) });
@@ -2605,7 +2946,7 @@ namespace Phydeaux.Utilities
                     {
                         public abstract class Getter
                         {
-                            // okay, for an static property Get, the delegate looks like this
+                            // okay, for a static property Get, the delegate looks like this
                             // StaticFunc<T, VP, V1, ...> so ignore the T and VP
                             public static D CreateDelegate(PropertyInfo propertyInfo)
                             {
@@ -2635,8 +2976,8 @@ namespace Phydeaux.Utilities
 
                         public abstract class Setter
                         {
-                            // okay, for am static property Set, the delegate looks like this
-                            // StaticProc<T, VP arg1, V1 arg2 ...> so we want everything
+                            // okay, for a static property Set, the delegate looks like this
+                            // StaticProc<T, VP arg1, V1 arg2 ...> so ignore the T
                             public static D CreateDelegate(PropertyInfo propertyInfo)
                             {
                                 if (propertyInfo == null)
@@ -2735,8 +3076,8 @@ namespace Phydeaux.Utilities
                     {
                         public abstract class Getter
                         {
-                            // okay, for a static field Get, the delegate looks like this
-                            // StaticFunc<T, VF> so ignore the generic types entirely
+                            // okay, for an instance field Get, the delegate looks like this
+                            // Func<T, VF> so ignore the generic types entirely
                             public static D CreateDelegate(FieldInfo fieldInfo)
                             {
                                 return Build(typeof(VF), fieldInfo, true, new Type[] { typeof(T) });
@@ -2756,7 +3097,7 @@ namespace Phydeaux.Utilities
 
                         public abstract class Setter
                         {
-                            // okay, for a instance field Set, the delegate looks like this
+                            // okay, for an instance field Set, the delegate looks like this
                             // Proc<T, VF arg1> so pass just the known type...
                             public static D CreateDelegate(FieldInfo fieldInfo)
                             {
@@ -2810,7 +3151,7 @@ namespace Phydeaux.Utilities
 
                         public abstract class Setter
                         {
-                            // okay, for am instance property Set, the delegate looks like this
+                            // okay, for an instance property Set, the delegate looks like this
                             // Proc<T, V1 arg1, V2 arg2 ...> so we want everything
                             public static D CreateDelegate(PropertyInfo propertyInfo)
                             {
