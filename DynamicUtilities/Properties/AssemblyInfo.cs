@@ -19,4 +19,4 @@ using System.Runtime.CompilerServices;
 [assembly: AssemblyTitle("DynamicSorting")]
 [assembly: AssemblyDescription("Enables fast dynamic sorting using List<>.Sort() in .NET 2.0")]
 [assembly: AssemblyConfiguration("by Marc Brooks http://musingmarc.blogspot.com")]
-[assembly: AssemblyVersion("2.4.0.0")]
+[assembly: AssemblyVersion("2.5.0.0")]
