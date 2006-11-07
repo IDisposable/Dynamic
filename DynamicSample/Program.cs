@@ -60,13 +60,15 @@ namespace DynamicComparerSample
                         {
                             case ConsoleKey.P:
                                 {
-                                    Do<Person>(dynamic == ConsoleKey.C, option == ConsoleKey.E, ChooseMate);
+                                    Person aPerson = new Person();
+                                    Do(aPerson, dynamic == ConsoleKey.C, option == ConsoleKey.E, ChooseMate);
                                 }
                                 break;
 
                             case ConsoleKey.A:
                                 {
-                                    Do<Animal>(dynamic == ConsoleKey.C, option == ConsoleKey.E, null);
+                                    Animal anAnimal = new Animal();
+                                    Do(anAnimal, dynamic == ConsoleKey.C, option == ConsoleKey.E, null);
                                 }
                                 break;
 
@@ -94,41 +96,38 @@ namespace DynamicComparerSample
 
         delegate void Adjuster<T>(T instance, List<T> list, Random rnd);
 
-        private static void Do<T>(bool comparerTest, bool interactiveTest
-            , Adjuster<T> adjuster) where T : ICallable<T>, IComparable, new()
+        private static void Do<T>(T progenitor, bool comparerTest, bool interactiveTest
+            , Adjuster<T> adjuster) where T : ICallable<T>, IComparable
         {
             Random rnd = new Random(12345); // repeatable seed...
 
             if (comparerTest)
             {
                 if (interactiveTest)
-                    TestCompare<T>(adjuster, rnd);
+                    TestCompare<T>(progenitor, adjuster, rnd);
                 else
-                    BenchCompare<T>(adjuster, rnd);
+                    BenchCompare<T>(progenitor, adjuster, rnd);
             }
             else
             {
                 if (interactiveTest)
-                    TestCall<T>(adjuster, rnd);
+                    TestCall<T>(progenitor, adjuster, rnd);
                 else
-                    BenchCall<T>(adjuster, rnd);
+                    BenchCall<T>(progenitor, adjuster, rnd);
             }
         }
 
         // compile-time
-        private static List<T> CreateObjects<T>(int numberOfEntries
-            , Adjuster<T> adjuster, Random rnd) where T : ICallable<T>, new()
+        private static List<T> CreateObjects<T>(T progenitor, int numberOfEntries
+            , Adjuster<T> adjuster, Random rnd) where T : ICallable<T>
         {
-            // We create an extra copy to make all the Create calls through...
-            T dummy = new T();
-
             // Make the collection.
             List<T> list = new List<T>(numberOfEntries);
 
             // call the default constructor and then Create method...
             for (int i = 0; i < list.Capacity; i++)
             {
-                T instance = dummy.Create(firstnames[rnd.Next(firstnames.Length)]
+                T instance = progenitor.Create(firstnames[rnd.Next(firstnames.Length)]
                     , lastnames[rnd.Next(lastnames.Length)]
                     , (Gender)rnd.Next((int)Gender.MAX)
                     , Math.Floor(rnd.NextDouble() * 100d));
@@ -147,7 +146,7 @@ namespace DynamicComparerSample
         // calling the constructor itself
         private static List<T> CreateObjects<T>(int numberOfEntries
             , ConstructorInfo constructor
-            , Adjuster<T> adjuster, Random rnd) where T : ICallable<T>, new()
+            , Adjuster<T> adjuster, Random rnd)
         {
             // Make the collection.
             List<T> list = new List<T>(numberOfEntries);
@@ -223,9 +222,9 @@ namespace DynamicComparerSample
 
         #region DynamicCall
         #region Test
-        private static void TestCall<T>(Adjuster<T> adjuster, Random rnd) where T : ICallable<T>, new()
+        private static void TestCall<T>(T progenitor, Adjuster<T> adjuster, Random rnd) where T : ICallable<T>
         {
-            List<T> entries = CreateObjects<T>(InteractiveEntries, adjuster, rnd);
+            List<T> entries = CreateObjects<T>(progenitor, InteractiveEntries, adjuster, rnd);
             Console.Clear();
 
             try
@@ -244,7 +243,6 @@ namespace DynamicComparerSample
                 StaticProc<T, int> setPropAllowableAgeDifference = Dynamic<T>.Static.Property<int>.Explicit.Setter.CreateDelegate("AllowableAgeDifference");
                 Func<T, double> getPropAge = Dynamic<T>.Instance.Property<double>.Explicit.Getter.CreateDelegate("Age");
                 Proc<T, double> setPropAge = Dynamic<T>.Instance.Property<double>.Explicit.Setter.CreateDelegate("Age");
-
 
                 bool firstTime = true;
                 int allowableAgeDifference = getAllowableAgeDifference();
@@ -337,10 +335,10 @@ namespace DynamicComparerSample
 
         #region Benchmark
         // I have to constrain this method because we're enforcing an interface contract on the BenchCallCompileTime
-        private static void BenchCall<T>(Adjuster<T> adjuster, Random rnd) where T : ICallable<T>, new()
+        private static void BenchCall<T>(T progenitor, Adjuster<T> adjuster, Random rnd) where T : ICallable<T>
         {
             Console.WriteLine("Method        \tElapsed          \tConstruction      \tGeneration");
-            BenchCallCompileTime<T>(adjuster, rnd);
+            BenchCallCompileTime<T>(progenitor, adjuster, rnd);
             BenchCallDynamicExplicit<T>(adjuster, rnd);
             BenchCallDynamicParams<T>(adjuster, rnd);
             BenchCallCreateDelegate<T>(adjuster, rnd);
@@ -348,16 +346,16 @@ namespace DynamicComparerSample
         }
 
         // I have to constrain this method because we're enforcing an interface contract
-        private static void BenchCallCompileTime<T>(Adjuster<T> adjuster, Random rnd) where T : ICallable<T>, new()
+        private static void BenchCallCompileTime<T>(T progenitor, Adjuster<T> adjuster, Random rnd) where T : ICallable<T>
         {
             GC.Collect(GC.MaxGeneration);
             GC.WaitForPendingFinalizers();
             GC.Collect(GC.MaxGeneration);
             GC.WaitForPendingFinalizers();
 
-            Stopwatch creating = new Stopwatch();
-            Stopwatch generate = new Stopwatch();
             Stopwatch watch = new Stopwatch();
+            Stopwatch generate = new Stopwatch();
+            Stopwatch creating = new Stopwatch();
 
             try
             {
@@ -366,14 +364,14 @@ namespace DynamicComparerSample
                 generate.Stop();
 
                 creating.Start();
-                List<T> entries = CreateObjects(BenchmarkEntries, adjuster, rnd);
+                List<T> entries = CreateObjects(progenitor, BenchmarkEntries, adjuster, rnd);
                 creating.Stop();
 
                 watch.Start();
 
                 // should be a static call, but what can you do when it is coupled to a interface?
                 bool firstTime = true;
-                int allowableAgeDifference = entries[0].GetAllowableAgeDifference();
+                int allowableAgeDifference = progenitor.GetAllowableAgeDifference();
 
                 for (int firstIndex = 0; firstIndex < entries.Count; firstIndex++)
                 {
@@ -671,7 +669,7 @@ namespace DynamicComparerSample
             Console.WriteLine("DynamicParams\t" + watch.Elapsed + "\t" + creating.Elapsed + "\t" + generate.Elapsed);
         }
 
-        private static void BenchCallCreateDelegate<T>(Adjuster<T> adjuster, Random rnd) where T : ICallable<T>, new()
+        private static void BenchCallCreateDelegate<T>(Adjuster<T> adjuster, Random rnd)
         {
             GC.Collect(GC.MaxGeneration);
             GC.WaitForPendingFinalizers();
@@ -796,7 +794,7 @@ namespace DynamicComparerSample
             Console.WriteLine("CreateDelegate\t" + watch.Elapsed + "\t" + creating.Elapsed + "\t" + generate.Elapsed);
         }
 
-        private static void BenchCallMethodInfo<T>(Adjuster<T> adjuster, Random rnd) where T : ICallable<T>, new()
+        private static void BenchCallMethodInfo<T>(Adjuster<T> adjuster, Random rnd)
         {
             GC.Collect(GC.MaxGeneration);
             GC.WaitForPendingFinalizers();
@@ -908,9 +906,9 @@ namespace DynamicComparerSample
 
         #region DynamicComparer
         #region Test
-        private static void TestCompare<T>(Adjuster<T> adjuster, Random rnd) where T : ICallable<T>, IComparable, new()
+        private static void TestCompare<T>(T progenitor, Adjuster<T> adjuster, Random rnd) where T : ICallable<T>, IComparable
         {
-            List<T> unsorted = CreateObjects<T>(InteractiveEntries, adjuster, rnd);
+            List<T> unsorted = CreateObjects<T>(progenitor, InteractiveEntries, adjuster, rnd);
 
             Console.Clear();
             Console.WriteLine("The following properties are available for sorting:");
@@ -984,9 +982,9 @@ Please enter an order by clause (case-sensitive): ");
         #endregion
 
         #region Benchmark
-        private static void BenchCompare<T>(Adjuster<T> adjuster, Random rnd) where T : ICallable<T>, new()
+        private static void BenchCompare<T>(T progenitor, Adjuster<T> adjuster, Random rnd) where T : ICallable<T>
         {
-            List<T> unsorted = CreateObjects<T>(BenchmarkEntries, adjuster, rnd);
+            List<T> unsorted = CreateObjects<T>(progenitor, BenchmarkEntries, adjuster, rnd);
             BenchCompare(unsorted, typeof(T).GetProperties(WhatMembers | BindingFlags.GetProperty));
             BenchCompare(unsorted, typeof(T).GetFields(WhatMembers | BindingFlags.GetField));
             BenchOneCompare(unsorted, String.Empty);
