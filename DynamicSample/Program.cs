@@ -34,11 +34,12 @@ namespace DynamicComparerSample
                 }
                 else
                 {
-                    Console.Write("[E]xercise, [B]enchmark, or E[x]it?");
+                    Console.Write("[E]xercise, [B]enchmark, [C]onstructor benchmark, or E[x]it?");
 
                     ConsoleKey option = new ConsoleKey();
                     while (option != ConsoleKey.E
                         && option != ConsoleKey.B
+                        && option != ConsoleKey.C
                         && option != ConsoleKey.X)
                         option = Console.ReadKey(true).Key;
 
@@ -61,14 +62,14 @@ namespace DynamicComparerSample
                             case ConsoleKey.P:
                                 {
                                     Person aPerson = new Person();
-                                    Do(aPerson, dynamic == ConsoleKey.C, option == ConsoleKey.E, ChooseMate);
+                                    Do(aPerson, dynamic == ConsoleKey.C, option == ConsoleKey.E, option == ConsoleKey.C, ChooseMate);
                                 }
                                 break;
 
                             case ConsoleKey.A:
                                 {
                                     Animal anAnimal = new Animal();
-                                    Do(anAnimal, dynamic == ConsoleKey.C, option == ConsoleKey.E, null);
+                                    Do(anAnimal, dynamic == ConsoleKey.C, option == ConsoleKey.E, option == ConsoleKey.C, null);
                                 }
                                 break;
 
@@ -96,7 +97,7 @@ namespace DynamicComparerSample
 
         delegate void Adjuster<T>(T instance, List<T> list, Random rnd);
 
-        private static void Do<T>(T progenitor, bool comparerTest, bool interactiveTest
+        private static void Do<T>(T progenitor, bool comparerTest, bool interactiveTest, bool activatorBench
             , Adjuster<T> adjuster) where T : ICallable<T>, IComparable
         {
             Random rnd = new Random(12345); // repeatable seed...
@@ -107,6 +108,10 @@ namespace DynamicComparerSample
                     TestCompare<T>(progenitor, adjuster, rnd);
                 else
                     BenchCompare<T>(progenitor, adjuster, rnd);
+            }
+            else if (activatorBench)
+            {
+                BenchConstructor<T>(BenchmarkEntries);
             }
             else
             {
@@ -216,6 +221,69 @@ namespace DynamicComparerSample
                 list.Add(instance);
             }
             return list;
+        }
+
+        private static void BenchConstructor<T>(int numberOfEntries)
+        {
+            Stopwatch activator = new Stopwatch();
+            Stopwatch activatorT = new Stopwatch();
+            Stopwatch dynamic = new Stopwatch();
+
+            try
+            {
+                GC.Collect(GC.MaxGeneration);
+                GC.WaitForPendingFinalizers();
+                GC.Collect(GC.MaxGeneration);
+                GC.WaitForPendingFinalizers();
+
+                activator.Start();
+                Type tType = typeof(T);
+                for (int i = 0; i < numberOfEntries; i++)
+                {
+                    T t = (T)Activator.CreateInstance(tType);
+                }
+                activator.Stop();
+
+                GC.Collect(GC.MaxGeneration);
+                GC.WaitForPendingFinalizers();
+                GC.Collect(GC.MaxGeneration);
+                GC.WaitForPendingFinalizers();
+
+                activatorT.Start();
+                for (int i = 0; i < numberOfEntries; i++)
+                {
+                    T t = Activator.CreateInstance<T>();
+                }
+                activatorT.Stop();
+
+                GC.Collect(GC.MaxGeneration);
+                GC.WaitForPendingFinalizers();
+                GC.Collect(GC.MaxGeneration);
+                GC.WaitForPendingFinalizers();
+
+                ConstructorParams<T> create = Dynamic<T>.Constructor.Params.CreateDelegate(Type.EmptyTypes);
+
+                dynamic.Start();
+                for (int i = 0; i < numberOfEntries; i++)
+                {
+                    T t = create();
+                }
+                dynamic.Stop();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("\n{0}", ex.ToString());
+            }
+            finally
+            {
+                dynamic.Stop();
+                activatorT.Stop();
+                activator.Stop();
+            }
+
+            Console.WriteLine("Activator:\t" + activator.Elapsed 
+                              + "\nActivator<T>:\t" + activatorT.Elapsed 
+                              + "\nDynamic:\t" + dynamic.Elapsed);
         }
 
         private const BindingFlags WhatMembers = BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance;
