@@ -2,12 +2,26 @@
 Microsoft Visual Studio Solution File, Format Version 9.00
 # Visual Studio 2005
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DynamicSample", "DynamicSample\DynamicSample.csproj", "{D2B58742-240F-47C8-A69F-5683671CC9E5}"
+	ProjectSection(WebsiteProperties) = preProject
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.Debug = "False"
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DynamicUtilites", "DynamicUtilities\DynamicUtilites.csproj", "{0FEF568A-0697-4DFA-A643-99060713CF00}"
+	ProjectSection(WebsiteProperties) = preProject
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.Debug = "False"
+	EndProjectSection
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "DynamicSampleWeb", "DynamicSampleWeb\DynamicSampleWeb.vbproj", "{C65C4CC0-9144-49C7-AA5A-CE1DEA3D74E2}"
+	ProjectSection(WebsiteProperties) = preProject
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.Debug = "False"
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 3
+		SccNumberOfProjects = 4
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 		SccTeamFoundationServer = https://tfs01.codeplex.com/
 		SccLocalPath0 = .
@@ -17,6 +31,9 @@ Global
 		SccProjectUniqueName2 = DynamicUtilities\\DynamicUtilites.csproj
 		SccProjectName2 = DynamicUtilities
 		SccLocalPath2 = DynamicUtilities
+		SccProjectUniqueName3 = DynamicSampleWeb\\DynamicSampleWeb.vbproj
+		SccProjectName3 = DynamicSampleWeb
+		SccLocalPath3 = DynamicSampleWeb
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +48,10 @@ Global
 		{0FEF568A-0697-4DFA-A643-99060713CF00}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0FEF568A-0697-4DFA-A643-99060713CF00}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0FEF568A-0697-4DFA-A643-99060713CF00}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C65C4CC0-9144-49C7-AA5A-CE1DEA3D74E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C65C4CC0-9144-49C7-AA5A-CE1DEA3D74E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C65C4CC0-9144-49C7-AA5A-CE1DEA3D74E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C65C4CC0-9144-49C7-AA5A-CE1DEA3D74E2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
