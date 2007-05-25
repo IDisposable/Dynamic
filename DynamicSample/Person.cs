@@ -131,6 +131,16 @@ namespace DynamicComparerSample
         }
 
         // don't whine... these are just samples
+        public virtual double MinimumAge
+        {
+            get { return this.age * 0.75; }
+        }
+
+        public virtual double MaximumAge
+        {
+            get { return this.age * 1.25; }
+        }
+
         public virtual bool Compatible(Person other)
         {
             return (Math.Abs(this.age - other.age) / this.age) < 0.25;
@@ -266,7 +276,17 @@ namespace DynamicComparerSample
         {
         }
 
-       public override bool Compatible(Person other)
+        public override double MinimumAge
+        {
+            get { return (this.Age <= 3) ? 0 : base.MinimumAge; }
+        }
+
+        public override double MaximumAge
+        {
+            get { return (this.Age < 18) ? 18 : base.MaximumAge; } 
+        }
+
+        public override bool Compatible(Person other)
         {
             // children must be 18 and not very picky
             return this.Age > 18 && (Math.Abs(this.Age - other.Age) / this.Age) < 0.50;

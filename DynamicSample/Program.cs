@@ -34,18 +34,30 @@ namespace DynamicComparerSample
                 }
                 else
                 {
-                    Console.Write("[E]xercise, [B]enchmark, [C]onstructor benchmark, or E[x]it?");
+                    Console.Write("[E]xercise, [B]enchmark, [T]ests, [C]onstructor benchmark, or E[x]it?");
 
                     ConsoleKey option = new ConsoleKey();
                     while (option != ConsoleKey.E
                         && option != ConsoleKey.B
+                        && option != ConsoleKey.T
                         && option != ConsoleKey.C
                         && option != ConsoleKey.X)
                         option = Console.ReadKey(true).Key;
 
                     Console.WriteLine(option);
 
-                    if (option != ConsoleKey.X)
+                    if (option == ConsoleKey.T)
+                    {
+                        Console.WriteLine("Testing...");
+
+                        // just calling this tests dynamic comparer...
+                        List<CountryBDO> list = CountryBDO.GetAllBDOs();
+                        foreach (CountryBDO country in list)
+                        {
+                            Console.WriteLine("\t{0}: {1}", country.ID, country.Name);
+                        }
+                    }
+                    else if (option != ConsoleKey.X)
                     {
                         Console.Write("[P]eople (class), [A]nimal (struct), or E[x]it?");
 
@@ -281,8 +293,8 @@ namespace DynamicComparerSample
                 activator.Stop();
             }
 
-            Console.WriteLine("Activator:\t" + activator.Elapsed 
-                              + "\nActivator<T>:\t" + activatorT.Elapsed 
+            Console.WriteLine("Activator:\t" + activator.Elapsed
+                              + "\nActivator<T>:\t" + activatorT.Elapsed
                               + "\nDynamic:\t" + dynamic.Elapsed);
         }
 
@@ -306,6 +318,8 @@ namespace DynamicComparerSample
                 StaticProc<T, int> setAllowableAgeDifference = Dynamic<T>.Static.Field<int>.Setter.CreateDelegate("allowableAgeDifference");
                 Func<T, double> getAge = Dynamic<T>.Instance.Field<double>.Getter.CreateDelegate("age");
                 Proc<T, double> setAge = Dynamic<T>.Instance.Field<double>.Setter.CreateDelegate("age");
+                Func<T, double> getMinimumAge = Dynamic<T>.Instance.Property<double>.Explicit.Getter.CreateDelegate("MinimumAge");
+                Func<T, double> getMaximumAge = Dynamic<T>.Instance.Property<double>.Explicit.Getter.CreateDelegate("MaximumAge");
 
                 StaticFunc<T, int> getPropAllowableAgeDifference = Dynamic<T>.Static.Property<int>.Explicit.Getter.CreateDelegate("AllowableAgeDifference");
                 StaticProc<T, int> setPropAllowableAgeDifference = Dynamic<T>.Static.Property<int>.Explicit.Setter.CreateDelegate("AllowableAgeDifference");
@@ -337,7 +351,11 @@ namespace DynamicComparerSample
                     {
                         double firstAge = getAge(firstEntry);
                         double secondAge = getAge(secondEntry);
+                        double minAge = getMinimumAge(firstEntry);
+                        double maxAge = getMaximumAge(firstEntry);
+
                         Console.WriteLine("\t\tinsurmountable age difference " + firstAge + " and " + secondAge);
+                        Console.WriteLine("\t\tprefer people between " + getMinimumAge(firstEntry) + " and " + getMaximumAge(firstEntry));
 
                         if (firstTime)
                         {
@@ -350,17 +368,17 @@ namespace DynamicComparerSample
 
                         Console.Write("\t\t\tlet's do the time warp ");
 
-                        if (firstAge < secondAge)
-                        {
-                            firstAge += rnd.Next(currentAgeDifference) / 2;
-                            setAge(firstEntry, firstAge);
-                            Console.WriteLine(", first is now " + getAge(firstEntry));
-                        }
-                        else
+                        if (secondAge < minAge)
                         {
                             secondAge += rnd.Next(currentAgeDifference) / 2;
                             setPropAge(secondEntry, secondAge);
                             Console.WriteLine(", second is now " + getPropAge(secondEntry));
+                        }
+                        else if (secondAge > maxAge)
+                        {
+                            firstAge += rnd.Next(currentAgeDifference) / 2;
+                            setAge(firstEntry, firstAge);
+                            Console.WriteLine(", first is now " + getAge(firstEntry));
                         }
 
                         currentAgeDifference = ageDifference(firstEntry, secondEntry);
@@ -461,6 +479,8 @@ namespace DynamicComparerSample
                                 // we have to go through the properties as the fields are (and should be) private...
                                 double firstAge = firstEntry.Age;
                                 double secondAge = secondEntry.Age;
+                                double minAge = firstEntry.MinimumAge;
+                                double maxAge = firstEntry.MaximumAge;
 
                                 if (firstTime)
                                 {
@@ -470,17 +490,17 @@ namespace DynamicComparerSample
                                     firstTime = false;
                                 }
 
-                                if (firstAge < secondAge)
-                                {
-                                    firstAge += rnd.Next(currentAgeDifference) / 2;
-                                    firstEntry.Age = firstAge;
-                                    firstAge = firstEntry.Age;
-                                }
-                                else
+                                if (secondAge < minAge)
                                 {
                                     secondAge += rnd.Next(currentAgeDifference) / 2;
                                     secondEntry.Age = secondAge;
                                     secondAge = secondEntry.Age;
+                                }
+                                else if (secondAge > maxAge)
+                                {
+                                    firstAge += rnd.Next(currentAgeDifference) / 2;
+                                    firstEntry.Age = firstAge;
+                                    firstAge = firstEntry.Age;
                                 }
 
                                 currentAgeDifference = firstEntry.AgeDifferenceFrom(secondEntry);
@@ -541,6 +561,8 @@ namespace DynamicComparerSample
                 StaticProc<T, int> setAllowableAgeDifference = Dynamic<T>.Static.Field<int>.Setter.CreateDelegate("allowableAgeDifference");
                 Func<T, double> getAge = Dynamic<T>.Instance.Field<double>.Getter.CreateDelegate("age");
                 Proc<T, double> setAge = Dynamic<T>.Instance.Field<double>.Setter.CreateDelegate("age");
+                Func<T, double> getMinimumAge = Dynamic<T>.Instance.Property<double>.Explicit.Getter.CreateDelegate("MinimumAge");
+                Func<T, double> getMaximumAge = Dynamic<T>.Instance.Property<double>.Explicit.Getter.CreateDelegate("MaximumAge");
                 generate.Stop();
 
                 creating.Start();
@@ -570,6 +592,8 @@ namespace DynamicComparerSample
                             {
                                 double firstAge = getAge(firstEntry);
                                 double secondAge = getAge(secondEntry);
+                                double minAge = getMinimumAge(firstEntry);
+                                double maxAge = getMaximumAge(firstEntry);
 
                                 if (firstTime)
                                 {
@@ -579,17 +603,17 @@ namespace DynamicComparerSample
                                     firstTime = false;
                                 }
 
-                                if (firstAge < secondAge)
-                                {
-                                    firstAge += rnd.Next(currentAgeDifference) / 2;
-                                    setAge(firstEntry, firstAge);
-                                    firstAge = getAge(firstEntry);
-                                }
-                                else
+                                if (secondAge < minAge)
                                 {
                                     secondAge += rnd.Next(currentAgeDifference) / 2;
                                     setAge(secondEntry, secondAge);
                                     secondAge = getAge(secondEntry);
+                                }
+                                else if (secondAge > maxAge)
+                                {
+                                    firstAge += rnd.Next(currentAgeDifference) / 2;
+                                    setAge(firstEntry, firstAge);
+                                    firstAge = getAge(firstEntry);
                                 }
 
                                 currentAgeDifference = ageDifference(firstEntry, secondEntry);
@@ -652,6 +676,8 @@ namespace DynamicComparerSample
                 StaticProc<T, int> setAllowableAgeDifference = Dynamic<T>.Static.Field<int>.Setter.CreateDelegate("allowableAgeDifference");
                 Func<T, double> getAge = Dynamic<T>.Instance.Field<double>.Getter.CreateDelegate("age");
                 Proc<T, double> setAge = Dynamic<T>.Instance.Field<double>.Setter.CreateDelegate("age");
+                Func<T, double> getMinimumAge = Dynamic<T>.Instance.Property<double>.Explicit.Getter.CreateDelegate("MinimumAge");
+                Func<T, double> getMaximumAge = Dynamic<T>.Instance.Property<double>.Explicit.Getter.CreateDelegate("MaximumAge");
                 generate.Stop();
 
                 creating.Start();
@@ -681,6 +707,8 @@ namespace DynamicComparerSample
                             {
                                 double firstAge = getAge(firstEntry);
                                 double secondAge = getAge(secondEntry);
+                                double minAge = getMinimumAge(firstEntry);
+                                double maxAge = getMaximumAge(firstEntry);
 
                                 if (firstTime)
                                 {
@@ -690,17 +718,17 @@ namespace DynamicComparerSample
                                     firstTime = false;
                                 }
 
-                                if (firstAge < secondAge)
-                                {
-                                    firstAge += rnd.Next(currentAgeDifference) / 2;
-                                    setAge(firstEntry, firstAge);
-                                    firstAge = getAge(firstEntry);
-                                }
-                                else
+                                if (secondAge < minAge)
                                 {
                                     secondAge += rnd.Next(currentAgeDifference) / 2;
                                     setAge(secondEntry, secondAge);
                                     secondAge = getAge(secondEntry);
+                                }
+                                else if (secondAge > maxAge)
+                                {
+                                    firstAge += rnd.Next(currentAgeDifference) / 2;
+                                    setAge(firstEntry, firstAge);
+                                    firstAge = getAge(firstEntry);
                                 }
 
                                 currentAgeDifference = ageDifference(firstEntry, secondEntry);
@@ -739,6 +767,13 @@ namespace DynamicComparerSample
 
         private static void BenchCallCreateDelegate<T>(Adjuster<T> adjuster, Random rnd)
         {
+            // can't do lazy-bind to instance methods for structs, this is invalid
+            if (typeof(T).IsValueType)
+            {
+                Console.WriteLine("Cannot use CreateDelegate against a value-type instance methods, skipping.");
+                return;
+            }
+
             GC.Collect(GC.MaxGeneration);
             GC.WaitForPendingFinalizers();
             GC.Collect(GC.MaxGeneration);
@@ -769,15 +804,16 @@ namespace DynamicComparerSample
 
                 FieldInfo fiAllowableAgeDifference = typeof(T).GetField("allowableAgeDifference", BindingFlags.Static | BindingFlags.NonPublic);
                 FieldInfo fiAge = typeof(T).GetField("age", BindingFlags.Instance | BindingFlags.NonPublic);
+
+                PropertyInfo piMinimumAge = typeof(T).GetProperty("MinimumAge", BindingFlags.Instance | BindingFlags.Public);
+                Func<T, double> getMinimumAge = (Func<T, double>)Delegate.CreateDelegate(typeof(Func<T, double>), piMinimumAge.GetGetMethod());
+                PropertyInfo piMaximumAge = typeof(T).GetProperty("MaximumAge", BindingFlags.Instance | BindingFlags.Public);
+                Func<T, double> getMaximumAge = (Func<T, double>)Delegate.CreateDelegate(typeof(Func<T, double>), piMaximumAge.GetGetMethod());
                 generate.Stop();
 
                 creating.Start();
                 List<T> entries = CreateObjects<T>(BenchmarkEntries, constructor, adjuster, rnd);
                 creating.Stop();
-
-                // can't do lazy-bind for structs, this is invalid
-                if (typeof(T).IsValueType)
-                    Console.WriteLine("Cannot use CreateDelegate against a value-type, benchmark is invalid");
 
                 watch.Start();
 
@@ -802,6 +838,8 @@ namespace DynamicComparerSample
                             {
                                 double firstAge = (double)fiAge.GetValue(firstEntry);
                                 double secondAge = (double)fiAge.GetValue(secondEntry);
+                                double minAge = getMinimumAge(firstEntry);
+                                double maxAge = getMaximumAge(firstEntry);
 
                                 if (firstTime)
                                 {
@@ -811,17 +849,17 @@ namespace DynamicComparerSample
                                     firstTime = false;
                                 }
 
-                                if (firstAge < secondAge)
-                                {
-                                    firstAge += rnd.Next(currentAgeDifference) / 2;
-                                    fiAge.SetValue(firstEntry, firstAge);
-                                    firstAge = (double)fiAge.GetValue(firstEntry);
-                                }
-                                else
+                                if (secondAge < minAge)
                                 {
                                     secondAge += rnd.Next(currentAgeDifference) / 2;
                                     fiAge.SetValue(secondEntry, secondAge);
                                     secondAge = (double)fiAge.GetValue(secondEntry);
+                                }
+                                else if (secondAge > maxAge)
+                                {
+                                    firstAge += rnd.Next(currentAgeDifference) / 2;
+                                    fiAge.SetValue(firstEntry, firstAge);
+                                    firstAge = (double)fiAge.GetValue(firstEntry);
                                 }
 
                                 currentAgeDifference = ageDifference(firstEntry, secondEntry);
@@ -830,19 +868,15 @@ namespace DynamicComparerSample
                                 {
                                     continue;
                                 }
-                            }
 
-                            // can't do lazy-bind for structs, this is invalid
-                            if (typeof(T).IsValueType)
-                                continue;
-
-                            if (compatible(firstEntry, secondEntry))
-                            {
-                                T child = breed(firstEntry, secondEntry, (Gender)neighbor);
-                            }
-                            else
-                            {
-                                mutate(secondEntry);
+                                if (compatible(firstEntry, secondEntry))
+                                {
+                                    T child = breed(firstEntry, secondEntry, (Gender)neighbor);
+                                }
+                                else
+                                {
+                                    mutate(secondEntry);
+                                }
                             }
                         }
                     }
@@ -885,6 +919,10 @@ namespace DynamicComparerSample
                 MethodInfo ageDifference = typeof(T).GetMethod("AgeDifference", BindingFlags.Static | BindingFlags.NonPublic);
                 FieldInfo fiAllowableAgeDifference = typeof(T).GetField("allowableAgeDifference", BindingFlags.Static | BindingFlags.NonPublic);
                 FieldInfo fiAge = typeof(T).GetField("age", BindingFlags.Instance | BindingFlags.NonPublic);
+                PropertyInfo piMinimumAge = typeof(T).GetProperty("MinimumAge", BindingFlags.Instance | BindingFlags.Public);
+                MethodInfo getMinimumAge = piMinimumAge.GetGetMethod();
+                PropertyInfo piMaximumAge = typeof(T).GetProperty("MaximumAge", BindingFlags.Instance | BindingFlags.Public);
+                MethodInfo getMaximumAge = piMaximumAge.GetGetMethod();
                 generate.Stop();
 
                 creating.Start();
@@ -914,6 +952,8 @@ namespace DynamicComparerSample
                             {
                                 double firstAge = (double)fiAge.GetValue(firstEntry);
                                 double secondAge = (double)fiAge.GetValue(secondEntry);
+                                double minAge = (double)getMinimumAge.Invoke(firstEntry, null);
+                                double maxAge = (double)getMaximumAge.Invoke(firstEntry, null);
 
                                 if (firstTime)
                                 {
@@ -923,17 +963,17 @@ namespace DynamicComparerSample
                                     firstTime = false;
                                 }
 
-                                if (firstAge < secondAge)
-                                {
-                                    firstAge += rnd.Next(currentAgeDifference) / 2;
-                                    fiAge.SetValue(firstEntry, firstAge);
-                                    firstAge = (double)fiAge.GetValue(firstEntry);
-                                }
-                                else
+                                if (secondAge < minAge)
                                 {
                                     secondAge += rnd.Next(currentAgeDifference) / 2;
                                     fiAge.SetValue(secondEntry, secondAge);
                                     secondAge = (double)fiAge.GetValue(secondEntry);
+                                }
+                                else if (secondAge > maxAge)
+                                {
+                                    firstAge += rnd.Next(currentAgeDifference) / 2;
+                                    fiAge.SetValue(firstEntry, firstAge);
+                                    firstAge = (double)fiAge.GetValue(firstEntry);
                                 }
 
                                 currentAgeDifference = (int)ageDifference.Invoke(null, new object[] { firstEntry, secondEntry });

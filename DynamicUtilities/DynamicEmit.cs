@@ -359,13 +359,27 @@ namespace Phydeaux.Utilities
 
         public void Call(MethodInfo method)
         {
-            if (method.IsFinal || !method.IsVirtual)
+            if ((method.CallingConvention & CallingConventions.VarArgs) != 0)
             {
-                _ilGen.EmitCall(OpCodes.Call, method, null);
+                if (method.IsFinal || !method.IsVirtual)
+                {
+                    _ilGen.EmitCall(OpCodes.Call, method, null);
+                }
+                else
+                {
+                    _ilGen.EmitCall(OpCodes.Callvirt, method, null);
+                }
             }
             else
             {
-                _ilGen.EmitCall(OpCodes.Callvirt, method, null);
+                if (method.IsFinal || !method.IsVirtual)
+                {
+                    _ilGen.Emit(OpCodes.Call, method);
+                }
+                else
+                {
+                    _ilGen.Emit(OpCodes.Callvirt, method);
+                }
             }
         }
 
