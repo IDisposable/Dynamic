@@ -74,6 +74,16 @@ namespace DynamicComparerSample
         }
 
         // don't whine... these are just samples
+        public double MinimumAge
+        {
+            get { return this.age * 0.75; }
+        }
+
+        public double MaximumAge
+        {
+            get { return this.age * 1.25; }
+        }
+
         public bool Compatible(Animal other)
         {
             return (Math.Abs(this.age - other.age) / this.age) < 0.25;

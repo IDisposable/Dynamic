@@ -17,6 +17,16 @@ namespace DynamicComparerSample
             get; set;
         }
 
+        double MinimumAge
+        {
+            get;
+        }
+
+        double MaximumAge
+        {
+            get;
+        }
+
         // these are supposed to be static, but cannot be in an interface...
         //int AgeDifference(T first, T other);
         int AgeDifferenceFrom(T other);

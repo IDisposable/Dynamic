@@ -41,6 +41,7 @@
     <Compile Include="Animal.cs">
     </Compile>
     <Compile Include="Gender.cs" />
+    <Compile Include="GenericBaseTest.cs" />
     <Compile Include="ICallable.cs" />
     <Compile Include="Person.cs" />
     <Compile Include="Program.cs" />
