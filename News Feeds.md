@@ -1,0 +1,1 @@
+{rss:url=http://musingmarc.blogspot.com/rss.xml}
