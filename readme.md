@@ -60,19 +60,19 @@ Also included in this library is a DynamicCompare class, that generates a very-h
 
 Dynamic method calls:
 
-[http://musingmarc.blogspot.com/2006/07/power-of-generics-compels-you-power-of.html](http://musingmarc.blogspot.com/2006/07/power-of-generics-compels-you-power-of.html)
+[https://www.musingmarc.org/2006/07/power-of-generics-compels-you-power-of.html](https://www.musingmarc.org/2006/07/power-of-generics-compels-you-power-of.html)
 
-[http://musingmarc.blogspot.com/2006/07/updated-files-for-dynamic-method.html](http://musingmarc.blogspot.com/2006/07/updated-files-for-dynamic-method.html)
+[https://www.musingmarc.org/2006/07/updated-files-for-dynamic-method.html](https://www.musingmarc.org/2006/07/updated-files-for-dynamic-method.html)
 
-[http://musingmarc.blogspot.com/2006/07/things-to-remember-when-creating.html](http://musingmarc.blogspot.com/2006/07/things-to-remember-when-creating.html)
+[https://www.musingmarc.org/2006/07/things-to-remember-when-creating.html](https://www.musingmarc.org/2006/07/things-to-remember-when-creating.html)
 
-[http://musingmarc.blogspot.com/2006/08/how-to-do-late-dynamic-method-creation.html](http://musingmarc.blogspot.com/2006/08/how-to-do-late-dynamic-method-creation.html)
+[https://www.musingmarc.org/2006/08/how-to-do-late-dynamic-method-creation.html](https://www.musingmarc.org/2006/08/how-to-do-late-dynamic-method-creation.html)
 
 DynamicCompare:
 
-[http://musingmarc.blogspot.com/2006/02/dynamic-sorting-of-objects-using.html](http://musingmarc.blogspot.com/2006/02/dynamic-sorting-of-objects-using.html)
+[https://www.musingmarc.org/2006/02/dynamic-sorting-of-objects-using.html](https://www.musingmarc.org/2006/02/dynamic-sorting-of-objects-using.html)
 
-[http://musingmarc.blogspot.com/2006/03/extending-dynamic-sorting-of-objects.html](http://musingmarc.blogspot.com/2006/03/extending-dynamic-sorting-of-objects.html)
+[https://www.musingmarc.org/2006/03/extending-dynamic-sorting-of-objects.html](https://www.musingmarc.org/2006/03/extending-dynamic-sorting-of-objects.html)
 
 Where it all started:
 
