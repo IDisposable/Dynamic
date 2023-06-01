@@ -15,10 +15,10 @@ namespace Phydeaux.Utilities
         #region Properties
         public Comparison<T> Comparer
         {
-			get
-			{
-				return comparer;
-			}
+		get
+		{
+			return comparer;
+		}
         }
         #endregion
 
